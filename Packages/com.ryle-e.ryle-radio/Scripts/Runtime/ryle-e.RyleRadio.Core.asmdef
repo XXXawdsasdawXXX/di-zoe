@@ -1,0 +1,17 @@
+{
+    "name": "ryle-e.RyleRadio.Core",
+    "rootNamespace": "RyleRadio",
+    "references": [
+        "NaughtyAttributes.Core",
+        "NaughtyAttributes.Editor"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
