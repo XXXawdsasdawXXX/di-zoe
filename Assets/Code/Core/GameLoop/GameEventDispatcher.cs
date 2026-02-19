@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Code.Infrastructure.ServiceLocator;
+﻿using System.Collections.Generic;
+using Code.Core.ServiceLocator;
 using Cysharp.Threading.Tasks;
 using Kirurobo;
 using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-namespace Code.Infrastructure.GameLoop
+namespace Code.Core.GameLoop
 {
     public class GameEventDispatcher : MonoBehaviour, IService
     {

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Code.Infrastructure.GameLoop;
-using Code.Infrastructure.Save;
+using Code.Core.GameLoop;
+using Code.Core.Save;
 using Kirurobo;
 using UnityEngine;
 
-namespace Code.Infrastructure.ServiceLocator
+namespace Code.Core.ServiceLocator
 {
     public class Container : MonoBehaviour
     {

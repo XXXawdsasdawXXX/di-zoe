@@ -1,11 +1,10 @@
 using System.Linq;
-using Code.Infrastructure.ServiceLocator;
+using Code.Core.ServiceLocator;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Scripting;
 
-namespace Code.Infrastructure.GameLoop
+namespace Code.Core.GameLoop
 {
     [Preserve]
     public class Spawner : IService, IInitializeListener

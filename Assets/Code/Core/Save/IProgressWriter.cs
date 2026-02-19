@@ -1,5 +1,7 @@
 
-namespace Code.Infrastructure.Save
+using Code.Core.Save.SavedData;
+
+namespace Code.Core.Save
 {
     public interface IProgressWriter : IProgressReader
     {

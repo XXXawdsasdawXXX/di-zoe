@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Code.Infrastructure.GameLoop;
+using Code.Core.GameLoop;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace Code.UI
 {
     public class UIDropDown : UIComponent, ISubscriber
     {
-        public event Action<int> OnChanged;
+        private event Action<int> _changed;
 
         [SerializeField] private TMP_Dropdown _dropdown;
 
@@ -17,17 +17,26 @@ namespace Code.UI
         
         public void Subscribe()
         {
-            _dropdown.onValueChanged.AddListener(value => OnChanged?.Invoke(value));
+            _dropdown.onValueChanged.AddListener(_invokeChanged);
         }
 
         public void Unsubscribe()
         {
-            _dropdown.onValueChanged.RemoveAllListeners();
+            _dropdown.onValueChanged.RemoveListener(_invokeChanged);
         }
 
         #endregion
 
+        public void SubscribeToElement(Action<int> change)
+        {
+            _changed += change;
+        }
         
+        public void UnsubscribeFromElement(Action<int> change)
+        {
+            _changed -= change;
+        }
+
         public void SetCurrentValueWithoutNotify(int value)
         {
             _dropdown.SetValueWithoutNotify(value);
@@ -36,6 +45,11 @@ namespace Code.UI
         public void SetValues(List<TMP_Dropdown.OptionData> options)
         {
             _dropdown.options = options;
+        }
+
+        private void _invokeChanged(int index)
+        {
+            _changed?.Invoke(index);
         }
     }
 }

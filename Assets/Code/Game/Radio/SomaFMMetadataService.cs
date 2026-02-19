@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using Code.Infrastructure.GameLoop;
-using Code.Infrastructure.ServiceLocator;
+using Code.Core.GameLoop;
+using Code.Core.ServiceLocator;
 using Code.Tools;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
@@ -15,7 +15,8 @@ namespace Code.Game.Radio
     /// current track, previous tracks, album cover, channel logo, listener count.
     /// Attach to the same GameObject as RadioPlayer, or reference it manually.
     /// </summary>
-    public class SomaFMMetadataService : MonoBehaviour, IService, IInitializeListener, IStartListener, IExitListener
+    public class SomaFMMetadataService : MonoBehaviour, IService, 
+        IInitializeListener, IExitListener, ISubscriber
     {
         [Serializable]
         public class Model
@@ -23,7 +24,6 @@ namespace Code.Game.Radio
             public ReactiveProperty<string> CurrentTrack   = new("");
             public ReactiveProperty<string> PreviousTrack  = new("");
             public ReactiveProperty<string> ListenerCount  = new("");
-            public ReactiveProperty<Texture2D> AlbumCover  = new(null);
             public ReactiveProperty<Texture2D> ChannelLogo = new(null);
         }
 
@@ -42,6 +42,7 @@ namespace Code.Game.Radio
         private string _currentChannelId;
         private Coroutine _trackPollingCoroutine;
         private Coroutine _listenersPollingCoroutine;
+        private RadioPlayer _radioPlayer;
 
 
         #region Life
@@ -49,17 +50,21 @@ namespace Code.Game.Radio
         public UniTask GameInitialize()
         {
             _radioConfiguration = Container.Instance.GetConfig<RadioConfiguration>();
-            
-            return UniTask.CompletedTask;
-        }
-        
-        public UniTask GameStart()
-        {
-            OnChannelChanged(0); // Стартуем с первого канала
+            _radioPlayer = Container.Instance.GetService<RadioPlayer>();
             
             return UniTask.CompletedTask;
         }
 
+        public void Subscribe()
+        {
+            _radioPlayer.Channel.SubscribeToValue(OnChannelChanged);
+        }
+        
+        public void Unsubscribe()
+        {
+            _radioPlayer.Channel.UnsubscibeFromValue(OnChannelChanged);
+        }
+        
         public void GameExit()
         {
             if (_trackPollingCoroutine != null) StopCoroutine(_trackPollingCoroutine);
@@ -84,14 +89,16 @@ namespace Code.Game.Radio
                 return;
             }
 
+            Debug.Log("Soma fm meta data - on channel changed");
+            
             _currentChannelId = _radioConfiguration.Channels[dropdownIndex].Id;
 
             // Перезапускаем опрос
             if (_trackPollingCoroutine != null) StopCoroutine(_trackPollingCoroutine);
             if (_listenersPollingCoroutine != null) StopCoroutine(_listenersPollingCoroutine);
 
-            _trackPollingCoroutine = StartCoroutine(PollTrackInfo());
-            _listenersPollingCoroutine = StartCoroutine(PollListenerCount());
+            _trackPollingCoroutine = StartCoroutine(_pollTrackInfo());
+            _listenersPollingCoroutine = StartCoroutine(_pollListenerCount());
 
             // Логотип канала грузим один раз при смене
             StartCoroutine(FetchChannelLogo());
@@ -129,21 +136,14 @@ namespace Code.Game.Radio
                 string trackLine = $"{latest.artist} — {latest.title}";
 
                 State.CurrentTrack.Value = trackLine;
-
-                // Загружаем обложку альбома для текущего трека
-                if (!string.IsNullOrEmpty(latest.image))
-                    StartCoroutine(FetchAlbumCover(latest.image));
             }
             catch (Exception e)
             {
                 Debug.LogWarning($"FetchCurrentTrack parse error: {e.Message}");
             }
         }
-
-        // ─────────────────────────────────────────────
-        // 2. Предыдущие треки
-        // ─────────────────────────────────────────────
-
+        
+        
         /// <summary>
         /// Получает список последних треков (до 5 штук).
         /// Обновляет previousTracksText.
@@ -188,35 +188,8 @@ namespace Code.Game.Radio
             }
         }
 
-        // ─────────────────────────────────────────────
-        // 3. Обложка альбома
-        // ─────────────────────────────────────────────
-
-        /// <summary>
-        /// Загружает изображение обложки альбома по URL из метаданных трека.
-        /// Обновляет albumCoverImage.
-        /// </summary>
-        private IEnumerator FetchAlbumCover(string imageUrl)
-        {
-            if (string.IsNullOrEmpty(imageUrl))
-                yield break;
-
-            using UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
-            yield return request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogWarning($"FetchAlbumCover failed: {request.error}");
-                yield break;
-            }
-
-            State.AlbumCover.Value = DownloadHandlerTexture.GetContent(request);
-        }
-
-        // ─────────────────────────────────────────────
-        // 4. Логотип канала
-        // ─────────────────────────────────────────────
-
+    
+        
         /// <summary>
         /// Загружает логотип текущего канала через channels.json.
         /// Обновляет channelLogoImage.
@@ -311,12 +284,11 @@ namespace Code.Game.Radio
                 Debug.LogWarning($"FetchListenerCount parse error: {e.Message}");
             }
         }
+        
 
-        // ─────────────────────────────────────────────
-        // Polling-корутины (авто-обновление)
-        // ─────────────────────────────────────────────
-
-        private IEnumerator PollTrackInfo()
+        #region Polling-корутины (авто-обновление)
+        
+        private IEnumerator _pollTrackInfo()
         {
             while (true)
             {
@@ -326,7 +298,7 @@ namespace Code.Game.Radio
             }
         }
 
-        private IEnumerator PollListenerCount()
+        private IEnumerator _pollListenerCount()
         {
             while (true)
             {
@@ -336,6 +308,8 @@ namespace Code.Game.Radio
         }
 
 
+        #endregion
+        
         #region JSON-models for JsonUtility
 
         [Serializable] private class SongListResponse { public SongEntry[] songs; }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Code.Infrastructure.Save
+namespace Code.Core.Save.SavedData
 {
     [Serializable]
     public class CooldownSavedData

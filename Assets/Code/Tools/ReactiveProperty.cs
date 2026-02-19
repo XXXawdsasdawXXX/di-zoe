@@ -29,12 +29,12 @@ namespace Code.Tools
             _value = value;
         }
 
-        public void Subscribe(Action<T> action)
+        public void SubscribeToValue(Action<T> action)
         {
             Changed += action;
         }
 
-        public void Unsubscibe(Action<T> action)
+        public void UnsubscibeFromValue(Action<T> action)
         {
             Changed -= action;
         }

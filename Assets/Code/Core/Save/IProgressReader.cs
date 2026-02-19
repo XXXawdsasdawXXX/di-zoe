@@ -1,6 +1,7 @@
+using Code.Core.Save.SavedData;
 using Cysharp.Threading.Tasks;
 
-namespace Code.Infrastructure.Save
+namespace Code.Core.Save
 {
     public interface IProgressReader
     {

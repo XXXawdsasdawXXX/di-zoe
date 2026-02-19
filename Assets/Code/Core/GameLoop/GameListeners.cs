@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace Code.Infrastructure.GameLoop
+namespace Code.Core.GameLoop
 {
     public interface IGameListeners
     {

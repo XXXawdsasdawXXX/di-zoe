@@ -1,4 +1,4 @@
-﻿namespace Code.Infrastructure.ServiceLocator
+﻿namespace Code.Core.ServiceLocator
 {
     public interface IView
     {

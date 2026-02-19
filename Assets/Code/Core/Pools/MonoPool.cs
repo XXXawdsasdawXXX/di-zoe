@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Code.Infrastructure.Pools
+namespace Code.Core.Pools
 {
     public interface  IPoolEntity
     {

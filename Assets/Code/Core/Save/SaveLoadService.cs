@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-
-using Code.Infrastructure.GameLoop;
-using Code.Infrastructure.ServiceLocator;
+using Code.Core.GameLoop;
+using Code.Core.Save.SavedData;
+using Code.Core.ServiceLocator;
 using Code.Tools;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
 
-namespace Code.Infrastructure.Save
+namespace Code.Core.Save
 {
     [Preserve]
     public class SaveLoadService : IService, ILoadListener, IExitListener
