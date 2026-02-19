@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dadbcbb7b04b38a7ccc86ae3a6bac1, type: 3}
+  m_Name: RadioConfiguration
+  m_EditorClassIdentifier: 
+  Channels:
+  - Id: defcon
+    Path: http://ice3.somafm.com/defcon-128-mp3
+  - Id: groovesalad
+    Path: http://ice3.somafm.com/groovesalad-128-mp3
+  - Id: dronezone
+    Path: http://ice3.somafm.com/dronezone-128-mp3
+  - Id: indiepop
+    Path: http://ice3.somafm.com/indiepop-128-mp3
+  _channels:
+  - http://ice3.somafm.com/defcon-128-mp3
+  - http://ice3.somafm.com/groovesalad-128-mp3
+  - http://ice3.somafm.com/dronezone-128-mp3
+  - http://ice3.somafm.com/indiepop-128-mp3

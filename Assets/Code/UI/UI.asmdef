@@ -1,14 +1,15 @@
 {
-    "name": "Core",
+    "name": "UI",
     "rootNamespace": "",
     "references": [
-        "GUID:785f71526b4175240bb8e068347cab84",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:ef6be0737e5ff96409721e9f414f12b0"
+        "GUID:7fd4b4be976991449851793a4c07968b",
+        "GUID:baf95aa168e890f409590c04fa11fd91",
+        "GUID:ef6be0737e5ff96409721e9f414f12b0",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [
         "Editor",
-        "WSA",
         "WindowsStandalone32",
         "WindowsStandalone64"
     ],
