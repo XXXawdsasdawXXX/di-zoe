@@ -13,11 +13,8 @@ namespace Code.UI
         
         [field: SerializeField] public UIDropDown UIDropDown_channels { get; private set; }
         
+        [field: SerializeField] public UIRawImage UIRawImage_albumCover;
         
-        
-        public RawImage albumCoverImage;        // Обложка текущего трека
-        public RawImage channelLogoImage;       // Логотип канала
-
-        
+        [field: SerializeField] public UIRawImage UIRawImage_channelLogo;
     }
 }

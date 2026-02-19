@@ -2,227 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Tools/ReactiveProperty.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Tools/ReactiveProperty.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIBackground.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIBackground.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UISlider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UISlider.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRawImage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRawImage.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Core.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Core.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Game.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Game.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/RadioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/RadioPlayer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/SomaFMMetadata.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/SomaFMMetadata.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/Tools.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/Tools.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Data.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Data.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/DemoScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/DemoScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/RadioAntenna.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/RadioAntenna.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/RadioBody.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/RadioBody.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/RadioMesh.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/RadioMesh.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/radio.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Demo/Radio/radio.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_api_color.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_api_color.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_color.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_color.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_color.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_color.svg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_color_small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Icons/ryleradiologo_color_small.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/README.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/554895__tissman__popup3-open.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/554895__tissman__popup3-open.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/554896__tissman__popup3-close.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/554896__tissman__popup3-close.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/554899__tissman__popup-open.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/554899__tissman__popup-open.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/Anemoia - Cycle.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/Anemoia - Cycle.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/Caruso Ein Legendarer Sanger - 7. Verdi - Act I.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/Caruso Ein Legendarer Sanger - 7. Verdi - Act I.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/HoliznaCC0 - Coins.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Audio/HoliznaCC0 - Coins.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/MainData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/MainData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/MainScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/MainScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Scripts/BasicControls.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Scripts/BasicControls.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Visuals.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Visuals/Scene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Visuals/Scene/Floor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/BasicRadio/Visuals/Scene/Floor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/554895__tissman__popup3-open.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/554895__tissman__popup3-open.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/554896__tissman__popup3-close.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/554896__tissman__popup3-close.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/554899__tissman__popup-open.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/554899__tissman__popup-open.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/Caruso Ein Legendarer Sanger - 7. Verdi - Act I.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Audio/Caruso Ein Legendarer Sanger - 7. Verdi - Act I.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/InteractiveData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/InteractiveData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/MainScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/MainScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Scripts/InteractionControls.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Scripts/InteractionControls.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Scripts/InteractorEventFiller.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Scripts/InteractorEventFiller.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Blue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Blue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/BlueGlow.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/BlueGlow.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/GreenGlow.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/GreenGlow.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Scene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Scene/Floor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/InteractionComponents/Visuals/Scene/Floor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Audio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Audio/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Audio/Bessie Smith -- Baby Won't You Please Come Home 1923 - Henri Erwig.mp3.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/MainScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/MainScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Scripts/SpatialControls.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Scripts/SpatialControls.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/SimpleData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/SimpleData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/BroadcasterMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/BroadcasterMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/InnerBroadcasterMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/InnerBroadcasterMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/InnerInsulatorMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/InnerInsulatorMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/InsulatorMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/InsulatorMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/Scene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/Scene/Floor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/Scene/Floor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/pancake.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Samples~/SpatialComponents/Visuals/pancake.obj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/RadioBroadcasterEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/RadioBroadcasterEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/RadioDataEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/RadioDataEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/RadioInsulatorEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/RadioInsulatorEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/StationRadioTrackEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/StationRadioTrackEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/ryle-e.RyleRadio.Editor.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Editor/ryle-e.RyleRadio.Editor.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base/RadioComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base/RadioComponent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base/RadioComponentDataAccessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base/RadioComponentDataAccessor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base/RadioOutputTrackAccessor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/Base/RadioOutputTrackAccessor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/ObserverEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/ObserverEvent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioBroadcaster.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioBroadcaster.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioInsulator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioInsulator.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioInteractor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioInteractor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioObserver.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioObserver.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioOutput.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Components/RadioOutput.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/MultiselectAttribute.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/MultiselectAttribute.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/RadioData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/RadioData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/RadioUtils.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/RadioUtils.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/RadioTrack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/RadioTrack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/RadioTrackPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/RadioTrackPlayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/RadioTrackWrapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/RadioTrackWrapper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/ClipRadioTrack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/ClipRadioTrack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/Interfaces.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/Interfaces/IRadioTrack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/Interfaces/IRadioTrack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/Interfaces/IStationTrack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/Interfaces/IStationTrack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/ProceduralRadioTrack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/ProceduralRadioTrack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/StationRadioTrack.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/StationRadioTrack.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/StationRadioTrackWrapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/Tracks/Track Types/StationRadioTrackWrapper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/ryle-e.RyleRadio.Core.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/Runtime/ryle-e.RyleRadio.Core.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Scripts/index.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Third-Party Notices.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/Third-Party Notices.txt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/com.ryle-e.ryle-radio/package.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,10 +78,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20412">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20412" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -323,6 +108,7 @@
       <workItem from="1771332605423" duration="3014000" />
       <workItem from="1771406888991" duration="1544000" />
       <workItem from="1771408559303" duration="5218000" />
+      <workItem from="1771496485222" duration="3210000" />
     </task>
     <servers />
   </component>
@@ -342,5 +128,24 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs</url>
+          <line>27</line>
+          <properties documentPath="C:\Users\user\Documents\GitHub\di-zoe\Assets\Code\UI\Windows\Radio\UIRadioPresenter.cs" initialLine="27" containingFunctionPresentation="method 'Subscribe'">
+            <startOffsets>
+              <option value="920" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1005" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

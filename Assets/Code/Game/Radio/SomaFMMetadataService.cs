@@ -20,14 +20,14 @@ namespace Code.Game.Radio
         [Serializable]
         public class Model
         {
-            public ReactiveProperty<string> CurrentTrack;
-            public ReactiveProperty<string> PreviousTrack;
-            public ReactiveProperty<string> ListenerCount;
-            public ReactiveProperty<Texture2D> AlbumCover;
-            public ReactiveProperty<Texture2D> ChannelLogo;
+            public ReactiveProperty<string> CurrentTrack   = new("");
+            public ReactiveProperty<string> PreviousTrack  = new("");
+            public ReactiveProperty<string> ListenerCount  = new("");
+            public ReactiveProperty<Texture2D> AlbumCover  = new(null);
+            public ReactiveProperty<Texture2D> ChannelLogo = new(null);
         }
-        
-        [field: SerializeField, ReadOnly] public Model State { get; private set; }
+
+        public Model State { get; } = new();
         
         
         [Header("Settings")]
