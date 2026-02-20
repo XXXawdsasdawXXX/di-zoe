@@ -28,6 +28,7 @@ namespace Code.Game.Radio
         /// </summary>
         private WaveOutEvent waveOut;
 
+        private Coroutine _coroutine;
     
         public UniTask GameInitialize()
         {
