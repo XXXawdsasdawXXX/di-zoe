@@ -17,8 +17,8 @@ namespace Code.Core.Pools
     {
         [SerializeField] private Transform _root;
         [SerializeField] private T _prefab;
-        [SerializeField] private List<T> _all = new();
-        [SerializeField] private List<T> _enabled = new();
+        [SerializeField] private List<T> _all = new List<T>();
+        [SerializeField] private List<T> _enabled = new List<T>();
 
         public T GetNext()
         {

@@ -2,29 +2,220 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientStorage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientStorage.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/AudioVisualizationStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/AudioVisualizationStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/AudioVisualizationStrategy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/AudioVisualizationStrategy.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/BasicSpectrumProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/BasicSpectrumProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/BasicSpectrumProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/BasicSpectrumProvider.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/Globals.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/Globals.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/Globals.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/ISpectrumProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ISpectrumProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/ISpectrumProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ISpectrumProvider.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/LineSpectrum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LineSpectrum.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/LineSpectrum.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LineSpectrum.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/LoopbackAudioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LoopbackAudioService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/LoopbackAudioService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LoopbackAudioService.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/RealtimeAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/RealtimeAudio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/RealtimeAudio.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/RealtimeAudio.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/ScalingStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ScalingStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/ScalingStrategy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ScalingStrategy.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/SpectrumBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/SpectrumBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/LoopbackAudio/SpectrumBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/SpectrumBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Core.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Core.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/GameLoop/GameEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/GameLoop/GameEventDispatcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/AudioVisualizationStrategy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/AudioVisualizationStrategy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/BasicSpectrumProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/BasicSpectrumProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/Globals.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/Globals.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ISpectrumProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ISpectrumProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LineSpectrum.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LineSpectrum.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LoopbackAudioService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/LoopbackAudioService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/RealtimeAudio.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/RealtimeAudio.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ScalingStrategy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/ScalingStrategy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/SpectrumBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/LoopbackAudio/SpectrumBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Pools/MonoPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Pools/MonoPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SaveLoadService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/SaveLoadService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/AudioParticleModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/AudioParticleModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/JsonExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/JsonExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/Tools.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/Tools.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Utils.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Utils/ColorExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/ColorExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Utils/ColorExtensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/ColorExtensions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Interface/32.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Interface/32.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1ShaderGradientDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1ShaderGradientDrawer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1ShaderScriptEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1ShaderScriptEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1SpriteShaderMaterialInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1SpriteShaderMaterialInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1SpriteShaderUiMaskMaterialInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Editor/AllIn1SpriteShaderUiMaskMaterialInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/All1CreateUnifiedOutline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/All1CreateUnifiedOutline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/AllIn1Shader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/AllIn1Shader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/AllIn1ShaderWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/AllIn1ShaderWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/RandomSeed.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/RandomSeed.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/SetAtlasUvs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/SetAtlasUvs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/SetGlobalTimeNew.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/SetGlobalTimeNew.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/SetGlobalTimeUnity2018.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Shaders/AllIn1SpriteShader/Scripts/SetGlobalTimeUnity2018.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/CSCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/CSCore.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/KinoBloom/Kino/Bloom/Editor/BloomEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/KinoBloom/Kino/Bloom/Editor/BloomEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/KinoBloom/Klak/ProceduralMotion/BrownianMotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/KinoBloom/Klak/ProceduralMotion/BrownianMotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/KinoBloom/Klak/ProceduralMotion/Editor/BrownianMotionEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/KinoBloom/Klak/ProceduralMotion/Editor/BrownianMotionEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials/uWC_Icon.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials/uWC_Icon.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials/uWC_Transparent.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials/uWC_Transparent.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials/uWC_Unlit.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Materials/uWC_Unlit.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Models/uWC_Board.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Models/uWC_Board.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Models/uWC_Plane.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Models/uWC_Plane.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Prefabs/uWC Window Object Child.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Prefabs/uWC Window Object Child.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Prefabs/uWC Window Object.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Prefabs/uWC Window Object.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Resources/uWindowCapture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Resources/uWindowCapture/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Resources/uWindowCapture/Textures/uWC_No_Image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Resources/uWindowCapture/Textures/uWC_No_Image.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders/UwcCommon.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders/UwcCommon.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders/UwcTransparent.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders/UwcTransparent.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders/UwcUnlit.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Assets/Shaders/UwcUnlit.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcEditorUtils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcEditorUtils.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcIconTextureEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcIconTextureEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcManagerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcManagerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcWindowTextureEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/UwcWindowTextureEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/uWindowCapture.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Editor/uWindowCapture.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins/x86.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins/x86/uWindowCapture.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins/x86/uWindowCapture.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins/x86_64.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins/x86_64/uWindowCapture.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Plugins/x86_64/uWindowCapture.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcAltTabWindowTextureManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcAltTabWindowTextureManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcCommon.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcCommon.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcCursor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcCursor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcCursorTexture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcCursorTexture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcIconTexture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcIconTexture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcLib.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcLib.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowTexture.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowTexture.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowTextureChildrenManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowTextureChildrenManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowTextureManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowTextureManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowUtil.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/UwcWindowUtil.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/uWindowCapture.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Runtime/uWindowCapture.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Child Windows.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Child Windows/Child Windows.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Child Windows/Child Windows.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Cursor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Cursor/Cursor.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Cursor/Cursor.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop Layout.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop Layout/Desktop Layout.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop Layout/Desktop Layout.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop Layout/UwcDesktopLayouter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop Layout/UwcDesktopLayouter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop/Desktop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop/Desktop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop/Desktop.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Desktop/Desktop.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels/GetPixel.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels/GetPixel.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels/GetPixels.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels/GetPixels.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels/UwcGetPixelsExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/GetPixels/UwcGetPixelsExample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Horizontal Layout.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Horizontal Layout/Horizontal Layout.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Horizontal Layout/Horizontal Layout.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Horizontal Layout/UwcHorizontalLayouter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Horizontal Layout/UwcHorizontalLayouter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Icon.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Icon/Icon.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Icon/Icon.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/New Window.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/New Window/New Window.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/New Window/New Window.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/New Window/UwcNewWindowExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/New Window/UwcNewWindowExample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Only Child Window.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Only Child Window/Child Window.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Only Child Window/Child Window.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Only Child Window/UwcChildWindowExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Only Child Window/UwcChildWindowExample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/RayCast.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/RayCast/RayCast.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/RayCast/RayCast.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/RayCast/UwcRayCastExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/RayCast/UwcRayCastExample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Single Window.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Single Window/Single Window.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Single Window/Single Window.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Texture Buffer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Texture Buffer/Texture Buffer.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Texture Buffer/Texture Buffer.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Texture Buffer/UwcGetBufferExample.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Texture Buffer/UwcGetBufferExample.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/UwcWindowList.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/UwcWindowList.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/UwcWindowListItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/UwcWindowListItem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/Window List.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/Window List.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/uWC Window List Item.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/Samples/Window List/uWC Window List Item.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/uWindowCapture/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +223,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/c4b0cc57ec424a5a9b1c3b56141bb74a95de00/e7/51945009/02000BEB.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e1f221b82b9e4418b178aefc928c49d574000/a6/90625e28/02000099.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76d9c196441843e7b9caeb4dd0bb8c957c200/ae/9026cc72/BASSConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4b0cc57ec424a5a9b1c3b56141bb74a95de00/74/9da77386/PropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1f221b82b9e4418b178aefc928c49d574000/20/82cf0dd8/WaveOutEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Core/GameLoop/GameEventDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,8 +264,16 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../builds/di-zoe/standalone\di-zoe.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\user\Documents\GitHub\builds\di-zoe\standalone" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.55f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.49f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\user\Documents\GitHub\di-zoe -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\user\Documents\GitHub\di-zoe" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -80,7 +281,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.55f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.49f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\user\Documents\GitHub\di-zoe -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\user\Documents\GitHub\di-zoe" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -130,6 +331,12 @@
       <workItem from="1771496485222" duration="6759000" />
       <workItem from="1771523124514" duration="912000" />
       <workItem from="1771530591000" duration="974000" />
+      <workItem from="1771582842770" duration="2182000" />
+      <workItem from="1771585248371" duration="1471000" />
+      <workItem from="1771588401759" duration="107000" />
+      <workItem from="1771588921938" duration="177000" />
+      <workItem from="1771590552088" duration="162000" />
+      <workItem from="1771591370011" duration="2097000" />
     </task>
     <servers />
   </component>

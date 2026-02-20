@@ -21,13 +21,13 @@ namespace Code.Game.Radio
         [Serializable]
         public class Model
         {
-            public ReactiveProperty<string> CurrentTrack   = new("");
-            public ReactiveProperty<string> PreviousTrack  = new("");
-            public ReactiveProperty<string> ListenerCount  = new("");
-            public ReactiveProperty<Texture2D> ChannelLogo = new(null);
+            public ReactiveProperty<string> CurrentTrack   = new ReactiveProperty<string>("");
+            public ReactiveProperty<string> PreviousTrack  = new ReactiveProperty<string>("");
+            public ReactiveProperty<string> ListenerCount  = new ReactiveProperty<string>("");
+            public ReactiveProperty<Texture2D> ChannelLogo = new ReactiveProperty<Texture2D>(null);
         }
 
-        public Model State { get; } = new();
+        public Model State { get; } = new Model();
         
         
         [Header("Settings")]

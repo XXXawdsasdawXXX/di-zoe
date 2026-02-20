@@ -39,7 +39,7 @@ namespace Kino
         SerializedProperty _highQuality;
         SerializedProperty _antiFlicker;
 
-        static GUIContent _textThreshold = new("Threshold (gamma)");
+        static GUIContent _textThreshold = new GUIContent("Threshold (gamma)");
 
         void OnEnable()
         {

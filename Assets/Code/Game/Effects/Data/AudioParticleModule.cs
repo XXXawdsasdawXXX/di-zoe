@@ -2,7 +2,6 @@
 using Code.Core.GameLoop;
 using Code.Core.ServiceLocator;
 using Code.Data;
-using Code.Infrastructure.LoopbackAudio;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -39,7 +38,7 @@ namespace Code.Game.Effects
         [SerializeField] private GradientType _gradient;
 
         [Header("Services")] 
-        private LoopbackAudioService _loopbackAudioService;
+        private LoopbackAudio _loopbackAudioService;
 
         
         
@@ -51,7 +50,7 @@ namespace Code.Game.Effects
 
         public UniTask GameInitialize()
         {
-            _loopbackAudioService = Container.Instance.GetService<LoopbackAudioService>();
+            _loopbackAudioService = Container.Instance.GetService<LoopbackAudio>();
             
             return UniTask.CompletedTask;
         }

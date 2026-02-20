@@ -14,8 +14,8 @@ namespace Code.Core.Save
     {
         private const string PROGRESS_KEY = "Progress";
         
-        private readonly List<IProgressWriter> _progressWriters = new();
-        private List<IProgressReader> _progressReader = new();
+        private readonly List<IProgressWriter> _progressWriters = new List<IProgressWriter>();
+        private List<IProgressReader> _progressReader = new List<IProgressReader>();
 
         private PlayerProgressData _playerProgress;
 

@@ -1,14 +1,14 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using Unity.Plastic.Newtonsoft.Json;
-using UnityEngine.Device;
+using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Code.Tools
 {
     public static class JsonExtensions
     {
-            public static string ToJson(this object obj)
+        public static string ToJson(this object obj)
         {
             string json = JsonConvert.SerializeObject(obj, new JsonSerializerSettings
             {
@@ -49,10 +49,10 @@ namespace Code.Tools
             aesAlg.IV = new byte[16];
             ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
-            using System.IO.MemoryStream msEncrypt = new();
-            using (CryptoStream csEncrypt = new(msEncrypt, encryptor, CryptoStreamMode.Write))
+            using System.IO.MemoryStream msEncrypt = new System.IO.MemoryStream();
+            using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
             {
-                using (System.IO.StreamWriter swEncrypt = new(csEncrypt))
+                using (System.IO.StreamWriter swEncrypt = new System.IO.StreamWriter(csEncrypt))
                 {
                     swEncrypt.Write(data);
                 }
@@ -73,9 +73,9 @@ namespace Code.Tools
             aesAlg.IV = new byte[16];
             ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
             using System.IO.MemoryStream
-                msDecrypt = new(Convert.FromBase64String(encryptedData));
-            using CryptoStream csDecrypt = new(msDecrypt, decryptor, CryptoStreamMode.Read);
-            using System.IO.StreamReader srDecrypt = new(csDecrypt);
+                msDecrypt = new System.IO.MemoryStream(Convert.FromBase64String(encryptedData));
+            using CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+            using System.IO.StreamReader srDecrypt = new System.IO.StreamReader(csDecrypt);
             return srDecrypt.ReadToEnd();
         }
     }

@@ -39,7 +39,7 @@ namespace Klak
         [SerializeField] float _rotationAmplitude = 10.0f;
 
         [SerializeField] Vector3 _positionScale = Vector3.one;
-        [SerializeField] Vector3 _rotationScale = new(1, 1, 0);
+        [SerializeField] Vector3 _rotationScale = new Vector3(1, 1, 0);
 
         [SerializeField, Range(0, 8)] int _positionFractalLevel = 3;
         [SerializeField, Range(0, 8)] int _rotationFractalLevel = 3;

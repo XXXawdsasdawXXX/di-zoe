@@ -26,7 +26,7 @@ namespace Code.Game.Effects
         [Header("Services")]
         protected GradientsStorage _gradientsStorage;
 
-        protected readonly FacadeSettings _defaultSettings = new();
+        protected readonly FacadeSettings _defaultSettings = new FacadeSettings();
 
         [Serializable]
         protected class FacadeSettings
@@ -130,11 +130,11 @@ namespace Code.Game.Effects
                     alphas[i] = new GradientAlphaKey(gradientData.alphaKeys[i].alpha, i / alphas.Length);
                 }
 
-                Gradient newGradient = new();
+                Gradient newGradient = new Gradient();
                 
                 newGradient.SetKeys(colors, alphas);
                 
-                ParticleSystem.MinMaxGradient gradient = new()
+                ParticleSystem.MinMaxGradient gradient = new ParticleSystem.MinMaxGradient()
                 {
                     gradient = newGradient,
                     mode = ParticleSystemGradientMode.Gradient
@@ -157,11 +157,11 @@ namespace Code.Game.Effects
 
                 GradientAlphaKey[] alphas = gradientData.alphaKeys;
              
-                Gradient newGradient = new();
+                Gradient newGradient = new Gradient();
                 
                 newGradient.SetKeys(colors, alphas);
                 
-                ParticleSystem.MinMaxGradient minMaxGradient = new()
+                ParticleSystem.MinMaxGradient minMaxGradient = new ParticleSystem.MinMaxGradient()
                 {
                     gradient = newGradient,
                     mode = ParticleSystemGradientMode.Gradient

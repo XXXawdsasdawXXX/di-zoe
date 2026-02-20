@@ -41,12 +41,12 @@ namespace Klak
         SerializedProperty _positionFractalLevel;
         SerializedProperty _rotationFractalLevel;
 
-        static GUIContent _textPositionNoise = new("Position Noise");
-        static GUIContent _textRotationNoise = new("Rotation Noise");
-        static GUIContent _textFrequency = new("Frequency");
-        static GUIContent _textAmplitude = new("Amplitude");
-        static GUIContent _textScale = new("Scale");
-        static GUIContent _textFractal = new("Fractal");
+        static GUIContent _textPositionNoise = new GUIContent("Position Noise");
+        static GUIContent _textRotationNoise = new GUIContent("Rotation Noise");
+        static GUIContent _textFrequency = new GUIContent("Frequency");
+        static GUIContent _textAmplitude = new GUIContent("Amplitude");
+        static GUIContent _textScale = new GUIContent("Scale");
+        static GUIContent _textFractal = new GUIContent("Fractal");
 
         void OnEnable()
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Code.Core.GameLoop;
 using Code.Core.Save;
-using Kirurobo;
+//using Kirurobo;
 using UnityEngine;
 
 namespace Code.Core.ServiceLocator
@@ -13,15 +13,15 @@ namespace Code.Core.ServiceLocator
     {
         public static Container Instance;
 
-        [SerializeField] private UniWindowController _uniWindowController;
+  //      [SerializeField] private UniWindowController _uniWindowController;
         [SerializeField] private List<ScriptableObject> _configs;
 
         private MonoBehaviour[] _allObjects;
         
-        private List<IService> _services = new();
-        private List<IStorage> _storages = new();
-        private List<IMono> _mono = new();
-        private List<IView> _getters = new();
+        private List<IService> _services = new List<IService>();
+        private List<IStorage> _storages = new List<IStorage>();
+        private List<IMono> _mono = new List<IMono>();
+        private List<IView> _getters = new List<IView>();
 
         private void Awake()
         {
@@ -64,10 +64,10 @@ namespace Code.Core.ServiceLocator
 
         }
 
-        public UniWindowController GetUniWindowController()
+        /*public UniWindowController GetUniWindowController()
         {
             return _uniWindowController;
-        }
+        }*/
 
         public T GetConfig<T>() where T : ScriptableObject
         {
@@ -134,7 +134,7 @@ namespace Code.Core.ServiceLocator
 
         private List<T> GetContainerComponents<T>()
         {
-            List<T> list = new();
+            List<T> list = new List<T>();
 
             list.AddRange(_services.OfType<T>().ToList());
             list.AddRange(_storages.OfType<T>().ToList());

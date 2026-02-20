@@ -40,8 +40,10 @@ namespace Code.Game.Radio
                 {
                     continue;
                 }
+
+                string[] olololo = data.Path.Split('/');
                 
-                string id = data.Path.Split('/')[^1].Split('-')[0];
+                string id = olololo[olololo.Length - 1].Split('-')[0];
                 
                 updatedChannels[index] = new ChannelData
                 {
