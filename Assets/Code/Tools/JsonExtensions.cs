@@ -8,6 +8,14 @@ namespace Code.Tools
 {
     public static class JsonExtensions
     {
+        public static JsonSerializerSettings SETTINGS = new JsonSerializerSettings
+        {
+            ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver
+            {
+                NamingStrategy = new Newtonsoft.Json.Serialization.CamelCaseNamingStrategy()
+            }
+        };
+        
         public static string ToJson(this object obj)
         {
             string json = JsonConvert.SerializeObject(obj, new JsonSerializerSettings
@@ -21,17 +29,21 @@ namespace Code.Tools
 
         public static T ToDeserialized<T>(this string json)
         {
-            /*try
+            try
             {
-                var t = JsonConvert.DeserializeObject<T>(DecryptData(json));
+                T t = JsonConvert.DeserializeObject<T>(json, SETTINGS);
                 return t;
             }
             catch (Exception e)
             {
-                Debugging.Instance.ErrorLog($"e");*/
-            return JsonConvert.DeserializeObject<T>(json);
-            //}
+                Debug.LogException(e);
+            }
+
+            return default;
         }
+        
+        
+        
 
         private static string GenerateUniqueKey()
         {

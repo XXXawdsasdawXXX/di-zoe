@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Code.Core.GameLoop;
 using Code.Core.Save.SavedData;
 using Code.Core.ServiceLocator;
@@ -19,6 +20,7 @@ namespace Code.Core.Save
 
         private PlayerProgressData _playerProgress;
 
+        
         public UniTask GameLoad()
         {
             _progressReader = Container.Instance.GetProgressReaders();
@@ -31,7 +33,7 @@ namespace Code.Core.Save
                 }
             }
 
-            LoadProgress();
+            _loadProgress();
 
             return UniTask.CompletedTask;
         }
@@ -39,33 +41,32 @@ namespace Code.Core.Save
         public void GameExit()
         {
             _saveProgress();
-            
         }
 
-        private void _saveProgress()
-        {
-            foreach (IProgressWriter progressWriter in _progressWriters)
-            {
-                progressWriter.SaveProgress(_playerProgress);
-            }
-
-            PlayerPrefs.SetString(PROGRESS_KEY, _playerProgress.ToJson());
-
-            string data = PlayerPrefs.GetString(PROGRESS_KEY);
-
- 
-        }
-
-        private void LoadProgress()
+        private void _loadProgress()
         {
             _playerProgress = PlayerPrefs.GetString(PROGRESS_KEY)?.ToDeserialized<PlayerProgressData>();
 
             _playerProgress ??= new PlayerProgressData();
+            
+            _playerProgress.GameEnterTime = DateTime.UtcNow;
 
             foreach (IProgressReader progressReader in _progressReader)
             {
                 progressReader.LoadProgress(_playerProgress);
             }
+        }
+
+        private void _saveProgress()
+        {
+            _playerProgress.GameExitTime = DateTime.UtcNow;
+            
+            foreach (IProgressWriter progressWriter in _progressWriters)
+            {
+                progressWriter.SaveProgress(_playerProgress);
+            }
+            
+            PlayerPrefs.SetString(PROGRESS_KEY, _playerProgress.ToJson());
         }
     }
 }

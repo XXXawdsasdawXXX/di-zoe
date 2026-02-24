@@ -2127,7 +2127,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823659118}
-  - component: {fileID: 1823659120}
   - component: {fileID: 1823659119}
   m_Layer: 0
   m_Name: Radio
@@ -2163,20 +2162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4031da60359a4d4082ee29b452a1f5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1823659120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823659117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 953fb200449e4e63ab6b2faf71358c0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _trackUpdateInterval: 30
-  _listenersUpdateInterval: 60
 --- !u!1 &1953202697
 GameObject:
   m_ObjectHideFlags: 0

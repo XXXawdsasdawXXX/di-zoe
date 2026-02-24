@@ -9,24 +9,24 @@ namespace Code.Tools
     {
         private event Action<T> Changed;
 
-        [ShowNativeProperty] public T Value
+        [ShowNativeProperty] public T PropertyValue
         {
-            get => _value;
+            get => _propertyValue;
             set
             {
-                if (!EqualityComparer<T>.Default.Equals(_value, value))
+                if (!EqualityComparer<T>.Default.Equals(_propertyValue, value))
                 {
-                    _value = value;
-                    Changed?.Invoke(_value);
+                    _propertyValue = value;
+                    Changed?.Invoke(_propertyValue);
                 }
             }
         }
 
-        private T _value;
+        private T _propertyValue;
 
-        public ReactiveProperty(T value)
+        public ReactiveProperty(T propertyValue)
         {
-            _value = value;
+            _propertyValue = propertyValue;
         }
 
         public void SubscribeToValue(Action<T> action)

@@ -42,17 +42,40 @@ namespace Code.Core.ServiceLocator
 
         private void InitList<T>(ref List<T> list)
         {
-            Type[] types = Assembly.GetExecutingAssembly().GetTypes();
-
-            IEnumerable<Type> serviceTypes = types.Where(t =>
-                typeof(T).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
-                !typeof(MonoBehaviour).IsAssignableFrom(t));
-
-            foreach (Type serviceType in serviceTypes)
+            // Указываем нужные сборки явно
+            string[] assemblyNames = 
             {
-                if (Activator.CreateInstance(serviceType) is T service)
+                "Game",              // твои кастомные Assembly Definitions
+                "Core",
+                "UI",
+            };
+
+            foreach (string assemblyName in assemblyNames)
+            {
+                Assembly assembly;
+                try
                 {
-                    list.Add(service);
+                    assembly = Assembly.Load(assemblyName);
+                }
+                catch (Exception)
+                {
+                    // Сборка не найдена — пропускаем
+                    continue;
+                }
+
+                Type[] types = assembly.GetTypes();
+
+                IEnumerable<Type> serviceTypes = types.Where(t =>
+                    typeof(T).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
+                    !typeof(MonoBehaviour).IsAssignableFrom(t));
+
+                foreach (Type serviceType in serviceTypes)
+                {
+                    if (Activator.CreateInstance(serviceType) is T service)
+                    {
+                        list.Add(service);
+                        Debug.Log($"Created {service.GetType().Name} from {assemblyName}");
+                    }
                 }
             }
 
@@ -61,7 +84,6 @@ namespace Code.Core.ServiceLocator
             {
                 list.AddRange(mbServices);
             }
-
         }
 
         /*public UniWindowController GetUniWindowController()

@@ -14,55 +14,22 @@ namespace Code.Game.Radio
             public string Id;
             public string Path;
         }
-        
-        public ChannelData[] Channels;
 
+        public const string ChannelModelsURL = "https://somafm.com/channels.json";
         
-        #region Editor
-
-#if UNITY_EDITOR
+        [field: MaxValue(10)] public int PreviousTracksCount { get; }  = 5;
+        public  float ChannelsUpdateInterval  { get; }  = 60f;
+        public  float TrackUpdateInterval { get; } = 30f;
         
-        [Button()]
-        public void UpdateID()
+        
+        public static string GetTrackModelURL(string channel)
         {
-            if (Channels == null || Channels.Length == 0)
-            {
-                return;
-            }
-            
-            ChannelData[] updatedChannels = new ChannelData[Channels.Length];
+            return $"https://somafm.com/songs/{channel}.json";
+        }
 
-            for (int index = 0; index < Channels.Length; index++)
-            {
-                ChannelData data = Channels[index];
-
-                if (string.IsNullOrEmpty(data.Path))
-                {
-                    continue;
-                }
-
-                string[] olololo = data.Path.Split('/');
-                
-                string id = olololo[olololo.Length - 1].Split('-')[0];
-                
-                updatedChannels[index] = new ChannelData
-                {
-                    Id = id,
-                    Path = data.Path
-                };
-            }
-
-            Channels = updatedChannels;
-            
-            EditorUtility.SetDirty(this);
-            AssetDatabase.SaveAssets();
-        } 
-
-        
-        
-#endif
-        
-
-        #endregion
+        public static string GetStreamURL(string channel)
+        {
+            return $"//ice1.somafm.com/{channel}-256-mp3";
+        }
     }
 }

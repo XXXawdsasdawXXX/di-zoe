@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Code.Core.GameLoop;
+using Code.Core.Save;
+using Code.Core.Save.SavedData;
 using Code.Core.ServiceLocator;
 using Code.Tools;
 using Cysharp.Threading.Tasks;
@@ -12,74 +15,36 @@ namespace Code.Game.Radio
     /// <summary>
     /// Manages radio functionality, including volume control and channel selection.
     /// </summary>
-    public class RadioPlayer : MonoBehaviour, IService, IInitializeListener, IStartListener
+    public class RadioPlayer : MonoBehaviour, IService, IInitializeListener, ISubscriber, IExitListener
     {
-        public ReactiveProperty<int> Channel { get; private set; } = new ReactiveProperty<int>(-1);
-
         private RadioConfiguration _configuration;
-    
-        /// <summary>
-        /// The MediaFoundationReader for audio processing.
-        /// </summary>
         private MediaFoundationReader mediaFoundationReader;
-
-        /// <summary>
-        /// The WaveOutEvent for audio output.
-        /// </summary>
         private WaveOutEvent waveOut;
+        private RadioModelService _radioModels;
 
         private Coroutine _coroutine;
-    
+
+
         public UniTask GameInitialize()
         {
             _configuration = Container.Instance.GetConfig<RadioConfiguration>();
-        
+
+            _radioModels = Container.Instance.GetService<RadioModelService>();
+
             return UniTask.CompletedTask;
         }
-    
-        public UniTask GameStart()
+
+        public void Subscribe()
         {
-            /*
-        if (volumeSlider != null)
-        {
-            volumeSlider.value = 1f;
-            volumeSlider.onValueChanged.AddListener(SetVolume);
+            _radioModels.CurrentChannel.SubscribeToValue(_onChangeRadioStation);
         }
-
-
-        if (radioDropdown != null)
-        {
-            radioDropdown.onValueChanged.AddListener(ChangeRadioStation);
-            radioDropdown.value = 0;
-        }
-        */
-
-
-            Channel.Value = 0;
-            
-            StartCoroutine(PlayRadio(_configuration.Channels[Channel.Value].Path));
         
-            return UniTask.CompletedTask;
-        }
-    
-
-        private IEnumerator PlayRadio(string url)
+        public void Unsubscribe()
         {
-            yield return null;
-            try
-            {
-                mediaFoundationReader = new MediaFoundationReader(url);
-                waveOut = new WaveOutEvent();
-                waveOut.Init(mediaFoundationReader);
-                waveOut.Play();
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError($"Error playing radio: {ex.Message}");
-            }
+            _radioModels.CurrentChannel.UnsubscibeFromValue(_onChangeRadioStation);
         }
-
-        void OnDestroy()
+        
+        public void GameExit()
         {
             if (waveOut != null)
             {
@@ -93,14 +58,23 @@ namespace Code.Game.Radio
             }
         }
 
-        public void StopRadio()
+        private void _playChannel(int channelIndex)
         {
-            if (waveOut != null)
+            string url = _radioModels.GetCurrentStreamURL();
+            
+            try
             {
-                waveOut.Stop();
+                mediaFoundationReader = new MediaFoundationReader(url);
+                waveOut = new WaveOutEvent();
+                waveOut.Init(mediaFoundationReader);
+                waveOut.Play();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error playing radio: {ex.Message}. url = {url}");
             }
         }
-
+        
         public void SetVolume(float volume)
         {
             if (waveOut != null)
@@ -114,32 +88,33 @@ namespace Code.Game.Radio
             return waveOut != null ? waveOut.Volume : 0;
         }
 
-
-        // Do this shit later
-        public void ChangeRadioStation(int dropdownIndex)
+        public void StopRadio()
         {
-            if (dropdownIndex < 0 || dropdownIndex >= _configuration.Channels.Length)
+            if (waveOut != null)
             {
-                Debug.LogError("Invalid dropdown index");
+                waveOut.Stop();
+            }
+        }
+
+        private void _onChangeRadioStation(int index)
+        {
+            if (index < 0 || index >= _radioModels.Channels.Count)
+            {
+                Debug.LogError("Invalid chanel index");
                 return;
             }
 
-            Channel.Value = dropdownIndex;
-            // Stop the current radio station and then play the new one after a delay
-            StartCoroutine(ChangeRadioStationWithDelay(Channel.Value));
+            _changeRadioStation().Forget();
         }
 
-        private IEnumerator ChangeRadioStationWithDelay(int dropdownIndex)
+        private async UniTask _changeRadioStation()
         {
-            // Stop the current radio station
             StopRadio();
-
-            yield return new WaitForSeconds(0.1f); // Wait for 100 milliseconds
-
-            // Start playing the new radio station
-            StartCoroutine(PlayRadio(_configuration.Channels[dropdownIndex].Path));
+            
+            await UniTask.Delay(TimeSpan.FromMilliseconds(100));
+            
+            _playChannel(_radioModels.CurrentChannel.PropertyValue);
         }
-
 
   
     }
