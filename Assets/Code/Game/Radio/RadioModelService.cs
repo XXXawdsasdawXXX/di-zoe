@@ -32,7 +32,7 @@ namespace Code.Game.Radio
         private RadioPlayer _radioPlayer;
 
         private Timer _channelsUpdateTimer;
-        private Timer _tracksUpdateTimes;
+        private Timer _tracksUpdateTimer;
 
         
         public async UniTask GameInitialize()
@@ -41,16 +41,16 @@ namespace Code.Game.Radio
             _radioConfiguration = Container.Instance.GetConfig<RadioConfiguration>();
 
             _channelsUpdateTimer = new Timer(_radioConfiguration.ChannelsUpdateInterval);
-            _tracksUpdateTimes = new Timer(_radioConfiguration.TrackUpdateInterval);
+            _tracksUpdateTimer = new Timer(_radioConfiguration.TrackUpdateInterval);
             
             await _updateChannels();
         }
         
-        public UniTask LoadProgress(PlayerProgressData playerProgress)
+        public async UniTask LoadProgress(PlayerProgressData playerProgress)
         {
             CurrentChannel.PropertyValue = playerProgress.RadioChanel;
             
-            return UniTask.CompletedTask;
+            await  _updateSongs();
         }
 
         public void GameUpdate()
@@ -62,7 +62,7 @@ namespace Code.Game.Radio
                 _updateChannels().Forget(Debug.LogException);
             }
 
-            if (_tracksUpdateTimes.Update(deltaTime))
+            if (_tracksUpdateTimer.Update(deltaTime))
             {
                 _updateSongs().Forget(Debug.LogException);
             }
@@ -76,6 +76,9 @@ namespace Code.Game.Radio
         public void SetCurrentChannel(int channel)
         {
             CurrentChannel.PropertyValue = channel;
+           
+            _tracksUpdateTimer.Finish();
+            _channelsUpdateTimer.Finish();
         }
         
         public async UniTask<Texture2D> GetChannelLogo(string logoUrl)
@@ -107,7 +110,7 @@ namespace Code.Game.Radio
         
         private async UniTask _updateChannels()
         {
-            using UnityWebRequest request = UnityWebRequest.Get(RadioConfiguration.ChannelModelsURL);
+            using UnityWebRequest request = UnityWebRequest.Get(RadioConfiguration.CHANNEL_MODELS_URL);
 
             await request.SendWebRequest();
 
@@ -139,10 +142,6 @@ namespace Code.Game.Radio
             }
         }
         
-        private void _updateCurrentChanelModel(string chanelID)
-        {
-            _updateSongs().Forget();
-        }
 
         private async UniTask _updateSongs()
         {

@@ -3,6 +3,7 @@ using Assets.Scripts.Extensions;
 using Assets.Scripts.ReactiveEffects.Base;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 #region Public Enums
@@ -56,8 +57,12 @@ public class PrefabLayoutAudioObject : VisualizationEffectBase
 
             Renderer rend = newGameObject.GetComponent<Renderer>();
             Color color = Globals.StrongColors[group];
-            rend.material.SetColor("_Color", color);
-            rend.material.SetColor("_EmissionColor", color);
+            if (rend.material.HasProperty("_Color"))
+            {
+                rend.material.SetColor("_Color", color);
+                rend.material.SetColor("_EmissionColor", color);
+            }
+          
 
             // Try to set various other used scripts
             VisualizationEffectBase[] visualizationEffects = newGameObject.GetComponents<VisualizationEffectBase>();

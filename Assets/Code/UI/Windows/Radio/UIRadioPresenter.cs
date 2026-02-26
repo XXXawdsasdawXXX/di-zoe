@@ -50,7 +50,7 @@ namespace Code.UI.Windows.Radio
 
             foreach (KeyValuePair<string,ReactiveProperty<RadioChannelModel>> channel in _radioModels.Channels)
             {
-                channels.Add(new TMP_Dropdown.OptionData(channel.Key));
+                channels.Add(new TMP_Dropdown.OptionData($"<color=#000000>{channel.Value.PropertyValue.genre}:</color> \n{channel.Key}"));
             }
 
             view.UIDropDown_channels.SetValues(channels);
@@ -79,7 +79,7 @@ namespace Code.UI.Windows.Radio
 
         private void _tryUpdateListenersCountView(RadioChannelModel model)
         {
-            view.UIText_listenerCount.SetText(model.listeners.ToString());
+            view.UIText_listenerCount.SetText("Listeners: " + model.listeners.ToString());
         }
 
         private void _updateCurrentSongView(RadioSongModel model)
@@ -89,6 +89,13 @@ namespace Code.UI.Windows.Radio
 
         private void _updatePreviousSongsView(RadioSongListModel songs)
         {
+            if (songs.Songs == null || songs.Songs.Count == 0)
+            {
+                view.UIText_previousTracks.SetText(string.Empty);
+
+                return;
+            }
+            
             StringBuilder stringBuilder = new(); 
          
             for (int i = 0; i < _radioConfiguration.PreviousTracksCount; i++)
@@ -104,12 +111,21 @@ namespace Code.UI.Windows.Radio
 
         private async void _updateChannelView(int channelIndex)
         {
-            Texture2D texture2D = await _radioModels.GetChannelLogo(_radioModels.GetCurrentChannelModel().largeimage);
+            RadioChannelModel channelModel = _radioModels.GetCurrentChannelModel();
+            
+            Texture2D texture2D = await _radioModels.GetChannelLogo(channelModel.image);
             
             view.UIRawImage_channelLogo.SetTexture(texture2D);
             
-            //todo set ganre
+            view.UIText_channel_name.SetText(channelModel.title);
+            
+            view.UIText_channel_description.SetText(channelModel.description);
+
+            view.UIText_channel_genre.SetText(channelModel.genre);
+            
+            _updateCurrentSongView(_radioModels.CurrentSong.PropertyValue);
+            
+            _updatePreviousSongsView(_radioModels.PreviousSongs.PropertyValue);
         }
-        
     }
 }

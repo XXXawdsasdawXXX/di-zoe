@@ -2,34 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models/RadioChannelModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models/RadioChannelModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models/RadioSongListModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models/RadioSongListModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models/RadioSongModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/Models/RadioSongModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Tools/Timer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Tools/Timer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIMaterialColorIntensityReactiveEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIMaterialColorIntensityReactiveEffect.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIPrefabLayoutAudioObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIPrefabLayoutAudioObject.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SaveLoadService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/SaveLoadService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/CooldownSavedData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/CooldownSavedData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/CustomActionsSavedData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/CustomActionsSavedData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/PlayerProgressData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/PlayerProgressData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/PrefabLayoutAudioObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/PrefabLayoutAudioObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/GameLoop/GameEventDispatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/GameLoop/GameEventDispatcher.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/SomaFMMetadataService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/JsonExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/JsonExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/ReactiveProperty.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/ReactiveProperty.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Interface/32.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Interface/32.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropdown_.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropdown_.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIText-M_ Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIText-M_ Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIText-S_.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIText-S_.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/000webfont SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/000webfont SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,23 +57,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\user\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\user\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../builds/di-zoe/standalone\di-zoe.exe" />
@@ -113,10 +109,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18328">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7516">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="18328" />
+      <option name="pid" value="7516" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -152,7 +148,9 @@
       <workItem from="1771588921938" duration="177000" />
       <workItem from="1771590552088" duration="162000" />
       <workItem from="1771591370011" duration="2097000" />
-      <workItem from="1771860456281" duration="21529000" />
+      <workItem from="1771860456281" duration="21976000" />
+      <workItem from="1772015558708" duration="2533000" />
+      <workItem from="1772129301722" duration="5361000" />
     </task>
     <servers />
   </component>
@@ -172,24 +170,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs</url>
-          <line>82</line>
-          <properties documentPath="C:\Users\user\Documents\GitHub\di-zoe\Assets\Code\Game\Radio\RadioModelService.cs" initialLine="82" containingFunctionPresentation="method 'GetChannelLogo'">
-            <startOffsets>
-              <option value="2612" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2687" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

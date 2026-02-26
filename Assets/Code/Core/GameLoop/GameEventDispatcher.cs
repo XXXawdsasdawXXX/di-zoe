@@ -132,36 +132,37 @@ namespace Code.Core.GameLoop
         private async void _bootGame()
         {
 #if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker("_bootGame");
-          
-            marker.Begin();
-            
-            _currentState = State.Initialize;
+            using (new ProfilerMarker("_bootGame").Auto())
+            {
+                _currentState = State.Initialize;
+            }
             await _notifyGameInitialize();
 
-            _currentState = State.Subscribe;
+            using (new ProfilerMarker("Subscribe").Auto())
+            {
+                _currentState = State.Subscribe;
+            }
             await _notifySubscribe();
 
-            _currentState = State.Load;
+            using (new ProfilerMarker("Load").Auto())
+            {
+                _currentState = State.Load;
+            }
             await _notifyGameLoad();
 
             _currentState = State.Start;
-            
-            marker.End();
-
 #else
-            _currentState = State.Initialize;
-            await _notifyGameInitialize();
+    _currentState = State.Initialize;
+    await _notifyGameInitialize();
 
-            _currentState = State.Subscribe;
-            await _notifySubscribe();
+    _currentState = State.Subscribe;
+    await _notifySubscribe();
 
-            _currentState = State.Load;
-            await _notifyGameLoad();
+    _currentState = State.Load;
+    await _notifyGameLoad();
 
-            _currentState = State.Start;
+    _currentState = State.Start;
 #endif
-
         }
 
         private void _initializeListeners()
@@ -186,83 +187,36 @@ namespace Code.Core.GameLoop
 
         private async UniTask _notifyGameInitialize()
         {
-#if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker("_notifyGameInitialize");
-            marker.Begin();
-            
             foreach (IInitializeListener listener in _initListeners)
             {
                 await listener.GameInitialize();
             }
-            
-            marker.End();
-#else
-            foreach (IInitializeListener listener in _initListeners)
-            {
-                await listener.GameInitialize();
-            }
-#endif
         }
 
         private async UniTask _notifyGameLoad()
         {
-#if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker("_notifyGameLoad");
-            marker.Begin();
-          
             foreach (ILoadListener listener in _loadListeners)
             {
                 await listener.GameLoad();
             }
-     
-            marker.End();
-#else
-            foreach (ILoadListener listener in _loadListeners)
-            {
-                await listener.GameLoad();
-            }
-#endif
         }
 
         private UniTask _notifySubscribe()
         {
-#if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker("_notifySubscribe");
-            marker.Begin();
-
             foreach (ISubscriber subscriber in _subscribers)
             {
                 subscriber.Subscribe();
             }
-
-            marker.End();
-#else
-            foreach (ISubscriber subscriber in _subscribers)
-            {
-                subscriber.Subscribe();
-            }
-#endif
+            
             return UniTask.CompletedTask;
         }
 
         private async UniTask _notifyGameStart()
         {
-#if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker("_notifyGameStart");
-            marker.Begin();
-
             foreach (IStartListener listener in _startListeners)
             {
                 await listener.GameStart();
             }
-
-            marker.End();
-#else
-            foreach (IStartListener listener in _startListeners)
-            {
-                await listener.GameStart();
-            }
-#endif
         }
 
         private void _notifyGameUpdate()

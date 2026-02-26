@@ -24,6 +24,11 @@ namespace Code.Tools
             return true;
         }
 
+        public void Finish()
+        {
+            _current = _max;
+        }
+        
         public void Reset()
         {
             _current = 0;

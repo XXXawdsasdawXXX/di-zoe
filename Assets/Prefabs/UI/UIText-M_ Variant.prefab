@@ -5,7 +5,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1055102835008923948, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
@@ -94,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontAsset
@@ -102,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e44dbf8dd8a068048aae34edc948bc7c, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSizeBase
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_sharedMaterial
@@ -117,7 +116,4 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
