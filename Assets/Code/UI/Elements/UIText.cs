@@ -32,6 +32,7 @@ namespace Code.UI
             _isTyping = true;
 
             _component.text = message;
+            _component.ForceMeshUpdate();
             _component.maxVisibleCharacters = 0;
 
             int totalCharacters = _component.textInfo.characterCount;
@@ -44,9 +45,7 @@ namespace Code.UI
                     cancellationToken: _cts.Token
                 );
             }
-            
-            _cts?.Cancel();
-            
+
             _isTyping = false;
         }
 
