@@ -1,12 +1,16 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Code.Core.GameLoop;
 using Code.Core.ServiceLocator;
 using Code.Game.Radio;
 using Code.Tools;
+using Code.UI.Models;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using NaughtyAttributes;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 namespace Code.UI.Windows.Radio
@@ -17,7 +21,8 @@ namespace Code.UI.Windows.Radio
         private RadioModelService _radioModels;
         private RadioConfiguration _radioConfiguration;
 
-
+        private bool _isBaseMode = true;
+        
         #region Life
         
         public UniTask GameInitialize()
@@ -40,10 +45,11 @@ namespace Code.UI.Windows.Radio
             _radioModels.PreviousSongs.SubscribeToValue(_updatePreviousSongsView);
             _radioModels.CurrentChannel.SubscribeToValue(_updateChannelView);
             
+            view.UIButton_previousTracks.SubscribeToClicked(_switchPreviousTracksView);
             view.UISlider_volume.SubscribeToElement(_radioPlayer.SetVolume);
             view.UIDropDown_channels.SubscribeToElement(_radioModels.SetCurrentChannel);
         }
-        
+
         public UniTask GameStart()
         {
             List<TMP_Dropdown.OptionData> channels = new();
@@ -67,6 +73,8 @@ namespace Code.UI.Windows.Radio
                 channel.Value.UnsubscibeFromValue(_tryUpdateListenersCountView);
             }
             
+            view.UIButton_previousTracks.UnsubscribeFromClicked(_switchPreviousTracksView);
+
             _radioModels.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
             _radioModels.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
             _radioModels.CurrentChannel.UnsubscibeFromValue(_updateChannelView);
@@ -89,9 +97,9 @@ namespace Code.UI.Windows.Radio
 
         private void _updatePreviousSongsView(RadioSongListModel songs)
         {
-            if (songs.Songs == null || songs.Songs.Count == 0)
+            if (songs.Songs == null || songs.Songs.Count == 0 || _isBaseMode)
             {
-                view.UIText_previousTracks.SetText(string.Empty);
+                view.UIText_previousTracks.StopTypewrite();
 
                 return;
             }
@@ -109,7 +117,7 @@ namespace Code.UI.Windows.Radio
                 stringBuilder.AppendLine();
             }
 
-            view.UIText_previousTracks.SetText(stringBuilder.ToString());
+            view.UIText_previousTracks.StartTypewrite(stringBuilder.ToString()).Forget();
         }
 
         private async void _updateChannelView(int channelIndex)
@@ -129,6 +137,44 @@ namespace Code.UI.Windows.Radio
             _updateCurrentSongView(_radioModels.CurrentSong.PropertyValue);
             
             _updatePreviousSongsView(_radioModels.PreviousSongs.PropertyValue);
+        }
+        
+        [Button()]
+        private void _switchPreviousTracksView()
+        {
+            const float hiddenHeight = 295;
+            const float shownHeight = 415;
+
+            Vector2 size = view.Rect_Background.sizeDelta;
+            
+            _isBaseMode = Math.Abs(size.y - shownHeight) < 1; 
+            
+            size.y = _isBaseMode ? hiddenHeight : shownHeight;
+
+            view.UIText_previousTracks.SetText("");
+            view.UIText_previousTracks.gameObject.SetActive(!_isBaseMode);
+                    
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                view.Rect_Background.sizeDelta = size;
+                
+                EditorUtility.SetDirty(gameObject);
+                
+                return;
+            }     
+#endif
+            Sequence sequence = DOTween.Sequence();
+
+            Vector2 defaultButtonSize = view.UIButton_previousTracks.Rect.sizeDelta;
+            
+            sequence.Append(view.Rect_Background.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_LONG));
+            sequence.Join(view.UIButton_previousTracks.Rect.DOSizeDelta(Vector2.zero, UIConfiguration.ANIMATION_DURATION_SHORT));
+            sequence.Append(view.UIButton_previousTracks.Rect.DORotate(new Vector3(0, 0, _isBaseMode ? 0 : 180), 0));
+            sequence.AppendCallback(() => view.UIButton_previousTracks.OnPointerExit(null));
+            sequence.Append(view.UIButton_previousTracks.Rect.DOSizeDelta(defaultButtonSize, UIConfiguration.ANIMATION_DURATION_SHORT));
+            sequence.AppendCallback(() =>_updatePreviousSongsView(_radioModels.PreviousSongs.PropertyValue));
+            sequence.Play();
         }
     }
 }

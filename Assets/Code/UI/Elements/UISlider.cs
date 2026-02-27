@@ -50,8 +50,10 @@ namespace Code.UI
 
 #if UNITY_EDITOR
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
+            
             if (_slider == null)
             {
                 TryGetComponent(out _slider);

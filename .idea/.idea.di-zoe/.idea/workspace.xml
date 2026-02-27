@@ -2,11 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Models.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Models/UIConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Models/UIConfiguration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Models/UIPointerModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Models/UIPointerModel.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIPrefabLayoutAudioObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIPrefabLayoutAudioObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRawImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRawImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UISlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UISlider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropdown_.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropdown_.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/UI.csproj.DotSettings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,10 +107,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="28248">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="28248" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -132,7 +149,7 @@
       <workItem from="1771860456281" duration="21976000" />
       <workItem from="1772015558708" duration="2533000" />
       <workItem from="1772129301722" duration="5432000" />
-      <workItem from="1772197491414" duration="786000" />
+      <workItem from="1772197491414" duration="9827000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Code.UI
@@ -7,12 +6,14 @@ namespace Code.UI
     {
         [SerializeField] protected View view;
 
-
+        
         #region Editor
 #if UNITY_EDITOR
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
+            
             if (view == null)
             {
                 if (!TryGetComponent(out view))

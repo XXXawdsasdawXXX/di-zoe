@@ -13,8 +13,12 @@ namespace Code.UI.Windows.Radio
         [field: SerializeField, BoxGroup("Chanel")] public UIText UIText_listenerCount { get; private set; }
         [field: SerializeField, BoxGroup("Chanel")] public UIDropDown UIDropDown_channels { get; private set; }
         
+        [field: Space]
         [field: SerializeField, BoxGroup("Tracks")] public UIText UIText_currentTrack { get; private set; }
-        [field: SerializeField, BoxGroup("Tracks")] public UIText UIText_previousTracks { get; private set; }
- 
+        
+        [field: Space]
+        [field: SerializeField, BoxGroup("Optional")] public UIButton UIButton_previousTracks { get; private set; }
+        [field: SerializeField, BoxGroup("Optional")] public RectTransform Rect_Background { get; private set; }
+        [field: SerializeField, BoxGroup("Optional")] public UIText UIText_previousTracks { get; private set; }
     }
 }

@@ -16,8 +16,10 @@ namespace Code.UI
         #region Editor
 #if UNITY_EDITOR
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
+            
             if (_image == null)
             {
                 if (!TryGetComponent(out _image))
