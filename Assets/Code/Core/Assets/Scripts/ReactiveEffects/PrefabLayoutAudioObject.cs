@@ -62,7 +62,7 @@ public class PrefabLayoutAudioObject : VisualizationEffectBase
                 rend.material.SetColor("_Color", color);
                 rend.material.SetColor("_EmissionColor", color);
             }
-          
+
 
             // Try to set various other used scripts
             VisualizationEffectBase[] visualizationEffects = newGameObject.GetComponents<VisualizationEffectBase>();
@@ -168,7 +168,8 @@ public class PrefabLayoutAudioObject : VisualizationEffectBase
                     float x = Mathf.Sin(angle) * CircularLayoutRadius;
                     float z = Mathf.Cos(angle) * CircularLayoutRadius;
 
-                    layoutPositions.Add(new Vector3(x + gameObject.transform.position.x, gameObject.transform.position.y, z + gameObject.transform.position.z));
+                    layoutPositions.Add(new Vector3(x + gameObject.transform.position.x,
+                        gameObject.transform.position.y, z + gameObject.transform.position.z));
 
                     currentAngle += angleStep;
                 }

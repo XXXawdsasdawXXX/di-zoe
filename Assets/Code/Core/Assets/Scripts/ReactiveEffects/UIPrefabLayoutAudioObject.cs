@@ -5,7 +5,8 @@ using Assets.Scripts.ReactiveEffects.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPrefabLayoutAudioObject : VisualizationEffectBase{
+public class UIPrefabLayoutAudioObject : VisualizationEffectBase
+{
     #region Private Member Variables
 
     private List<GameObject> _gameObjects = new List<GameObject>();
@@ -37,14 +38,14 @@ public class UIPrefabLayoutAudioObject : VisualizationEffectBase{
         for (int i = 0; i < LoopbackAudio.SpectrumSize; i++)
         {
             GameObject newGameObject = Instantiate(Prefab, gameObject.transform, false);
-       
+
             _gameObjects.Add(newGameObject);
 
             int group = (i / groupSize);
 
             Image rend = newGameObject.GetComponent<Image>();
 
-            Color color = Globals.StrongColors[group];
+            Color color = Globals.PastelColors[group];
             rend.color = color;
 
             // Try to set various other used scripts
@@ -83,82 +84,82 @@ public class UIPrefabLayoutAudioObject : VisualizationEffectBase{
 
     #region Private Methods
 
-   private void _performLayout()
-{
-    List<Vector2> layoutPositions = new List<Vector2>();
-
-    RectTransform parentRect = GetComponent<RectTransform>();
-
-    switch (LayoutType)
+    private void _performLayout()
     {
-        case PrefabLayoutType.XLinear:
+        List<Vector2> layoutPositions = new List<Vector2>();
 
-            float totalWidth = LoopbackAudio.SpectrumData.Length * ObjectWidthDepth;
-            float startX = -totalWidth / 2f;
+        RectTransform parentRect = GetComponent<RectTransform>();
 
-            for (int i = 0; i < LoopbackAudio.SpectrumData.Length; i++)
-            {
-                float x = startX + i * ObjectWidthDepth;
-                layoutPositions.Add(new Vector2(x, 0f));
-            }
+        switch (LayoutType)
+        {
+            case PrefabLayoutType.XLinear:
 
-            break;
+                float totalWidth = LoopbackAudio.SpectrumData.Length * ObjectWidthDepth;
+                float startX = -totalWidth / 2f;
 
-        case PrefabLayoutType.XZSpread:
-
-            int gridSize = Mathf.CeilToInt(Mathf.Sqrt(LoopbackAudio.SpectrumData.Length));
-            float half = (gridSize * ObjectWidthDepth) / 2f;
-
-            for (int x = 0; x < gridSize; x++)
-            {
-                for (int y = 0; y < gridSize; y++)
+                for (int i = 0; i < LoopbackAudio.SpectrumData.Length; i++)
                 {
-                    if (layoutPositions.Count >= LoopbackAudio.SpectrumData.Length)
-                        break;
-
-                    float posX = (x * ObjectWidthDepth) - half;
-                    float posY = (y * ObjectWidthDepth) - half;
-
-                    layoutPositions.Add(new Vector2(posX, posY));
+                    float x = startX + i * ObjectWidthDepth;
+                    layoutPositions.Add(new Vector2(x, 0f));
                 }
-            }
 
-            if (Shuffle)
-                layoutPositions.Shuffle();
+                break;
 
-            break;
+            case PrefabLayoutType.XZSpread:
 
-        case PrefabLayoutType.XZCircular:
+                int gridSize = Mathf.CeilToInt(Mathf.Sqrt(LoopbackAudio.SpectrumData.Length));
+                float half = (gridSize * ObjectWidthDepth) / 2f;
 
-            for (int i = 0; i < LoopbackAudio.SpectrumData.Length; i++)
-            {
-                float angle = (float)i / LoopbackAudio.SpectrumData.Length * Mathf.PI * 2f;
+                for (int x = 0; x < gridSize; x++)
+                {
+                    for (int y = 0; y < gridSize; y++)
+                    {
+                        if (layoutPositions.Count >= LoopbackAudio.SpectrumData.Length)
+                            break;
 
-                float x = Mathf.Cos(angle) * CircularLayoutRadius;
-                float y = Mathf.Sin(angle) * CircularLayoutRadius;
+                        float posX = (x * ObjectWidthDepth) - half;
+                        float posY = (y * ObjectWidthDepth) - half;
 
-                layoutPositions.Add(new Vector2(x, y));
-            }
+                        layoutPositions.Add(new Vector2(posX, posY));
+                    }
+                }
 
-            if (Shuffle)
-                layoutPositions.Shuffle();
+                if (Shuffle)
+                    layoutPositions.Shuffle();
 
-            break;
+                break;
+
+            case PrefabLayoutType.XZCircular:
+
+                for (int i = 0; i < LoopbackAudio.SpectrumData.Length; i++)
+                {
+                    float angle = (float)i / LoopbackAudio.SpectrumData.Length * Mathf.PI * 2f;
+
+                    float x = Mathf.Cos(angle) * CircularLayoutRadius;
+                    float y = Mathf.Sin(angle) * CircularLayoutRadius;
+
+                    layoutPositions.Add(new Vector2(x, y));
+                }
+
+                if (Shuffle)
+                    layoutPositions.Shuffle();
+
+                break;
+        }
+
+        // Применяем позиции
+        for (int i = 0; i < layoutPositions.Count; i++)
+        {
+            RectTransform rect = _gameObjects[i].GetComponent<RectTransform>();
+
+            rect.anchoredPosition = layoutPositions[i];
+            rect.localRotation = Quaternion.Euler(ObjectRotation);
+        }
+
+        parentRect.localRotation *= Quaternion.Euler(RotationOffset);
+
+        Debug.Log("PERFORM LAYOUT CALLED");
     }
-
-    // Применяем позиции
-    for (int i = 0; i < layoutPositions.Count; i++)
-    {
-        RectTransform rect = _gameObjects[i].GetComponent<RectTransform>();
-
-        rect.anchoredPosition = layoutPositions[i];
-        rect.localRotation = Quaternion.Euler(ObjectRotation);
-    }
-
-    parentRect.localRotation *= Quaternion.Euler(RotationOffset);
-    
-    Debug.Log("PERFORM LAYOUT CALLED");
-}
 
     #endregion
 }

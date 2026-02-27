@@ -79,7 +79,7 @@ namespace Code.UI.Windows.Radio
 
         private void _tryUpdateListenersCountView(RadioChannelModel model)
         {
-            view.UIText_listenerCount.SetText("Listeners: " + model.listeners.ToString());
+            view.UIText_listenerCount.SetText($"Listeners: {model.listeners}");
         }
 
         private void _updateCurrentSongView(RadioSongModel model)
@@ -96,8 +96,11 @@ namespace Code.UI.Windows.Radio
                 return;
             }
             
-            StringBuilder stringBuilder = new(); 
-         
+            StringBuilder stringBuilder = new();
+
+            stringBuilder.Append("Recently Played");
+            stringBuilder.AppendLine();
+            
             for (int i = 0; i < _radioConfiguration.PreviousTracksCount; i++)
             {
                 stringBuilder.Append(songs.Songs[i].artist);
