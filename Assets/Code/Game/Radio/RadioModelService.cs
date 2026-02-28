@@ -96,7 +96,6 @@ namespace Code.Game.Radio
             Texture2D texture = DownloadHandlerTexture.GetContent(request);
             return texture;
         }
-
         
         public RadioChannelModel GetCurrentChannelModel()
         {
@@ -106,6 +105,12 @@ namespace Code.Game.Radio
         public string GetCurrentStreamURL()
         {
             return $"https://ice1.somafm.com/{GetCurrentChannelModel().id}-128-mp3";
+        }
+        
+        [Preserve]
+        private static void _warmUpAotCollections()
+        {
+            _ = new List<RadioChannelModel>();
         }
         
         private async UniTask _updateChannels()

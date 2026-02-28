@@ -5,8 +5,6 @@ using UnityEngine;
 namespace Code.Tools.RangeInt.Editor
 {
 #if UNITY_EDITOR
-    
-
     [CustomPropertyDrawer(typeof(RangedInt), true)]
     public class RangedIntDrawer : PropertyDrawer
     {
