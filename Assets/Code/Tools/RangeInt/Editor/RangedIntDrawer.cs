@@ -1,8 +1,12 @@
-﻿using UnityEditor;
+﻿using Code.Data;
+using UnityEditor;
 using UnityEngine;
 
-namespace Code.Data.Editor
+namespace Code.Tools.RangeInt.Editor
 {
+#if UNITY_EDITOR
+    
+
     [CustomPropertyDrawer(typeof(RangedInt), true)]
     public class RangedIntDrawer : PropertyDrawer
     {
@@ -53,4 +57,5 @@ namespace Code.Data.Editor
             EditorGUI.EndProperty();
         }
     }
+#endif
 }

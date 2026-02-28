@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/Editor/RangedFloatDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/Editor/RangedFloatDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/Editor/RangedIntDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/Editor/RangedIntDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Models/UIConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Models/UIConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,10 +95,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="28248">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="28248" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -134,7 +137,8 @@
       <workItem from="1771860456281" duration="21976000" />
       <workItem from="1772015558708" duration="2533000" />
       <workItem from="1772129301722" duration="5432000" />
-      <workItem from="1772197491414" duration="10473000" />
+      <workItem from="1772197491414" duration="11487000" />
+      <workItem from="1772268786688" duration="52000" />
     </task>
     <servers />
   </component>
@@ -170,19 +174,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Code/UI/Elements/UIText.cs</url>
-          <line>26</line>
-          <properties documentPath="C:\Users\user\Documents\GitHub\di-zoe\Assets\Code\UI\Elements\UIText.cs" initialLine="26" containingFunctionPresentation="method 'StartTypewrite'">
-            <startOffsets>
-              <option value="583" />
-            </startOffsets>
-            <endOffsets>
-              <option value="612" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

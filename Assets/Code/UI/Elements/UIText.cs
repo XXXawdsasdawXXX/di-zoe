@@ -1,7 +1,6 @@
 using System.Threading;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
-using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
@@ -11,10 +10,7 @@ namespace Code.UI
     {
         [SerializeField] private TMP_Text _component;
 
-        [SerializeField, ReadOnly] private bool _isTyping;
-        
         private CancellationTokenSource _cts;
-        
         
         
         public void SetText(string text)
@@ -24,12 +20,8 @@ namespace Code.UI
         
         public async UniTask StartTypewrite(string message)
         {
-            Debug.Log("Start typewrite");
-            
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
-
-            _isTyping = true;
 
             _component.text = message;
             _component.ForceMeshUpdate();
@@ -45,15 +37,11 @@ namespace Code.UI
                     cancellationToken: _cts.Token
                 );
             }
-
-            _isTyping = false;
         }
 
         public void StopTypewrite()
         {
             _cts?.Cancel();
-            
-            _isTyping = false;
         }
 
         private void OnDisable()
