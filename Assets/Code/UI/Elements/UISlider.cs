@@ -36,7 +36,7 @@ namespace Code.UI
             _changed -= action;
         }
         
-        public void SerValueWithoutNotify(float value)
+        public void SetValueWithoutNotify(float value)
         {
             _slider.SetValueWithoutNotify(value);
         }

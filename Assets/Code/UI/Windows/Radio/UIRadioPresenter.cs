@@ -44,9 +44,10 @@ namespace Code.UI.Windows.Radio
             _radioModels.CurrentSong.SubscribeToValue(_updateCurrentSongView);
             _radioModels.PreviousSongs.SubscribeToValue(_updatePreviousSongsView);
             _radioModels.CurrentChannel.SubscribeToValue(_updateChannelView);
+            _radioModels.RadioVolume.SubscribeToValue(_updateVolume);
             
             view.UIButton_previousTracks.SubscribeToClicked(_switchPreviousTracksView);
-            view.UISlider_volume.SubscribeToElement(_radioPlayer._setVolume);
+            view.UISlider_volume.SubscribeToElement(_radioModels.SetVolume);
             view.UIDropDown_channels.SubscribeToElement(_radioModels.SetCurrentChannel);
         }
 
@@ -78,12 +79,18 @@ namespace Code.UI.Windows.Radio
             _radioModels.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
             _radioModels.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
             _radioModels.CurrentChannel.UnsubscibeFromValue(_updateChannelView);
+            _radioModels.RadioVolume.UnsubscibeFromValue(_updateVolume);
             
-            view.UISlider_volume.UnsubscribeFromElement(_radioPlayer._setVolume);
+            view.UISlider_volume.UnsubscribeFromElement(_radioModels.SetVolume);
             view.UIDropDown_channels.UnsubscribeFromElement(_radioModels.SetCurrentChannel);
         }
 
         #endregion
+
+        private void _updateVolume(float volume)
+        {
+            view.UISlider_volume.SetValueWithoutNotify(volume);
+        }
 
         private void _tryUpdateListenersCountView(RadioChannelModel model)
         {

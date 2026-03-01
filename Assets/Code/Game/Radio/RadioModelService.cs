@@ -35,7 +35,8 @@ namespace Code.Game.Radio
 
         private Timer _channelsUpdateTimer;
         private Timer _tracksUpdateTimer;
-        
+
+
         public async UniTask GameInitialize()
         {
             _radioConfiguration = Container.Instance.GetConfig<RadioConfiguration>();
@@ -81,6 +82,11 @@ namespace Code.Game.Radio
            
             _tracksUpdateTimer.Finish();
             _channelsUpdateTimer.Finish();
+        }
+        
+        public void SetVolume(float volume)
+        {
+            RadioVolume.PropertyValue = volume;
         }
         
         public async UniTask<Texture2D> GetChannelLogo(string logoUrl)
@@ -180,6 +186,5 @@ namespace Code.Game.Radio
                 Debug.LogWarning($"FetchCurrentTrack parse error: {e.Message}");
             }
         }
-
     }
 }

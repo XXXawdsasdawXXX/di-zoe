@@ -7,9 +7,6 @@ using UnityEngine;
 
 namespace Code.Game.Radio
 {
-    /// <summary>
-    /// Manages radio functionality, including volume control and channel selection.
-    /// </summary>
     public class RadioPlayer : MonoBehaviour, IService, IInitializeListener, ISubscriber, IExitListener
     {
         private MediaFoundationReader mediaFoundationReader;
@@ -52,17 +49,9 @@ namespace Code.Game.Radio
             }
         }
 
-        public void _setVolume(float volume)
-        {
-            if (waveOut != null)
-            {
-                waveOut.Volume = Mathf.Clamp01(volume);
-            }
-        }
-
         public float GetVolume()
         {
-            return waveOut != null ? waveOut.Volume : 0;
+            return waveOut?.Volume ?? 0;
         }
 
         public void StopRadio()
@@ -73,7 +62,15 @@ namespace Code.Game.Radio
             }
         }
 
-        private void _playChannel(int channelIndex)
+        private void _setVolume(float volume)
+        {
+            if (waveOut != null)
+            {
+                waveOut.Volume = Mathf.Clamp01(volume);
+            }
+        }
+
+        private void _playCurrentStream()
         {
             string url = _radioModels.GetCurrentStreamURL();
             
@@ -107,7 +104,7 @@ namespace Code.Game.Radio
             
             await UniTask.Delay(TimeSpan.FromMilliseconds(100));
             
-            _playChannel(_radioModels.CurrentChannel.PropertyValue);
+            _playCurrentStream();
         }
     }
 }
