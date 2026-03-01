@@ -1,9 +1,10 @@
 using System;
+using UnityEngine.Scripting;
 
 namespace Code.Game.Radio
 {
-    [Serializable]
-    public struct RadioChannelModel
+    [Serializable, Preserve]
+    public class RadioChannelModel
     {
         public string id;
         public string title;

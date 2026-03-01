@@ -1,0 +1,13 @@
+<linker>
+    <assembly fullname="Game">
+<!--        <type fullname="Code.Game.Radio.RadioChannelModel" preserve="all"/>
+        <type fullname="Code.Game.Radio.RadioSongModel" preserve="all"/>
+        <type fullname="Code.Game.Radio.RadioSongListModel" preserve="all"/>-->
+        <type fullname="Code.Game.Radio.RadioModelService+ChannelListResponse" preserve="all"/>
+        <type fullname="System.Collections.Generic.List`1[[Code.Game.Radio.RadioChannelModel, Game]]" preserve="all"/>
+        <type fullname="System.Collections.Generic.List`1[[Code.Game.Radio.RadioSongModel, Game]]" preserve="all"/>
+    </assembly>
+    <assembly fullname="Core">
+        <type fullname="Code.Core.Save.SavedData.PlayerProgressData" preserve="all"/>
+    </assembly>
+</linker>

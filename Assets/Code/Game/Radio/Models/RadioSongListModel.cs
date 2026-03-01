@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.Scripting;
 
 namespace Code.Game.Radio
 {
-    [Serializable]
-    public struct RadioSongListModel
+    [Serializable, Preserve]
+    public class RadioSongListModel
     {
         public List<RadioSongModel> Songs;
     }

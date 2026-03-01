@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Code.Core.GameLoop;
 using Code.Core.Save;
 using Code.Core.Save.SavedData;
@@ -10,6 +11,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Scripting;
+using Timer = Code.Tools.Timer;
 
 namespace Code.Game.Radio
 {
@@ -25,19 +27,17 @@ namespace Code.Game.Radio
         public Dictionary<string, ReactiveProperty<RadioChannelModel>> Channels { get; } = new();
         public ReactiveProperty<RadioSongModel> CurrentSong { get; } = new(default);
         public ReactiveProperty<RadioSongListModel> PreviousSongs { get; } = new(default);
-
         public ReactiveProperty<int> CurrentChannel { get; }  = new(-1);
         
+        public ReactiveProperty<float> RadioVolume { get; }  = new(-1);
+        
         private RadioConfiguration _radioConfiguration;
-        private RadioPlayer _radioPlayer;
 
         private Timer _channelsUpdateTimer;
         private Timer _tracksUpdateTimer;
-
         
         public async UniTask GameInitialize()
         {
-            _radioPlayer = Container.Instance.GetService<RadioPlayer>();
             _radioConfiguration = Container.Instance.GetConfig<RadioConfiguration>();
 
             _channelsUpdateTimer = new Timer(_radioConfiguration.ChannelsUpdateInterval);
@@ -49,8 +49,15 @@ namespace Code.Game.Radio
         public async UniTask LoadProgress(PlayerProgressData playerProgress)
         {
             CurrentChannel.PropertyValue = playerProgress.RadioChanel;
+            RadioVolume.PropertyValue = playerProgress.RadioVolume;
             
             await  _updateSongs();
+        }
+
+        public void SaveProgress(PlayerProgressData playerProgress)
+        {
+            playerProgress.RadioChanel = CurrentChannel.PropertyValue;
+            playerProgress.RadioVolume = RadioVolume.PropertyValue;
         }
 
         public void GameUpdate()
@@ -68,11 +75,6 @@ namespace Code.Game.Radio
             }
         }
 
-        public void SaveProgress(PlayerProgressData playerProgress)
-        {
-            playerProgress.RadioChanel = CurrentChannel.PropertyValue;
-        }
-        
         public void SetCurrentChannel(int channel)
         {
             CurrentChannel.PropertyValue = channel;
@@ -106,13 +108,7 @@ namespace Code.Game.Radio
         {
             return $"https://ice1.somafm.com/{GetCurrentChannelModel().id}-128-mp3";
         }
-        
-        [Preserve]
-        private static void _warmUpAotCollections()
-        {
-            _ = new List<RadioChannelModel>();
-        }
-        
+
         private async UniTask _updateChannels()
         {
             using UnityWebRequest request = UnityWebRequest.Get(RadioConfiguration.CHANNEL_MODELS_URL);

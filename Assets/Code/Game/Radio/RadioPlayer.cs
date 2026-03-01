@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Linq;
 using Code.Core.GameLoop;
-using Code.Core.Save;
-using Code.Core.Save.SavedData;
 using Code.Core.ServiceLocator;
-using Code.Tools;
 using Cysharp.Threading.Tasks;
 using NAudio.Wave;
 using UnityEngine;
@@ -17,7 +12,6 @@ namespace Code.Game.Radio
     /// </summary>
     public class RadioPlayer : MonoBehaviour, IService, IInitializeListener, ISubscriber, IExitListener
     {
-        private RadioConfiguration _configuration;
         private MediaFoundationReader mediaFoundationReader;
         private WaveOutEvent waveOut;
         private RadioModelService _radioModels;
@@ -27,8 +21,6 @@ namespace Code.Game.Radio
 
         public UniTask GameInitialize()
         {
-            _configuration = Container.Instance.GetConfig<RadioConfiguration>();
-
             _radioModels = Container.Instance.GetService<RadioModelService>();
 
             return UniTask.CompletedTask;
@@ -37,11 +29,13 @@ namespace Code.Game.Radio
         public void Subscribe()
         {
             _radioModels.CurrentChannel.SubscribeToValue(_onChangeRadioStation);
+            _radioModels.RadioVolume.SubscribeToValue(_setVolume);
         }
         
         public void Unsubscribe()
         {
             _radioModels.CurrentChannel.UnsubscibeFromValue(_onChangeRadioStation);
+            _radioModels.RadioVolume.UnsubscibeFromValue(_setVolume);
         }
         
         public void GameExit()
@@ -58,24 +52,7 @@ namespace Code.Game.Radio
             }
         }
 
-        private void _playChannel(int channelIndex)
-        {
-            string url = _radioModels.GetCurrentStreamURL();
-            
-            try
-            {
-                mediaFoundationReader = new MediaFoundationReader(url);
-                waveOut = new WaveOutEvent();
-                waveOut.Init(mediaFoundationReader);
-                waveOut.Play();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Error playing radio: {ex.Message}. url = {url}");
-            }
-        }
-        
-        public void SetVolume(float volume)
+        public void _setVolume(float volume)
         {
             if (waveOut != null)
             {
@@ -93,6 +70,23 @@ namespace Code.Game.Radio
             if (waveOut != null)
             {
                 waveOut.Stop();
+            }
+        }
+
+        private void _playChannel(int channelIndex)
+        {
+            string url = _radioModels.GetCurrentStreamURL();
+            
+            try
+            {
+                mediaFoundationReader = new MediaFoundationReader(url);
+                waveOut = new WaveOutEvent();
+                waveOut.Init(mediaFoundationReader);
+                waveOut.Play();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error playing radio: {ex.Message}. url = {url}");
             }
         }
 
@@ -115,7 +109,5 @@ namespace Code.Game.Radio
             
             _playChannel(_radioModels.CurrentChannel.PropertyValue);
         }
-
-  
     }
 }

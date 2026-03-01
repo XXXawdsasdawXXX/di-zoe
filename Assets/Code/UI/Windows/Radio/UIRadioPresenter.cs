@@ -46,7 +46,7 @@ namespace Code.UI.Windows.Radio
             _radioModels.CurrentChannel.SubscribeToValue(_updateChannelView);
             
             view.UIButton_previousTracks.SubscribeToClicked(_switchPreviousTracksView);
-            view.UISlider_volume.SubscribeToElement(_radioPlayer.SetVolume);
+            view.UISlider_volume.SubscribeToElement(_radioPlayer._setVolume);
             view.UIDropDown_channels.SubscribeToElement(_radioModels.SetCurrentChannel);
         }
 
@@ -79,7 +79,7 @@ namespace Code.UI.Windows.Radio
             _radioModels.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
             _radioModels.CurrentChannel.UnsubscibeFromValue(_updateChannelView);
             
-            view.UISlider_volume.UnsubscribeFromElement(_radioPlayer.SetVolume);
+            view.UISlider_volume.UnsubscribeFromElement(_radioPlayer._setVolume);
             view.UIDropDown_channels.UnsubscribeFromElement(_radioModels.SetCurrentChannel);
         }
 
