@@ -38,5 +38,10 @@ namespace Code.Tools
         {
             Changed -= action;
         }
+
+        public void SetValueWithoutNotify(T value)
+        {
+            _propertyValue = value;
+        }
     }
 }

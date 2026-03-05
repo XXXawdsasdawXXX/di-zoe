@@ -7,9 +7,9 @@ namespace Code.UI
 {
     public class UIButton : UIComponent, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeField] protected UIButtonImpact[] buttonImpacts = new[]
+        [SerializeReference] protected UIButtonImpact[] buttonImpacts = 
         {
-            new UIButtonImpact(),
+            new UIButtonImpact_ImagesColor(),
         };
      
         private Action _clicked;
@@ -65,6 +65,11 @@ namespace Code.UI
             {
                 buttonImpact.OnUp();
             }
+        }
+
+        protected virtual void onClick()
+        {
+            
         }
     }
 }
