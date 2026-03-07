@@ -1,7 +1,7 @@
 using System;
 using Code.UI.Models;
 using DG.Tweening;
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,14 +16,8 @@ namespace Code.UI
             public Image Render;
             
             public bool IsCustomColors;
-            
-            [ShowIf(nameof(IsCustomColors))] public UIPointerModel PointerModel = new()
-            {
-                Default = Color.white,
-                Enter = new Color(0.8f,0.8f,0.8f),
-                Up = new Color(0.8f,0.8f,0.8f),
-                Down = new Color(0.6f,0.6f,0.6f),
-            };
+
+            [ShowIf(nameof(IsCustomColors))] public UIPointerModel PointerModel = new();
         }
         
         [SerializeField] private ImpactModel[] _models;

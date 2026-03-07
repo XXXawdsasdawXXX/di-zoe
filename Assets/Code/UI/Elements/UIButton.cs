@@ -1,21 +1,36 @@
 using System;
+using System.Collections.Generic;
+using Code.Core.GameLoop;
 using Code.UI.Models;
+using Cysharp.Threading.Tasks;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Code.UI
 {
-    public class UIButton : UIComponent, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class UIButton : UIComponent, IInitializeListener,
+    IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeReference] protected UIButtonImpact[] buttonImpacts = 
+        [ShowInInspector] protected List<UIButtonImpact> buttonImpacts = new List<UIButtonImpact>() 
         {
             new UIButtonImpact_ImagesColor(),
         };
-     
+        
         private Action _clicked;
         private double _lastClickTime;
         
-          
+        
+        public UniTask GameInitialize()
+        {
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            {
+                buttonImpact.Initialize();
+            }
+            
+            return UniTask.CompletedTask;
+        }
+        
         public void SubscribeToClicked(Action clicked)
         {
             _clicked += clicked;

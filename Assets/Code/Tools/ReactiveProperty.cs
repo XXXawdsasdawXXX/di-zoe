@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using NaughtyAttributes;
+using UnityEngine;
 
 namespace Code.Tools
 {
@@ -9,7 +9,7 @@ namespace Code.Tools
     {
         private event Action<T> Changed;
 
-        [ShowNativeProperty] public T PropertyValue
+       public T PropertyValue
         {
             get => _propertyValue;
             set
@@ -22,7 +22,7 @@ namespace Code.Tools
             }
         }
 
-        private T _propertyValue;
+        [SerializeField] private T _propertyValue;
 
         public ReactiveProperty(T propertyValue)
         {

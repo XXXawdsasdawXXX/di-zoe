@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 5684831178462557392}
   - component: {fileID: 8034903513280221539}
   - component: {fileID: 6596470142391895280}
+  - component: {fileID: 3896105760912107693}
   m_Layer: 5
   m_Name: Item Checkmark
   m_TagString: Untagged
@@ -113,6 +114,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3896105760912107693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902826980225250881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92af1338f4e462dab1118d28d7d4b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Rect>k__BackingField: {fileID: 5684831178462557392}
+  buttonImpacts:
+  - rid: 5517237332500545538
+  <IsChecked>k__BackingField:
+    _propertyValue: 0
+  _radioButtonImpacts: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5517237332500545538
+      type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
+      data:
+        _models: []
 --- !u!1 &1785135187073691230
 GameObject:
   m_ObjectHideFlags: 0

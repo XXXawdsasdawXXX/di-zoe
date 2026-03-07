@@ -8,8 +8,8 @@ using Code.Tools;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using NaughtyAttributes;
 using TMPro;
+using TriInspector;
 using UnityEditor;
 using UnityEngine;
 

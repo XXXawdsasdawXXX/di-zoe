@@ -2,9 +2,9 @@
     "name": "Tools",
     "rootNamespace": "",
     "references": [
-        "GUID:776d03a35f1b52c4a9aed9f56d7b4229",
-        "GUID:f88fb04354076c646a4107a491394033",
-        "GUID:343deaaf83e0cee4ca978e7df0b80d21"
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:324caed91501a9c47a04ebfd87b68794",
+        "GUID:e851236b9ac2b9b4eaaa99506366edea"
     ],
     "includePlatforms": [
         "Editor",

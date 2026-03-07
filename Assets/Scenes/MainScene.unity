@@ -390,6 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _configs:
   - {fileID: 11400000, guid: f940b6baafd792743828a7041d5ea997, type: 2}
+  - {fileID: 11400000, guid: b93a041a2f08f004aa08f7967b802972, type: 2}
 --- !u!1 &265813036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000045776367
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2373,12 +2374,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 1305681280}
   buttonImpacts:
-  - _render: {fileID: 1305681282}
-    _pointerModel:
-      Default: {r: 1, g: 1, b: 1, a: 1}
-      Enter: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-      Up: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-      Down: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  - rid: 5517237332500545537
+  references:
+    version: 2
+    RefIds:
+    - rid: 5517237332500545537
+      type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
+      data:
+        _models:
+        - Render: {fileID: 1305681282}
+          IsCustomColors: 0
+          PointerModel:
+            Default: {r: 0, g: 0, b: 0, a: 0}
+            Enter: {r: 0, g: 0, b: 0, a: 0}
+            Up: {r: 0, g: 0, b: 0, a: 0}
+            Down: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1317539212
 GameObject:
   m_ObjectHideFlags: 0
