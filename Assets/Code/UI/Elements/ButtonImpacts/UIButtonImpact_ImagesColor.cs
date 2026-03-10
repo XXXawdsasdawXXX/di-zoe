@@ -11,13 +11,13 @@ namespace Code.UI
     public class UIButtonImpact_ImagesColor : UIButtonImpact
     {
         [Serializable]
-        private class ImpactModel
+        private struct ImpactModel
         {
             public Image Render;
             
             public bool IsCustomColors;
-
-            [ShowIf(nameof(IsCustomColors))] public UIPointerModel PointerModel = new();
+            
+            [ShowIf(nameof(IsCustomColors))] public UIPointerModel PointerModel;
         }
         
         [SerializeField] private ImpactModel[] _models;
@@ -27,6 +27,11 @@ namespace Code.UI
 
         public override void OnEnter()
         {
+            if (_models == null)
+            {
+                return;
+            }
+            
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
 
@@ -44,6 +49,11 @@ namespace Code.UI
 
         public override void OnExit()
         {
+            if (_models == null)
+            {
+                return;
+            }
+            
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
 

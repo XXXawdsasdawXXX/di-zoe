@@ -12,7 +12,7 @@ namespace Code.UI
     public class UIButton : UIComponent, IInitializeListener,
     IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [ShowInInspector] protected List<UIButtonImpact> buttonImpacts = new List<UIButtonImpact>() 
+        [SerializeReference] private List<UIButtonImpact> _buttonImpacts = new() 
         {
             new UIButtonImpact_ImagesColor(),
         };
@@ -21,9 +21,9 @@ namespace Code.UI
         private double _lastClickTime;
         
         
-        public UniTask GameInitialize()
+        public virtual UniTask GameInitialize()
         {
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
             {
                 buttonImpact.Initialize();
             }
@@ -43,7 +43,7 @@ namespace Code.UI
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
             {
                 buttonImpact.OnEnter();
             }
@@ -51,7 +51,7 @@ namespace Code.UI
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
             {
                 buttonImpact.OnExit();
             }
@@ -68,15 +68,17 @@ namespace Code.UI
 
             _lastClickTime = DateTime.UtcNow.TimeOfDay.TotalSeconds;
             
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
             {
                 buttonImpact.OnDown();
             }
+            
+            onClick();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
             {
                 buttonImpact.OnUp();
             }

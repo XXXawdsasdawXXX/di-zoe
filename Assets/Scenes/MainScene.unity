@@ -1403,7 +1403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000038146973
+      value: -0.00004196167
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2373,22 +2373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 1305681280}
-  buttonImpacts:
-  - rid: 5517237332500545537
-  references:
-    version: 2
-    RefIds:
-    - rid: 5517237332500545537
-      type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
-      data:
-        _models:
-        - Render: {fileID: 1305681282}
-          IsCustomColors: 0
-          PointerModel:
-            Default: {r: 0, g: 0, b: 0, a: 0}
-            Enter: {r: 0, g: 0, b: 0, a: 0}
-            Up: {r: 0, g: 0, b: 0, a: 0}
-            Down: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1317539212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2466,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1379659537
 MonoBehaviour:
   m_ObjectHideFlags: 0
