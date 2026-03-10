@@ -1,7 +1,9 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Code.Tools
 {
@@ -16,12 +18,21 @@ namespace Code.Tools
         [SerializeField] private Text textMono;
         [SerializeField] private Text textGC;
         [SerializeField] private Text textDrawCalls;
+        [SerializeField] private Button buttonCopyToClipboard;
 
         private float _timer;
         private float _deltaTime;
 
         private Recorder _cpuRecorder;
         private Recorder _gpuRecorder;
+
+        private float _fps;
+        private float _cpu;
+        private float _gpu;
+        private float _ram;
+        private float _mono;
+        private long _gc;
+        private int _drawCalls;
 
         void OnEnable()
         {
@@ -30,6 +41,13 @@ namespace Code.Tools
 
             _gpuRecorder = Recorder.Get("Camera.Render");
             _gpuRecorder.enabled = true;
+            
+            buttonCopyToClipboard.onClick.RemoveAllListeners();
+            buttonCopyToClipboard.onClick.AddListener(CopyStatsToClipboard);
+
+#if !UNITY_EDITOR
+            textDrawCalls.gameObject.SetActive(false);            
+#endif
         }
 
         void Update()
@@ -40,29 +58,53 @@ namespace Code.Tools
             if (_timer < 1f / UPDATE_RATE) return;
             _timer = 0f;
 
-            float fps = 1f / _deltaTime;
-            textFPS.text = $"FPS: {Mathf.RoundToInt(fps)}";
+            _fps = 1f / _deltaTime;
+            textFPS.text = $"FPS: {Mathf.RoundToInt(_fps)}";
 
-            float cpuTime = _cpuRecorder.elapsedNanoseconds / 1_000_000f;
-            textCPU.text = $"CPU: {cpuTime:0.00} ms";
+            _cpu = _cpuRecorder.elapsedNanoseconds / 1_000_000f;
+            textCPU.text = $"CPU: {_cpu:0.00} ms";
 
-            float gpuTime = _gpuRecorder.elapsedNanoseconds / 1_000_000f;
-            textGPU.text = $"GPU: {gpuTime:0.00} ms";
+            _gpu = _gpuRecorder.elapsedNanoseconds / 1_000_000f;
+            textGPU.text = $"GPU: {_gpu:0.00} ms";
 
-            float ram = Profiler.GetTotalAllocatedMemoryLong() / (1024f * 1024f);
-            textRAM.text = $"RAM: {Mathf.RoundToInt(ram)} MB";
+            _ram = Profiler.GetTotalAllocatedMemoryLong() / (1024f * 1024f);
+            textRAM.text = $"RAM: {Mathf.RoundToInt(_ram)} MB";
 
-            float mono = Profiler.GetMonoUsedSizeLong() / (1024f * 1024f);
-            textMono.text = $"Mono: {Mathf.RoundToInt(mono)} MB";
+            _mono = Profiler.GetMonoUsedSizeLong() / (1024f * 1024f);
+            textMono.text = $"Mono: {Mathf.RoundToInt(_mono)} MB";
 
-            long gc = System.GC.GetTotalMemory(false) / (1024 * 1024);
-            textGC.text = $"GC: {gc} MB";
+            _gc = System.GC.GetTotalMemory(false) / (1024 * 1024);
+            textGC.text = $"GC: {_gc} MB";
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-            textDrawCalls.text = $"Draw Calls: {UnityStats.drawCalls}";
+#if UNITY_EDITOR
+            _drawCalls = UnityStats.drawCalls;
+            textDrawCalls.text = $"Draw Calls: {_drawCalls}";
 #endif
         }
-        
+
+        private void CopyStatsToClipboard()
+        {
+            string stats =
+            $@"==== GAME PROFILER ====
+
+FPS: {Mathf.RoundToInt(_fps)}
+CPU Frame: {_cpu:0.00} ms
+GPU Frame: {_gpu:0.00} ms
+
+RAM: {Mathf.RoundToInt(_ram)} MB
+Mono: {Mathf.RoundToInt(_mono)} MB
+GC: {_gc} MB
+
+Draw Calls: {_drawCalls}
+
+=======================";
+
+            GUIUtility.systemCopyBuffer = stats;
+
+            Debug.Log("Profiler stats copied to clipboard:\n" + stats);
+        }
+
+
         // Нормальные значения  для 2D игры ориентиры примерно такие:
         // Метрика	      Хорошо
         // FPS	          60
