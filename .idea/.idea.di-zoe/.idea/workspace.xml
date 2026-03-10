@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Profiler/UIUniWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Profiler/UIUniWindow.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/UIProfiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/UIProfiler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/UIProfiler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Profiler/UIProfiler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/UIProfiler.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Profiler/UIProfiler.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Profiler.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Profiler.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kirurobo.uniwinc@304f9ba2aa/Runtime/Scripts/UniWindowController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,7 +76,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../builds/di-zoe/standalone\di-zoe.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../builds/di-zoe/standalone_alpha\di-zoe.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\user\Documents\GitHub\builds\di-zoe\standalone" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -152,7 +160,7 @@
       <workItem from="1772898857973" duration="1663000" />
       <workItem from="1772908150216" duration="675000" />
       <workItem from="1773064904704" duration="1238000" />
-      <workItem from="1773139001845" duration="4902000" />
+      <workItem from="1773139001845" duration="7004000" />
     </task>
     <servers />
   </component>

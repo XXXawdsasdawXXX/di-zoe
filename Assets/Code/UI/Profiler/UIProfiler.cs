@@ -1,11 +1,9 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Profiling;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
-namespace Code.Tools
+namespace Code.UI.Profiler
 {
     public class UIProfiler : MonoBehaviour
     {
@@ -67,10 +65,10 @@ namespace Code.Tools
             _gpu = _gpuRecorder.elapsedNanoseconds / 1_000_000f;
             textGPU.text = $"GPU: {_gpu:0.00} ms";
 
-            _ram = Profiler.GetTotalAllocatedMemoryLong() / (1024f * 1024f);
+            _ram = UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() / (1024f * 1024f);
             textRAM.text = $"RAM: {Mathf.RoundToInt(_ram)} MB";
 
-            _mono = Profiler.GetMonoUsedSizeLong() / (1024f * 1024f);
+            _mono = UnityEngine.Profiling.Profiler.GetMonoUsedSizeLong() / (1024f * 1024f);
             textMono.text = $"Mono: {Mathf.RoundToInt(_mono)} MB";
 
             _gc = System.GC.GetTotalMemory(false) / (1024 * 1024);
