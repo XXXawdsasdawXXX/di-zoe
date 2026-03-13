@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Config.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Config/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/OdinModuleConfig.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/OdinModuleConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Data/UIConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Data/UIConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +157,7 @@
       <workItem from="1773139001845" duration="7004000" />
       <workItem from="1773229285150" duration="5483000" />
       <workItem from="1773411797131" duration="2182000" />
-      <workItem from="1773426864546" duration="1742000" />
+      <workItem from="1773426864546" duration="2718000" />
     </task>
     <servers />
   </component>
