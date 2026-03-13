@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.UI
 {
-    public class UIPresenter<View> : UIComponent where View : UIView
+    public class UIPresenter<View> : MonoBehaviour where View : UIView
     {
         [SerializeField] protected View view;
 
@@ -10,10 +10,8 @@ namespace Code.UI
         #region Editor
 #if UNITY_EDITOR
 
-        protected override void OnValidate()
+        protected void OnValidate()
         {
-            base.OnValidate();
-            
             if (view == null)
             {
                 if (!TryGetComponent(out view))

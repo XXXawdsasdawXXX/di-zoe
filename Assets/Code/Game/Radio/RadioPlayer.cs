@@ -25,13 +25,13 @@ namespace Code.Game.Radio
 
         public void Subscribe()
         {
-            _radioModels.CurrentChannel.SubscribeToValue(_onChangeRadioStation);
+            _radioModels.CurrentChannelIndex.SubscribeToValue(_onChangeRadioStation);
             _radioModels.RadioVolume.SubscribeToValue(_setVolume);
         }
         
         public void Unsubscribe()
         {
-            _radioModels.CurrentChannel.UnsubscibeFromValue(_onChangeRadioStation);
+            _radioModels.CurrentChannelIndex.UnsubscibeFromValue(_onChangeRadioStation);
             _radioModels.RadioVolume.UnsubscibeFromValue(_setVolume);
         }
         

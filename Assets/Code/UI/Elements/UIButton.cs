@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Code.Core.GameLoop;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
-using TriInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,15 +18,14 @@ namespace Code.UI
         
         private Action _clicked;
         private double _lastClickTime;
-        
-        
+
         public virtual UniTask GameInitialize()
         {
             foreach (UIButtonImpact buttonImpact in _buttonImpacts)
             {
                 buttonImpact.Initialize();
             }
-            
+
             return UniTask.CompletedTask;
         }
         
@@ -40,6 +38,11 @@ namespace Code.UI
         {
             _clicked -= clicked;
         }
+
+        public void ClearSubscriptions()
+        {
+            _clicked = null;
+        }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -51,9 +54,18 @@ namespace Code.UI
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            UIRadioButton radioButton = this as UIRadioButton;
+            
+            if (radioButton != null)
             {
-                buttonImpact.OnExit();
+                radioButton.UpdateImpactState();
+            }
+            else
+            {
+                foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+                {
+                    buttonImpact.OnExit();
+                }
             }
         }
 

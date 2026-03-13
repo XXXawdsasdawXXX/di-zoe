@@ -1,62 +1,79 @@
+using System;
 using System.Linq;
 using Code.Core.ServiceLocator;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
+using Object = UnityEngine.Object;
 
 namespace Code.Core.GameLoop
 {
     [Preserve]
-    public class Spawner : IService, IInitializeListener
+    public static class Spawner 
     {
-        private GameEventDispatcher _gameEventDispatcher;
+        private static readonly Lazy<GameEventDispatcher> _lazyDispatcher =
+            new(() => Container.Instance.GetService<GameEventDispatcher>());
 
-        public UniTask GameInitialize()
-        {
-            _gameEventDispatcher = Container.Instance.GetService<GameEventDispatcher>();
-            
-            return UniTask.CompletedTask;
-        }
+        private static GameEventDispatcher _gameEventDispatcher => _lazyDispatcher.Value;
         
-        public T Instantiate<T>(T prefab) where T : Object
+        
+        public static T Instantiate<T>(T prefab) where T : MonoBehaviour
         {
             T instance = Object.Instantiate(prefab);
 
-            GameObject gameInstance = instance as GameObject;
-
-            if (gameInstance != null)
+            if (instance == null)
             {
-                IGameListeners[] listeners = gameInstance.GetComponentsInChildren<IGameListeners>(true).ToArray();
+                return instance;
+            }
+            
+            IGameListeners[] listeners = instance.GetComponentsInChildren<IGameListeners>(true).ToArray();
 
-                foreach (IGameListeners listener in listeners)
-                {
-                    _gameEventDispatcher.AddRuntimeListener(listener);
-                }
+            foreach (IGameListeners listener in listeners)
+            {
+                _gameEventDispatcher.AddRuntimeListener(listener);
             }
 
             return instance;
         }
 
-        public T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation) where T : Object
+        public static T Instantiate<T>(T prefab, Transform root) where T : MonoBehaviour
+        {
+            T instance = Object.Instantiate(prefab, root);
+
+            if (instance == null)
+            {
+                return instance;
+            }
+            
+            IGameListeners[] listeners = instance.GetComponentsInChildren<IGameListeners>(true).ToArray();
+
+            foreach (IGameListeners listener in listeners)
+            {
+                _gameEventDispatcher.AddRuntimeListener(listener);
+            }
+
+            return instance;
+        }
+        
+        public static T Instantiate<T>(T prefab, Vector3 position, Quaternion rotation) where T : MonoBehaviour
         {
             T instance = Object.Instantiate(prefab, position, rotation);
 
-            GameObject gameInstance = instance as GameObject;
-
-            if (gameInstance != null)
+            if (instance == null)
             {
-                IGameListeners[] listeners = gameInstance.GetComponentsInChildren<IGameListeners>(true).ToArray();
+                return instance;
+            }
 
-                foreach (IGameListeners listener in listeners)
-                {
-                    _gameEventDispatcher.AddRuntimeListener(listener);
-                }
+            IGameListeners[] listeners = instance.GetComponentsInChildren<IGameListeners>(true).ToArray();
+
+            foreach (IGameListeners listener in listeners)
+            {
+                _gameEventDispatcher.AddRuntimeListener(listener);
             }
 
             return instance;
         }
 
-        public void Destroy(GameObject instance)
+        public static void Destroy(GameObject instance)
         {
             IGameListeners[] listeners = instance.GetComponentsInChildren<IGameListeners>(true).ToArray();
 

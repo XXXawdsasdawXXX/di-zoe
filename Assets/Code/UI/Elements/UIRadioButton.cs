@@ -10,48 +10,40 @@ namespace Code.UI
         [field: SerializeField] public ReactiveProperty<bool> IsChecked { get; private set; }
 
         [SerializeField] private bool _initializeOnStart;
-            
+        [SerializeField] private bool _isAutonomous;
+        
         [SerializeReference] private UIRadioButtonImpact[] _radioButtonImpacts;
 
         
-        public override UniTask GameInitialize()
+        public override async UniTask GameInitialize()
         {
+            await base.GameInitialize();
+
             if (_initializeOnStart)
             {
                 if (IsChecked.PropertyValue)
                 {
-                    _unCheck();
+                    UnCheck();
                 }
                 else
                 {
-                    _check();
+                    Check();
                 }
             }
-            
-            return base.GameInitialize();
         }
 
         public void SetValueWithoutNotify(bool value)
         {
             IsChecked.SetValueWithoutNotify(value);
         }
-        
-        protected override void onClick()
-        {
-            base.onClick();
 
+        public void Check()
+        {
             if (IsChecked.PropertyValue)
             {
-                _unCheck();
+                return;
             }
-            else
-            {
-                _check();
-            }
-        }
-
-        private void _check()
-        {
+            
             IsChecked.PropertyValue = true;
 
             foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
@@ -60,13 +52,56 @@ namespace Code.UI
             }
         }
 
-        private void _unCheck()
+        public void UnCheck()
         {
+            if (!IsChecked.PropertyValue)
+            {
+                return;
+            }
+            
             IsChecked.PropertyValue = false;
             
             foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
             {
                 buttonImpact.Uncheck();
+            }
+        }
+
+        public void UpdateImpactState()
+        {
+            if (IsChecked.PropertyValue)
+            {
+                foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
+                {
+                    buttonImpact.Check();
+                }
+            }
+            else
+            {
+                foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
+                {
+                    buttonImpact.Uncheck();
+                }
+            }
+            
+        }
+        protected override void onClick()
+        {
+            base.onClick();
+
+            if (!_isAutonomous)
+            {
+                UpdateImpactState();
+                return;
+            }
+
+            if (IsChecked.PropertyValue)
+            {
+                UnCheck();
+            }
+            else
+            {
+                Check();
             }
         }
     }

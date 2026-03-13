@@ -37,6 +37,18 @@ namespace Code.UI
 
             foreach (ImpactModel model in _models)
             {
+                if (model.Equals(default))
+                {
+                    Debug.Log("pizdec");
+                    continue;
+                }
+
+                if (uiConfiguration == null)
+                {
+                    Debug.Log("pizdec #2");
+                    break;
+                }
+                
                 Color color = model.IsCustomColors
                     ? model.PointerModel.Enter
                     : uiConfiguration.DefaultButtonsImpactColor.Enter; 

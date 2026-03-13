@@ -27,7 +27,7 @@ namespace Code.Game.Radio
         public Dictionary<string, ReactiveProperty<RadioChannelModel>> Channels { get; } = new();
         public ReactiveProperty<RadioSongModel> CurrentSong { get; } = new(default);
         public ReactiveProperty<RadioSongListModel> PreviousSongs { get; } = new(default);
-        public ReactiveProperty<int> CurrentChannel { get; }  = new(-1);
+        public ReactiveProperty<int> CurrentChannelIndex { get; }  = new(-1);
         
         public ReactiveProperty<float> RadioVolume { get; }  = new(-1);
         
@@ -49,7 +49,7 @@ namespace Code.Game.Radio
         
         public async UniTask LoadProgress(PlayerProgressData playerProgress)
         {
-            CurrentChannel.PropertyValue = playerProgress.RadioChanel;
+            CurrentChannelIndex.PropertyValue = playerProgress.RadioChanel;
             RadioVolume.PropertyValue = playerProgress.RadioVolume;
             
             await  _updateSongs();
@@ -57,7 +57,7 @@ namespace Code.Game.Radio
 
         public void SaveProgress(PlayerProgressData playerProgress)
         {
-            playerProgress.RadioChanel = CurrentChannel.PropertyValue;
+            playerProgress.RadioChanel = CurrentChannelIndex.PropertyValue;
             playerProgress.RadioVolume = RadioVolume.PropertyValue;
         }
 
@@ -78,7 +78,7 @@ namespace Code.Game.Radio
 
         public void SetCurrentChannel(int channel)
         {
-            CurrentChannel.PropertyValue = channel;
+            CurrentChannelIndex.PropertyValue = channel;
            
             _tracksUpdateTimer.Finish();
             _channelsUpdateTimer.Finish();
@@ -107,7 +107,7 @@ namespace Code.Game.Radio
         
         public RadioChannelModel GetCurrentChannelModel()
         {
-            return Channels.ElementAt(CurrentChannel.PropertyValue).Value.PropertyValue;
+            return Channels.ElementAt(CurrentChannelIndex.PropertyValue).Value.PropertyValue;
         }
 
         public string GetCurrentStreamURL()

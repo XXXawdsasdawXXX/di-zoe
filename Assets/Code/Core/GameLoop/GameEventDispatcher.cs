@@ -88,10 +88,6 @@ namespace Code.Core.GameLoop
 
         public async void AddRuntimeListener(IGameListeners listener)
         {
-#if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker($"RuntimeListener: {listener.GetType().Name}");
-            marker.Begin();
-#endif
             if (listener is IInitializeListener initListener) await initListener.GameInitialize();
 
             if (listener is ISubscriber subscriber)
@@ -107,10 +103,6 @@ namespace Code.Core.GameLoop
             if (listener is IUpdateListener tickListener) _updateListeners.Add(tickListener);
 
             if (listener is IExitListener exitListener) _exitListeners.Add(exitListener);
-
-#if UNITY_EDITOR
-            marker.End();
-#endif
         }
 
         public void RemoveRuntimeListener(IGameListeners listener)
