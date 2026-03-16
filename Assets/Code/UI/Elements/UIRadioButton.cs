@@ -35,6 +35,21 @@ namespace Code.UI
         public void SetValueWithoutNotify(bool value)
         {
             IsChecked.SetValueWithoutNotify(value);
+
+            if (IsChecked.PropertyValue)
+            {
+                foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
+                {
+                    buttonImpact.Check();
+                }
+            }
+            else
+            {
+                foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
+                {
+                    buttonImpact.Uncheck();
+                }
+            }
         }
 
         public void Check()

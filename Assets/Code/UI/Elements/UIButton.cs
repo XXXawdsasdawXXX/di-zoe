@@ -54,18 +54,16 @@ namespace Code.UI
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            {
+                buttonImpact.OnExit();
+            }
+            
             UIRadioButton radioButton = this as UIRadioButton;
             
             if (radioButton != null)
             {
                 radioButton.UpdateImpactState();
-            }
-            else
-            {
-                foreach (UIButtonImpact buttonImpact in _buttonImpacts)
-                {
-                    buttonImpact.OnExit();
-                }
             }
         }
 

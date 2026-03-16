@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7160350004084985769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -167,7 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 7160350004084985769}
   _buttonImpacts: []
-  _isInitialized: 0
   <IsChecked>k__BackingField:
     _propertyValue: 0
   _initializeOnStart: 0
@@ -281,7 +280,6 @@ MonoBehaviour:
   <Rect>k__BackingField: {fileID: 2051206652544713893}
   _buttonImpacts:
   - rid: 5517237458552487948
-  _isInitialized: 0
   <IsChecked>k__BackingField:
     _propertyValue: 0
   _initializeOnStart: 0
@@ -291,7 +289,6 @@ MonoBehaviour:
   <UIText_Name>k__BackingField: {fileID: 3900705930935082633}
   <UIText_Genre>k__BackingField: {fileID: 8500993002497374118}
   <UIRadioButton_Favorite>k__BackingField: {fileID: 6985836185445464296}
-  _isMainTab: 0
   references:
     version: 2
     RefIds:
@@ -310,9 +307,9 @@ MonoBehaviour:
       type: {class: UIRadioButtonImpact_ImagesColor, ns: Code.UI.RadioButtonImpact, asm: UI}
       data:
         _models:
-        - Render: {fileID: 966995379164662934}
-          CheckedColor: {r: 0.811343, g: 0.9198113, b: 0.8349142, a: 1}
-          UncheckedColor: {r: 1, g: 1, b: 1, a: 1}
+        - Render: {fileID: 3429797230593396681}
+          CheckedColor: {r: 0.811343, g: 0.9198113, b: 0.8349142, a: 0.6509804}
+          UncheckedColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &8688908880239459704
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,14 +321,13 @@ GameObject:
   - component: {fileID: 4248824209860296681}
   - component: {fileID: 1987212104599673434}
   - component: {fileID: 3429797230593396681}
-  - component: {fileID: 4756917493654283156}
   m_Layer: 5
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4248824209860296681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -373,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.86642754, g: 0.9647059, b: 0.8235294, a: 1}
+  m_Color: {r: 0.86642754, g: 0.9647059, b: 0.8235294, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -390,34 +386,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4756917493654283156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8688908880239459704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92af1338f4e462dab1118d28d7d4b37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Rect>k__BackingField: {fileID: 4248824209860296681}
-  _buttonImpacts:
-  - rid: 5517237435330986059
-  _isInitialized: 0
-  <IsChecked>k__BackingField:
-    _propertyValue: 0
-  _initializeOnStart: 0
-  _isAutonomous: 0
-  _radioButtonImpacts: []
-  references:
-    version: 2
-    RefIds:
-    - rid: 5517237435330986059
-      type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
-      data:
-        _models: []
 --- !u!1001 &1271925320602039426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -57
+      value: -61.7077
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.y
@@ -495,7 +463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -21.5
+      value: -19.1462
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -528,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 35b78b2792136a547856fd6ed6c5aa55, type: 2}
+      objectReference: {fileID: 11400000, guid: e44dbf8dd8a068048aae34edc948bc7c, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontColor.b
       value: 0.70980394
@@ -552,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2348475486254203090, guid: 35b78b2792136a547856fd6ed6c5aa55, type: 2}
+      objectReference: {fileID: 8475459527683639270, guid: e44dbf8dd8a068048aae34edc948bc7c, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
@@ -628,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -57
+      value: -61.7077
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.y
@@ -664,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -21.5
+      value: -19.1462
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.y

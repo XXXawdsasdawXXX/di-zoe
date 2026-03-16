@@ -4,6 +4,8 @@ using System.Threading;
 using Code.Core.GameLoop;
 using Code.Core.Pools;
 using Cysharp.Threading.Tasks;
+using TriInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Code.UI
@@ -139,6 +141,23 @@ namespace Code.UI
             );
         }
 
-
+        #region Editor
+#if UNITY_EDITOR
+        
+        [Button]
+        private void _showListView()
+        {
+            _listView.gameObject.SetActive(true);
+            EditorUtility.SetDirty(this);
+        }
+        
+        [Button]
+        private void _hideListView()
+        {
+            _listView.gameObject.SetActive(false);
+            EditorUtility.SetDirty(this);
+        }
+#endif
+        #endregion
     }
 }

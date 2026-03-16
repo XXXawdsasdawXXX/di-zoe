@@ -1,5 +1,3 @@
-using Code.Core.GameLoop;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.UI.Windows.Radio
