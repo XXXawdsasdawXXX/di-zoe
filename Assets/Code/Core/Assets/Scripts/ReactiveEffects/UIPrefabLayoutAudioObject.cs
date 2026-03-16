@@ -146,8 +146,7 @@ public class UIPrefabLayoutAudioObject : VisualizationEffectBase
 
                 break;
         }
-
-        // Применяем позиции
+        
         for (int i = 0; i < layoutPositions.Count; i++)
         {
             RectTransform rect = _gameObjects[i].GetComponent<RectTransform>();
@@ -157,8 +156,6 @@ public class UIPrefabLayoutAudioObject : VisualizationEffectBase
         }
 
         parentRect.localRotation *= Quaternion.Euler(RotationOffset);
-
-        Debug.Log("PERFORM LAYOUT CALLED");
     }
 
     #endregion

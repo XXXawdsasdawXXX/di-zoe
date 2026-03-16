@@ -12,17 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dadbcbb7b04b38a7ccc86ae3a6bac1, type: 3}
   m_Name: RadioConfiguration
   m_EditorClassIdentifier: 
-  Channels:
-  - Id: defcon
-    Path: http://ice3.somafm.com/defcon-128-mp3
-  - Id: groovesalad
-    Path: http://ice3.somafm.com/groovesalad-128-mp3
-  - Id: dronezone
-    Path: http://ice3.somafm.com/dronezone-128-mp3
-  - Id: indiepop
-    Path: http://ice3.somafm.com/indiepop-128-mp3
-  _channels:
-  - http://ice3.somafm.com/defcon-128-mp3
-  - http://ice3.somafm.com/groovesalad-128-mp3
-  - http://ice3.somafm.com/dronezone-128-mp3
-  - http://ice3.somafm.com/indiepop-128-mp3
+  <PreviousTracksCount>k__BackingField: 5
+  <ChannelsUpdateInterval>k__BackingField: 60
+  <TrackUpdateInterval>k__BackingField: 30
+  <DefaultChannelLogo>k__BackingField: {fileID: 2800000, guid: 7494d87ebe8feca4a97da3a093056e82, type: 3}

@@ -91,18 +91,32 @@ namespace Code.Game.Radio
         
         public async UniTask<Texture2D> GetChannelLogo(string logoUrl)
         {
-            using UnityWebRequest request = UnityWebRequestTexture.GetTexture(logoUrl);
-    
-            await request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
+            if (string.IsNullOrEmpty(logoUrl))
             {
-                Debug.LogWarning($"GetCurrentChannelLogo failed: {request.error}");
-                return null;
+                return _radioConfiguration.DefaultChannelLogo;
             }
 
-            Texture2D texture = DownloadHandlerTexture.GetContent(request);
-            return texture;
+            try
+            {
+                using UnityWebRequest request = UnityWebRequestTexture.GetTexture(logoUrl);
+    
+                await request.SendWebRequest();
+                
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Debug.LogWarning($"Failed to load logo from {logoUrl}: {request.error}");
+              
+                    return _radioConfiguration.DefaultChannelLogo;
+                }
+                
+                return DownloadHandlerTexture.GetContent(request);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Failed to load logo from {logoUrl}: {e.Message}");
+                
+                return _radioConfiguration.DefaultChannelLogo;
+            }
         }
         
         public RadioChannelModel GetCurrentChannelModel()

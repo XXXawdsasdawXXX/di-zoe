@@ -156,7 +156,11 @@ namespace Code.UI.Windows.Radio
         {
             RadioChannelModel channelModel = _radioModels.GetCurrentChannelModel();
 
-            Texture2D texture2D = await _radioModels.GetChannelLogo(channelModel.image);
+            string logoUrl = channelModel.image.EndsWith(".gif", StringComparison.OrdinalIgnoreCase)
+                ? channelModel.largeimage
+                : channelModel.image;
+            
+            Texture2D texture2D = await _radioModels.GetChannelLogo(logoUrl);
 
             view.UIRawImage_channelLogo.SetTexture(texture2D);
 
