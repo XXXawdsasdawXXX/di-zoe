@@ -11,28 +11,28 @@ namespace Code.Game.Radio
     {
         private MediaFoundationReader mediaFoundationReader;
         private WaveOutEvent waveOut;
-        private RadioModelService _radioModels;
+        private RadioService _radioModels;
 
         private Coroutine _coroutine;
 
 
         public UniTask GameInitialize()
         {
-            _radioModels = Container.Instance.GetService<RadioModelService>();
+            _radioModels = Container.Instance.GetService<RadioService>();
 
             return UniTask.CompletedTask;
         }
 
         public void Subscribe()
         {
-            _radioModels.CurrentChannelIndex.SubscribeToValue(_onChangeRadioStation);
-            _radioModels.RadioVolume.SubscribeToValue(_setVolume);
+            _radioModels.State.CurrentChannelIndex.SubscribeToValue(_onChangeRadioStation);
+            _radioModels.State.RadioVolume.SubscribeToValue(_setVolume);
         }
         
         public void Unsubscribe()
         {
-            _radioModels.CurrentChannelIndex.UnsubscibeFromValue(_onChangeRadioStation);
-            _radioModels.RadioVolume.UnsubscibeFromValue(_setVolume);
+            _radioModels.State.CurrentChannelIndex.UnsubscibeFromValue(_onChangeRadioStation);
+            _radioModels.State.RadioVolume.UnsubscibeFromValue(_setVolume);
         }
         
         public void GameExit()
@@ -72,7 +72,7 @@ namespace Code.Game.Radio
 
         private void _playCurrentStream()
         {
-            string url = _radioModels.GetCurrentStreamURL();
+            string url = _radioModels.GetCurrentStreamUrl();
             
             try
             {
@@ -89,7 +89,7 @@ namespace Code.Game.Radio
 
         private void _onChangeRadioStation(int index)
         {
-            if (index < 0 || index >= _radioModels.Channels.Count)
+            if (index < 0 || index >= _radioModels.State.Channels.Count)
             {
                 Debug.LogError("Invalid chanel index");
                 return;

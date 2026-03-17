@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientsConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioRepository.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientStorage.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientStorage.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientsConfiguration.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact_ImagesColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact_ImagesColor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/PlayerProgressData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/PlayerProgressData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SavedData/PlayerProgressData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/PlayerProgressData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Image_scaled.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Image_scaled.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +175,7 @@
       <workItem from="1773657806251" duration="5353000" />
       <workItem from="1773677501185" duration="782000" />
       <workItem from="1773739871268" duration="138000" />
+      <workItem from="1773757987173" duration="4957000" />
     </task>
     <servers />
   </component>

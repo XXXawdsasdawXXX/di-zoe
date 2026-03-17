@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2270020891285059755}
   - component: {fileID: 6985836185445464296}
   m_Layer: 5
-  m_Name: Toggle_Icon_favorit
+  m_Name: Toggle_Icon_favorite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

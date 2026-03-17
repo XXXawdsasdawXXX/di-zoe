@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Code.Core.Save.SavedData
 {
@@ -11,10 +12,14 @@ namespace Code.Core.Save.SavedData
         public int RadioChanel;
         public float RadioVolume;
 
+        public List<int> FavoriteRadioChannels;
+
+        
         public PlayerProgressData()
         {
             RadioChanel = 0;
             RadioVolume = 0.5f;
+            FavoriteRadioChannels = new List<int>();
         }
     }
 }
