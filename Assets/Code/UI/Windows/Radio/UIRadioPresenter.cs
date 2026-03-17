@@ -8,7 +8,6 @@ using Code.Tools;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using TMPro;
 using TriInspector;
 using UnityEditor;
 using UnityEngine;
@@ -17,17 +16,17 @@ namespace Code.UI.Windows.Radio
 {
     public class UIRadioPresenter : UIPresenter<UIRadioView>, IInitializeListener, ISubscriber, IStartListener
     {
-        private RadioPlayer _radioPlayer;
         private RadioModelService _radioModels;
         private RadioConfiguration _radioConfiguration;
 
-        private bool _isBaseMode = true;
+        private bool _isHiddenPreviousTracks = true;
 
+        
         #region Life
 
         public UniTask GameInitialize()
         {
-            _radioPlayer = Container.Instance.GetService<RadioPlayer>();
+            Container.Instance.GetService<RadioPlayer>();
             _radioModels = Container.Instance.GetService<RadioModelService>();
             _radioConfiguration = Container.Instance.GetConfig<RadioConfiguration>();
 
@@ -46,20 +45,34 @@ namespace Code.UI.Windows.Radio
             _radioModels.CurrentChannelIndex.SubscribeToValue(_updateChannelView);
             _radioModels.RadioVolume.SubscribeToValue(_updateVolume);
 
+            view.UIButton_randomChannel.SubscribeToClicked(_setRandomChannel);
             view.UIButton_previousTracks.SubscribeToClicked(_switchPreviousTracksView);
             view.UISlider_volume.SubscribeToElement(_radioModels.SetVolume);
-            view.UIDropDown_channels.SubscribeToDropDown(_radioModels.SetCurrentChannel);
+            view.UIDropDown_channels.SubscribeToDropDown(_radioModels.SetChannel);
+        }
+
+        public void Unsubscribe()
+        {
+            foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioModels.Channels)
+            {
+                channel.Value.UnsubscibeFromValue(_tryUpdateListenersCountView);
+            }
+            
+            _radioModels.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
+            _radioModels.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
+            _radioModels.CurrentChannelIndex.UnsubscibeFromValue(_updateChannelView);
+            _radioModels.RadioVolume.UnsubscibeFromValue(_updateVolume);
+
+            view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
+            view.UIButton_previousTracks.UnsubscribeFromClicked(_switchPreviousTracksView);
+            view.UISlider_volume.UnsubscribeFromElement(_radioModels.SetVolume);
+            view.UIDropDown_channels.UnsubscribeFromDropDown(_radioModels.SetChannel);
         }
 
         public UniTask GameStart()
         {
-            List<TMP_Dropdown.OptionData> channels = new();
-
             foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioModels.Channels)
             {
-                /*channels.Add(
-                    new TMP_Dropdown.OptionData(
-                        $"<color=#000000>{channel.Value.PropertyValue.genre}:</color> \n{channel.Key}"));*/
                 UIRadioChannelTab tab = view.UIDropDown_channels.AddElement() as UIRadioChannelTab;
 
                 if (tab != null)
@@ -71,11 +84,10 @@ namespace Code.UI.Windows.Radio
                         IsFavorite = false
                     });
                 }
-                
             }
 
             UIRadioChannelTab mainTab =  view.UIDropDown_channels
-                .SetCurrentValueWithoutNotify(_radioModels.CurrentChannelIndex.PropertyValue) as UIRadioChannelTab;;
+                .SetCurrentValueWithoutNotify(_radioModels.CurrentChannelIndex.PropertyValue) as UIRadioChannelTab;
 
             if (mainTab)
             {
@@ -87,31 +99,21 @@ namespace Code.UI.Windows.Radio
                     IsFavorite = false
                 });
             }
+            
             _updateChannelView(_radioModels.CurrentChannelIndex.PropertyValue);
 
             return UniTask.CompletedTask;
         }
 
-        public void Unsubscribe()
-        {
-            foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioModels.Channels)
-            {
-                channel.Value.UnsubscibeFromValue(_tryUpdateListenersCountView);
-            }
-
-            view.UIButton_previousTracks.UnsubscribeFromClicked(_switchPreviousTracksView);
-
-            _radioModels.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
-            _radioModels.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
-            _radioModels.CurrentChannelIndex.UnsubscibeFromValue(_updateChannelView);
-            _radioModels.RadioVolume.UnsubscibeFromValue(_updateVolume);
-
-            view.UISlider_volume.UnsubscribeFromElement(_radioModels.SetVolume);
-            view.UIDropDown_channels.UnsubscribeFromDropDown(_radioModels.SetCurrentChannel);
-        }
-
         #endregion
-
+        
+        private void _setRandomChannel()
+        {
+            int index = UnityEngine.Random.Range(0, _radioModels.Channels.Count);
+            view.UIDropDown_channels.SetCurrentValueWithoutNotify(index);
+            _radioModels.SetChannel(index);
+        }
+        
         private void _updateVolume(float volume)
         {
             view.UISlider_volume.SetValueWithoutNotify(volume);
@@ -129,7 +131,9 @@ namespace Code.UI.Windows.Radio
 
         private void _updatePreviousSongsView(RadioSongListModel songs)
         {
-            if (songs.Songs == null || songs.Songs.Count == 0 || _isBaseMode)
+            int count = Math.Min(_radioConfiguration.PreviousTracksCount, songs.Songs.Count);
+            
+            if (songs.Songs == null || count == 0 || _isHiddenPreviousTracks)
             {
                 view.UIText_previousTracks.StopTypewrite();
 
@@ -137,18 +141,26 @@ namespace Code.UI.Windows.Radio
             }
 
             StringBuilder stringBuilder = new();
-
             stringBuilder.Append("Recently Played");
             stringBuilder.AppendLine();
-
-            for (int i = 0; i < _radioConfiguration.PreviousTracksCount; i++)
+            
+            for (int i = 0; i < count; i++)
             {
+                if (songs.Songs[i] == null || stringBuilder.Length > 180)
+                {
+                    break;
+                }
+                
                 stringBuilder.Append(songs.Songs[i].artist);
                 stringBuilder.Append(" - ");
                 stringBuilder.Append(songs.Songs[i].title);
                 stringBuilder.AppendLine();
             }
-
+            
+            Debug.Log($"length {stringBuilder.Length}");
+            
+            stringBuilder.Append("...");
+            
             view.UIText_previousTracks.StartTypewrite(stringBuilder.ToString()).Forget();
         }
 
@@ -163,11 +175,8 @@ namespace Code.UI.Windows.Radio
             Texture2D texture2D = await _radioModels.GetChannelLogo(logoUrl);
 
             view.UIRawImage_channelLogo.SetTexture(texture2D);
-
             view.UIText_channel_name.SetText(channelModel.title);
-
             view.UIText_channel_description.SetText(channelModel.description);
-
             view.UIText_channel_genre.SetText(channelModel.genre);
 
             _updateCurrentSongView(_radioModels.CurrentSong.PropertyValue);
@@ -175,28 +184,24 @@ namespace Code.UI.Windows.Radio
             _updatePreviousSongsView(_radioModels.PreviousSongs.PropertyValue);
         }
 
-        [Button()]
+        [Button]
         private void _switchPreviousTracksView()
         {
             const float hiddenHeight = 295;
             const float shownHeight = 415;
 
             Vector2 size = view.Rect_Background.sizeDelta;
-
-            _isBaseMode = Math.Abs(size.y - shownHeight) < 1;
-
-            size.y = _isBaseMode ? hiddenHeight : shownHeight;
+            _isHiddenPreviousTracks = Math.Abs(size.y - shownHeight) < 1;
+            size.y = _isHiddenPreviousTracks ? hiddenHeight : shownHeight;
 
             view.UIText_previousTracks.SetText("");
-            view.UIText_previousTracks.gameObject.SetActive(!_isBaseMode);
+            view.UIText_previousTracks.gameObject.SetActive(!_isHiddenPreviousTracks);
 
 #if UNITY_EDITOR
             if (!Application.isPlaying)
             {
                 view.Rect_Background.sizeDelta = size;
-
                 EditorUtility.SetDirty(gameObject);
-
                 return;
             }
 #endif
@@ -207,7 +212,7 @@ namespace Code.UI.Windows.Radio
             sequence.Append(view.Rect_Background.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_LONG));
             sequence.Join(
                 view.UIButton_previousTracks.Rect.DOSizeDelta(Vector2.zero, UIConfiguration.ANIMATION_DURATION_SHORT));
-            sequence.Append(view.UIButton_previousTracks.Rect.DORotate(new Vector3(0, 0, _isBaseMode ? 0 : 180), 0));
+            sequence.Append(view.UIButton_previousTracks.Rect.DORotate(new Vector3(0, 0, _isHiddenPreviousTracks ? 0 : 180), 0));
             sequence.AppendCallback(() => view.UIButton_previousTracks.OnPointerExit(null));
             sequence.Append(view.UIButton_previousTracks.Rect.DOSizeDelta(defaultButtonSize,
                 UIConfiguration.ANIMATION_DURATION_SHORT));

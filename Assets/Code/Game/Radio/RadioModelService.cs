@@ -76,7 +76,7 @@ namespace Code.Game.Radio
             }
         }
 
-        public void SetCurrentChannel(int channel)
+        public void SetChannel(int channel)
         {
             CurrentChannelIndex.PropertyValue = channel;
            

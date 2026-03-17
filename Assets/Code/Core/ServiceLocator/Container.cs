@@ -74,15 +74,16 @@ namespace Code.Core.ServiceLocator
                     if (Activator.CreateInstance(serviceType) is T service)
                     {
                         list.Add(service);
-                        Debug.Log($"Created {service.GetType().Name} from {assemblyName}");
                     }
                 }
             }
 
             IEnumerable<T> mbServices = _allObjects.OfType<T>();
-            if (mbServices.Any())
+            IEnumerable<T> enumerable = mbServices as T[] ?? mbServices.ToArray();
+            
+            if (enumerable.Any())
             {
-                list.AddRange(mbServices);
+                list.AddRange(enumerable);
             }
         }
 

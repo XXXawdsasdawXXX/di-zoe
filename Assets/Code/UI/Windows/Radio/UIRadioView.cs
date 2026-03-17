@@ -12,6 +12,7 @@ namespace Code.UI.Windows.Radio
         [field: SerializeField, Group("Chanel")] public UIRawImage UIRawImage_channelLogo { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIText UIText_listenerCount { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIDropDown UIDropDown_channels { get; private set; }
+        [field: SerializeField, Group("Optional")] public UIButton UIButton_randomChannel { get; private set; }
         
         [field: Space]
         [field: SerializeField, Group("Tracks")] public UIText UIText_currentTrack { get; private set; }

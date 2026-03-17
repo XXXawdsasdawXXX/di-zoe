@@ -24,7 +24,7 @@ namespace Code.Game.Effects
         protected ParticleSystem.ColorOverLifetimeModule _colorOverLifetime;
 
         [Header("Services")]
-        protected GradientsStorage _gradientsStorage;
+        protected GradientsConfiguration _gradientsConfiguration;
 
         protected readonly FacadeSettings _defaultSettings = new FacadeSettings();
 
@@ -46,7 +46,7 @@ namespace Code.Game.Effects
             _defaultSettings.TrailLiveTime = _trails.lifetimeMultiplier;
             _defaultSettings.LiveTime = _main.startLifetimeMultiplier;
 
-            _gradientsStorage = Container.Instance.FindStorage<GradientsStorage>();
+            _gradientsConfiguration = Container.Instance.GetConfig<GradientsConfiguration>();
             
             return UniTask.CompletedTask;
         }
@@ -115,7 +115,7 @@ namespace Code.Game.Effects
 
         public void SetTrailsGradientValue(float getValue, GradientType gradientType)
         {
-            if (_gradientsStorage.TryGetGradient(gradientType, out Gradient gradientData))
+            if (_gradientsConfiguration.TryGetGradient(gradientType, out Gradient gradientData))
             {
                 GradientColorKey[] colors = new GradientColorKey[gradientData.colorKeys.Length];
                 for (int i = 0; i < colors.Length; i++)
@@ -146,7 +146,7 @@ namespace Code.Game.Effects
 
         public void SetLifetimeColor(float getValue, GradientType gradientType)
         {
-            if (_gradientsStorage.TryGetGradient(gradientType, out Gradient gradientData))
+            if (_gradientsConfiguration.TryGetGradient(gradientType, out Gradient gradientData))
             {
                 GradientColorKey[] colors = new GradientColorKey[gradientData.colorKeys.Length];
                 for (int i = 0; i < colors.Length; i++)

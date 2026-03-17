@@ -24,7 +24,18 @@ namespace Code.UI
 
         private Sequence _sequence;
 
-
+        public UIButtonImpact_ImagesColor(Image mainRender)
+        {
+            _models = new ImpactModel[]
+            {
+                new ImpactModel
+                {
+                    Render = mainRender,
+                    IsCustomColors = false
+                }
+            };
+        }
+        
         public override void OnEnter()
         {
             if (_models == null)

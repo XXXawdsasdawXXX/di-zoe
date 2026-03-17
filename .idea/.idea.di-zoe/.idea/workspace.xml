@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientsConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientStorage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientStorage.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/GradientsConfiguration.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModelService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact_ImagesColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact_ImagesColor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelTab.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Item_RadioDropDown.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Item_RadioDropDown.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Image_scaled.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Image_scaled.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +171,9 @@
       <workItem from="1773229285150" duration="5483000" />
       <workItem from="1773411797131" duration="2182000" />
       <workItem from="1773426864546" duration="3407000" />
-      <workItem from="1773657806251" duration="2090000" />
+      <workItem from="1773657806251" duration="5353000" />
+      <workItem from="1773677501185" duration="782000" />
+      <workItem from="1773739871268" duration="138000" />
     </task>
     <servers />
   </component>
@@ -182,24 +193,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs</url>
-          <line>131</line>
-          <properties documentPath="C:\Users\user\Documents\GitHub\di-zoe\Assets\Code\UI\Windows\Radio\UIRadioPresenter.cs" initialLine="99" containingFunctionPresentation="method '_updatePreviousSongsView'">
-            <startOffsets>
-              <option value="4907" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4972" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
