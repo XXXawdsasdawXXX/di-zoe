@@ -73,6 +73,8 @@ namespace Code.UI
             
             _clicked?.Invoke();
 
+            Debug.Log("click");
+            
             _lastClickTime = DateTime.UtcNow.TimeOfDay.TotalSeconds;
             
             foreach (UIButtonImpact buttonImpact in _buttonImpacts)

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using Code.Core.GameLoop;
 using Code.Core.Pools;
+using Code.UI.Models;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using TriInspector;
 using UnityEditor;
 using UnityEngine;
@@ -12,6 +14,8 @@ namespace Code.UI
 {
     public class UIDropDown : UIComponent, ISubscriber, IInitializeListener
     {
+        private const float SHOWN_SIZE_SCALER = 5;
+        
         private event Action<int> _changed;
 
         [SerializeField] private UIRadioButton _uiRadioButton_main;
@@ -21,6 +25,7 @@ namespace Code.UI
         private int _current;
         private Camera _camera;
         private CancellationTokenSource _cts;
+        private Tween _tween;
 
         
         #region Life
@@ -118,46 +123,75 @@ namespace Code.UI
 
         private async void _setListViewState()
         {
-            _listView.gameObject.SetActive(true);
-                
-            _cts?.Cancel();
             
+            // Если уже открыт — просто закрыть и выйти
+            if (_cts != null && !_cts.IsCancellationRequested)
+            {
+                _hideListView();
+                _cts.Cancel();
+                return; // ← ключевой фикс
+            }
+
             _cts = new CancellationTokenSource();
+            CancellationToken token = _cts.Token;
 
-            await UniTask.WaitUntil(()=> (Input.GetMouseButtonDown(0) && !_isPointerOverList()) 
-                                         || !_listView.gameObject.activeSelf);
-            
-            _listView.gameObject.SetActive(false);
+            _showListView();
 
+            try
+            {
+                await UniTask.WaitUntil(
+                    () => (Input.GetMouseButtonDown(0) && !_isPointerOverList())
+                          || !_listView.gameObject.activeSelf,
+                    cancellationToken: token  // ← теперь WaitUntil реально отменяется
+                );
+            }
+            catch (OperationCanceledException)
+            {
+                return; // отмена — выходим без лишних вызовов
+            }
+
+            _hideListView();
             _cts?.Cancel();
         }
 
         private bool _isPointerOverList()
         {
             return RectTransformUtility.RectangleContainsScreenPoint(
-                _listView,
+                Rect,
                 Input.mousePosition,
                _camera
             );
         }
-
-        #region Editor
-#if UNITY_EDITOR
         
         [Button]
         private void _showListView()
         {
+            _tween?.Kill();
+            
             _listView.gameObject.SetActive(true);
-            EditorUtility.SetDirty(this);
+            
+            Vector2 size = new(Rect.sizeDelta.x, _uiRadioButton_main.Rect.sizeDelta.y * SHOWN_SIZE_SCALER);
+            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
+                .SetEase(UIConfiguration.TWEEN_EASY);
         }
         
         [Button]
         private void _hideListView()
         {
-            _listView.gameObject.SetActive(false);
-            EditorUtility.SetDirty(this);
+            _tween?.Kill();
+            
+            Vector2 size = new(Rect.sizeDelta.x, _uiRadioButton_main.Rect.sizeDelta.y);
+            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
+                .SetEase(UIConfiguration.TWEEN_EASY)
+                .OnComplete(() =>
+                {
+                    _listView.gameObject.SetActive(false);
+                })
+                .OnKill(() =>
+                {
+                    _listView.gameObject.SetActive(false);
+                });
         }
-#endif
-        #endregion
+
     }
 }
