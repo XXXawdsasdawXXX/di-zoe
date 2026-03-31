@@ -7,12 +7,11 @@ using Code.UI.Models;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TriInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Code.UI
 {
-    public class UIDropDown : UIComponent, ISubscriber, IInitializeListener
+    public class UIDropDown : UIComponent, ISubscriber, IInitializeListener, IStartListener
     {
         private const float SHOWN_SIZE_SCALER = 5;
         
@@ -21,13 +20,15 @@ namespace Code.UI
         [SerializeField] private UIRadioButton _uiRadioButton_main;
         [SerializeField] private MonoPool<UIRadioButton> _pool;
         [SerializeField] private RectTransform _listView;
+        [SerializeField] private bool _isInteractable = true;
 
         private int _current;
         private Camera _camera;
         private CancellationTokenSource _cts;
         private Tween _tween;
+        private float _defaultSizeY;
 
-        
+
         #region Life
         
         public UniTask GameInitialize()
@@ -40,12 +41,22 @@ namespace Code.UI
             
             return UniTask.CompletedTask;
         }
-
+        
+        public UniTask GameStart()
+        {
+            _defaultSizeY = _uiRadioButton_main.Rect.sizeDelta.y;
+           return UniTask.CompletedTask;
+        }
         
         public void Subscribe()
         {
             _uiRadioButton_main.SubscribeToClicked(_setListViewState);
 
+            if (!_isInteractable)
+            {
+                return;
+            }
+            
             IReadOnlyList<UIRadioButton> all = _pool.GetAll();
            
             for (int i = 0; i < all.Count; i++)
@@ -59,6 +70,11 @@ namespace Code.UI
         public void Unsubscribe()
         {
             _uiRadioButton_main.UnsubscribeFromClicked(_setListViewState);
+
+            if (!_isInteractable)
+            {
+                return;
+            }
 
             IReadOnlyList<UIRadioButton> all = _pool.GetAll();
 
@@ -102,11 +118,26 @@ namespace Code.UI
 
             int index = _pool.GetIndex(element);
 
+            if (!_isInteractable)
+            {
+                return element;
+            }
+            
             element.SubscribeToClicked(() => _setSelected(index));
             
             return element;
         }
 
+        public void ClearElements()
+        {
+            foreach (UIRadioButton t in _pool.GetAllEnabled())
+            {
+                t.ClearSubscriptions();
+            }
+            
+            _pool.DisableAll();
+        }
+        
         private void _setSelected(in int index)
         {
             SetCurrentValueWithoutNotify(index);
@@ -123,8 +154,6 @@ namespace Code.UI
 
         private async void _setListViewState()
         {
-            
-            // Если уже открыт — просто закрыть и выйти
             if (_cts != null && !_cts.IsCancellationRequested)
             {
                 _hideListView();
@@ -170,7 +199,7 @@ namespace Code.UI
             
             _listView.gameObject.SetActive(true);
             
-            Vector2 size = new(Rect.sizeDelta.x, _uiRadioButton_main.Rect.sizeDelta.y * SHOWN_SIZE_SCALER);
+            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY * SHOWN_SIZE_SCALER);
             _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
                 .SetEase(UIConfiguration.TWEEN_EASY);
         }
@@ -180,7 +209,7 @@ namespace Code.UI
         {
             _tween?.Kill();
             
-            Vector2 size = new(Rect.sizeDelta.x, _uiRadioButton_main.Rect.sizeDelta.y);
+            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY);
             _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
                 .SetEase(UIConfiguration.TWEEN_EASY)
                 .OnComplete(() =>
@@ -192,6 +221,5 @@ namespace Code.UI
                     _listView.gameObject.SetActive(false);
                 });
         }
-
     }
 }

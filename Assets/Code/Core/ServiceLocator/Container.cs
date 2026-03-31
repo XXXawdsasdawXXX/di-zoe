@@ -52,44 +52,7 @@ namespace Code.Core.ServiceLocator
             
             _allObjects = FindObjectsOfType<MonoBehaviour>();
 
-            CreateTypes(ref _services);
-        }
-        
-        private void CreateTypes<T>(ref List<T> collection)
-        {
-            foreach (Type type in CollectOrderedTypes<T>())
-            {
-                if (Activator.CreateInstance(type) is T item)
-                {
-                    collection.Add(item);
-                }
-            }
-            
-            IEnumerable<T> ofType = _allObjects.OfType<T>();
-            IEnumerable<T> enumerable = ofType as T[] ?? ofType.ToArray();
-            
-            if (enumerable.Any())
-            {
-                collection.AddRange(enumerable);
-            }
-        }
-
-        private List<Type> CollectOrderedTypes<T>()
-        {
-            Type targetType = typeof(T);
-    
-            List<Type> ordered = _cachedOrderedTypes
-                .Where(t => targetType.IsAssignableFrom(t))
-                .ToList();
-
-            HashSet<Type> orderedSet = new(ordered); // O(1) lookup
-
-            IEnumerable<Type> rest = _cachedAllTypes
-                .Where(t => targetType.IsAssignableFrom(t) && !orderedSet.Contains(t));
-    
-            ordered.AddRange(rest);
-
-            return ordered;
+            _createTypes(ref _services);
         }
 
         public T GetConfig<T>() where T : ScriptableObject
@@ -120,15 +83,15 @@ namespace Code.Core.ServiceLocator
         
         public List<IGameListeners> GetGameListeners()
         {
-            return GetContainerComponents<IGameListeners>();
+            return _getContainerComponents<IGameListeners>();
         }
 
         public List<IProgressReader> GetProgressReaders()
         {
-            return GetContainerComponents<IProgressReader>();
+            return _getContainerComponents<IProgressReader>();
         }
 
-        private List<T> GetContainerComponents<T>()
+        private List<T> _getContainerComponents<T>()
         {
             List<T> list = new();
 
@@ -145,6 +108,43 @@ namespace Code.Core.ServiceLocator
             }
 
             return list;
+        }
+        
+        private void _createTypes<T>(ref List<T> collection)
+        {
+            foreach (Type type in _collectOrderedTypes<T>())
+            {
+                if (Activator.CreateInstance(type) is T item)
+                {
+                    collection.Add(item);
+                }
+            }
+            
+            IEnumerable<T> ofType = _allObjects.OfType<T>();
+            IEnumerable<T> enumerable = ofType as T[] ?? ofType.ToArray();
+            
+            if (enumerable.Any())
+            {
+                collection.AddRange(enumerable);
+            }
+        }
+
+        private List<Type> _collectOrderedTypes<T>()
+        {
+            Type targetType = typeof(T);
+    
+            List<Type> ordered = _cachedOrderedTypes
+                .Where(t => targetType.IsAssignableFrom(t))
+                .ToList();
+
+            HashSet<Type> orderedSet = new(ordered); // O(1) lookup
+
+            IEnumerable<Type> rest = _cachedAllTypes
+                .Where(t => targetType.IsAssignableFrom(t) && !orderedSet.Contains(t));
+    
+            ordered.AddRange(rest);
+
+            return ordered;
         }
     }
 }

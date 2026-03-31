@@ -20,6 +20,6 @@ namespace Code.UI.Windows.Radio
         [field: Space]
         [field: SerializeField, Group("Optional")] public UIButton UIButton_previousTracks { get; private set; }
         [field: SerializeField, Group("Optional")] public RectTransform Rect_Background { get; private set; }
-        [field: SerializeField, Group("Optional")] public UIText UIText_previousTracks { get; private set; }
+        [field: SerializeField, Group("Optional")] public UIDropDown UIDropDown_previousTracks { get; private set; }
     }
 }

@@ -11,7 +11,10 @@ namespace Code.UI
     public class UIButton : UIComponent, IInitializeListener,
     IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeReference] private List<UIButtonImpact> _buttonImpacts;
+        [SerializeReference] private List<UIButtonImpact> _buttonImpacts = new List<UIButtonImpact>()
+        {
+            new UIButtonImpact_ImagesColor(null)
+        };
         
         private Action _clicked;
         private double _lastClickTime;

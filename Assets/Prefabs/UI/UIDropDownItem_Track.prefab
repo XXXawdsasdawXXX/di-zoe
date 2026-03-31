@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &195484374196871481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376703987631544933}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -76,113 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &763796613805653549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7160350004084985769}
-  - component: {fileID: 4428550403089841785}
-  - component: {fileID: 2270020891285059755}
-  - component: {fileID: 6985836185445464296}
-  m_Layer: 5
-  m_Name: Toggle_Icon_favorite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7160350004084985769
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763796613805653549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2051206652544713893}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 148.8, y: 0}
-  m_SizeDelta: {x: 45.39, y: 45.389}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4428550403089841785
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763796613805653549}
-  m_CullTransparentMesh: 1
---- !u!114 &2270020891285059755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763796613805653549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.6933962, g: 0.6933962, b: 0.6933962, a: 0.7647059}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 4369691316460674567, guid: d362ffe8556496e499e0dd01611693fc, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &6985836185445464296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763796613805653549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92af1338f4e462dab1118d28d7d4b37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Rect>k__BackingField: {fileID: 7160350004084985769}
-  _buttonImpacts: []
-  <IsChecked>k__BackingField:
-    _propertyValue: 0
-  _initializeOnStart: 0
-  _isAutonomous: 0
-  _radioButtonImpacts:
-  - rid: 5517237415181811736
-  references:
-    version: 2
-    RefIds:
-    - rid: 5517237415181811736
-      type: {class: UIRadioButtonImpact_ImagesColor, ns: Code.UI.RadioButtonImpact, asm: UI}
-      data:
-        _models:
-        - Render: {fileID: 2270020891285059755}
-          CheckedColor: {r: 1, g: 1, b: 1, a: 1}
-          UncheckedColor: {r: 0.69411767, g: 0.69411767, b: 0.69411767, a: 0.7647059}
 --- !u!1 &7717581376524740291
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,9 +87,9 @@ GameObject:
   - component: {fileID: 2051206652544713893}
   - component: {fileID: 2946919800288513449}
   - component: {fileID: 966995379164662934}
-  - component: {fileID: 7535782960906331804}
+  - component: {fileID: 8317636130084600099}
   m_Layer: 5
-  m_Name: Item_RadioDropDown
+  m_Name: UIDropDownItem_Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +109,6 @@ RectTransform:
   m_Children:
   - {fileID: 195484374196871481}
   - {fileID: 4248824209860296681}
-  - {fileID: 7160350004084985769}
   - {fileID: 4701931064271683072}
   - {fileID: 187763724977919791}
   m_Father: {fileID: 0}
@@ -265,7 +157,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7535782960906331804
+--- !u!114 &8317636130084600099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,36 +166,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 7717581376524740291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec7576c141b49a882b77b2b0af7ac93, type: 3}
+  m_Script: {fileID: 11500000, guid: db05748546b84823b5749040c3c0dbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 2051206652544713893}
   _buttonImpacts:
-  - rid: 5517237458552487948
+  - rid: 5517237919904432131
   <IsChecked>k__BackingField:
     _propertyValue: 0
   _initializeOnStart: 0
   _isAutonomous: 0
   _radioButtonImpacts:
-  - rid: 5517237458552487949
-  <UIText_Name>k__BackingField: {fileID: 3900705930935082633}
-  <UIText_Genre>k__BackingField: {fileID: 8500993002497374118}
-  <UIRadioButton_Favorite>k__BackingField: {fileID: 6985836185445464296}
+  - rid: 5517237919904432134
+  _uiText_Artist: {fileID: 3900705930935082633}
+  _uiText_TrackName: {fileID: 8500993002497374118}
   references:
     version: 2
     RefIds:
-    - rid: 5517237458552487948
+    - rid: 5517237919904432131
       type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
       data:
         _models:
-        - Render: {fileID: 966995379164662934}
+        - Render: {fileID: 3429797230593396681}
           IsCustomColors: 0
           PointerModel:
-            Default: {r: 0, g: 0, b: 0, a: 0}
-            Enter: {r: 0, g: 0, b: 0, a: 0}
-            Up: {r: 0, g: 0, b: 0, a: 0}
-            Down: {r: 0, g: 0, b: 0, a: 0}
-    - rid: 5517237458552487949
+            Default: {r: 1, g: 1, b: 1, a: 1}
+            Enter: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+            Up: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+            Down: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    - rid: 5517237919904432134
       type: {class: UIRadioButtonImpact_ImagesColor, ns: Code.UI.RadioButtonImpact, asm: UI}
       data:
         _models:
@@ -395,7 +286,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1055102835008923948, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_Name
-      value: UIText-S_name
+      value: UIText-S_artist
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_Pivot.x
@@ -407,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchorMax.x
@@ -427,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -61.7077
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.y
@@ -463,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -19.1462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -491,7 +382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontAsset
@@ -515,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSizeBase
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_sharedMaterial
@@ -564,7 +455,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1055102835008923948, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_Name
-      value: UIText-S_genre
+      value: UIText-S_title
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_Pivot.x
@@ -576,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchorMax.x
@@ -596,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -61.7077
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.y
@@ -632,7 +523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -19.1462
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -660,12 +551,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSize
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 35b78b2792136a547856fd6ed6c5aa55, type: 2}
+      objectReference: {fileID: 11400000, guid: e44dbf8dd8a068048aae34edc948bc7c, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontColor.b
       value: 0.70980394
@@ -684,12 +575,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSizeBase
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2348475486254203090, guid: 35b78b2792136a547856fd6ed6c5aa55, type: 2}
+      objectReference: {fileID: 8475459527683639270, guid: e44dbf8dd8a068048aae34edc948bc7c, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
