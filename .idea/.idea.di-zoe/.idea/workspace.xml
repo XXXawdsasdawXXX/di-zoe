@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Editor/InstallerGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Editor/InstallerGenerator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/IAssemblyInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/IAssemblyInstaller.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Models/UIConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Models/UIConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Interface/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Interface/test.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/LoopbackAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/LoopbackAudio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/Base/VisualizationEffectBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/Base/VisualizationEffectBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/ServiceLocator/Container.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/AudioParticleModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/AudioParticleModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/UI.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +31,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/4f10c93d8ddd4f1abc8069a8e5b51c3b7800/62/d00c49ff/02000004pdb3.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/c4b0cc57ec424a5a9b1c3b56141bb74a95de00/e7/51945009/02000BEB.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e1f221b82b9e4418b178aefc928c49d574000/45/ed10bd71/02000098.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e1f221b82b9e4418b178aefc928c49d574000/a6/90625e28/02000099.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e1f221b82b9e4418b178aefc928c49d574000/d1/52c2b21d/02000071.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/ee16c2cb688d4766af955c0ec92acd90573638/26/0f6ea6df/020000AD.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/34c8028f8a3946349d8f0d77e409a1ae46ac00/10/9ae5dee3/StringBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/34c8028f8a3946349d8f0d77e409a1ae46ac00/d2/1ae500a7/List`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -33,8 +42,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76d9c196441843e7b9caeb4dd0bb8c957c200/ae/9026cc72/BASSConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4b0cc57ec424a5a9b1c3b56141bb74a95de00/74/9da77386/PropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1f221b82b9e4418b178aefc928c49d574000/20/82cf0dd8/WaveOutEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1f221b82b9e4418b178aefc928c49d574000/28/0d128c61/WaveOut.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1f221b82b9e4418b178aefc928c49d574000/9b/8b159fe3/WaveInterop.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ee16c2cb688d4766af955c0ec92acd90573638/06/78091864/Attribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Core/GameLoop/GameEventDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Core/Installer.Generated.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -170,6 +182,7 @@
       <workItem from="1774381016657" duration="626000" />
       <workItem from="1774557944850" duration="1675000" />
       <workItem from="1774623020290" duration="714000" />
+      <workItem from="1774974303881" duration="6701000" />
     </task>
     <servers />
   </component>

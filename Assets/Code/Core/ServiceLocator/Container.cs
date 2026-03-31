@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Code.Core.GameLoop;
 using Code.Core.Save;
-//using Kirurobo;
 using UnityEngine;
 
 namespace Code.Core.ServiceLocator
@@ -12,85 +10,87 @@ namespace Code.Core.ServiceLocator
     public class Container : MonoBehaviour
     {
         public static Container Instance;
-
-  //      [SerializeField] private UniWindowController _uniWindowController;
+        
         [SerializeField] private List<ScriptableObject> _configs;
 
         private MonoBehaviour[] _allObjects;
-        
-        private List<IService> _services = new List<IService>();
-        private List<IStorage> _storages = new List<IStorage>();
-        private List<IMono> _mono = new List<IMono>();
-        private List<IView> _getters = new List<IView>();
+        private List<IService> _services = new();
+
+        private Type[] _cachedOrderedTypes;
+        private IAssemblyInstaller[] _cachedInstallers;
+        private HashSet<Type> _cachedAllTypes;
+
 
         private void Awake()
         {
             if (Instance != null)
             {
                 Destroy(gameObject);
+                return;
             }
 
             DontDestroyOnLoad(gameObject);
             Instance = this;
 
+            _cachedInstallers = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetTypes())
+                .Where(t => typeof(IAssemblyInstaller).IsAssignableFrom(t) 
+                            && t.IsClass && !t.IsAbstract)
+                .Select(t => (IAssemblyInstaller)Activator.CreateInstance(t))
+                .OrderBy(a => a.Order)
+                .ToArray();
+            
+            _cachedOrderedTypes = _cachedInstallers
+                .SelectMany(i => i.GetServiceOrder())
+                .ToArray();
+            
+            _cachedAllTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetTypes())
+                .Where(t => t.IsClass && !t.IsAbstract
+                                      && !typeof(MonoBehaviour).IsAssignableFrom(t))
+                .ToHashSet();
+            
             _allObjects = FindObjectsOfType<MonoBehaviour>();
-            InitList(ref _services);
-            InitList(ref _storages);
-            InitList(ref _mono);
-            InitList(ref _getters);
+
+            CreateTypes(ref _services);
         }
-
-        private void InitList<T>(ref List<T> list)
+        
+        private void CreateTypes<T>(ref List<T> collection)
         {
-            // Указываем нужные сборки явно
-            string[] assemblyNames = 
+            foreach (Type type in CollectOrderedTypes<T>())
             {
-                "Game",              // твои кастомные Assembly Definitions
-                "Core",
-                "UI",
-            };
-
-            foreach (string assemblyName in assemblyNames)
-            {
-                Assembly assembly;
-                try
+                if (Activator.CreateInstance(type) is T item)
                 {
-                    assembly = Assembly.Load(assemblyName);
-                }
-                catch (Exception)
-                {
-                    // Сборка не найдена — пропускаем
-                    continue;
-                }
-
-                Type[] types = assembly.GetTypes();
-
-                IEnumerable<Type> serviceTypes = types.Where(t =>
-                    typeof(T).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract &&
-                    !typeof(MonoBehaviour).IsAssignableFrom(t));
-
-                foreach (Type serviceType in serviceTypes)
-                {
-                    if (Activator.CreateInstance(serviceType) is T service)
-                    {
-                        list.Add(service);
-                    }
+                    collection.Add(item);
                 }
             }
-
-            IEnumerable<T> mbServices = _allObjects.OfType<T>();
-            IEnumerable<T> enumerable = mbServices as T[] ?? mbServices.ToArray();
+            
+            IEnumerable<T> ofType = _allObjects.OfType<T>();
+            IEnumerable<T> enumerable = ofType as T[] ?? ofType.ToArray();
             
             if (enumerable.Any())
             {
-                list.AddRange(enumerable);
+                collection.AddRange(enumerable);
             }
         }
 
-        /*public UniWindowController GetUniWindowController()
+        private List<Type> CollectOrderedTypes<T>()
         {
-            return _uniWindowController;
-        }*/
+            Type targetType = typeof(T);
+    
+            List<Type> ordered = _cachedOrderedTypes
+                .Where(t => targetType.IsAssignableFrom(t))
+                .ToList();
+
+            HashSet<Type> orderedSet = new(ordered); // O(1) lookup
+
+            IEnumerable<Type> rest = _cachedAllTypes
+                .Where(t => targetType.IsAssignableFrom(t) && !orderedSet.Contains(t));
+    
+            ordered.AddRange(rest);
+
+            return ordered;
+        }
 
         public T GetConfig<T>() where T : ScriptableObject
         {
@@ -117,33 +117,6 @@ namespace Code.Core.ServiceLocator
 
             return default;
         }
-
-
-        public T GetView<T>() where T : class
-        {
-            foreach (IView getter in _getters)
-            {
-                if (getter is T findGetter)
-                {
-                    return findGetter;
-                }
-            }
-
-            return default;
-        }
-
-        public T FindStorage<T>() where T : IStorage
-        {
-            foreach (IStorage storage in _storages)
-            {
-                if (storage is T typedStorage)
-                {
-                    return typedStorage;
-                }
-            }
-
-            return default;
-        }
         
         public List<IGameListeners> GetGameListeners()
         {
@@ -157,18 +130,17 @@ namespace Code.Core.ServiceLocator
 
         private List<T> GetContainerComponents<T>()
         {
-            List<T> list = new List<T>();
+            List<T> list = new();
 
             list.AddRange(_services.OfType<T>().ToList());
-            list.AddRange(_storages.OfType<T>().ToList());
-            list.AddRange(_mono.OfType<T>().ToList());
 
-            IEnumerable<T> mbListeners = _allObjects.OfType<T>();
-            foreach (T mbListener in mbListeners)
+            IEnumerable<T> enumerable = _allObjects.OfType<T>();
+       
+            foreach (T value in enumerable)
             {
-                if (!list.Contains(mbListener))
+                if (!list.Contains(value))
                 {
-                    list.Add(mbListener);
+                    list.Add(value);
                 }
             }
 

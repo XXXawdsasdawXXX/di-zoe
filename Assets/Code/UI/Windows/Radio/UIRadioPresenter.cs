@@ -11,6 +11,7 @@ using DG.Tweening;
 using TriInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.UI.Windows.Radio
 {
@@ -51,24 +52,6 @@ namespace Code.UI.Windows.Radio
             view.UIDropDown_channels.SubscribeToDropDown(_radioModels.SetChannel);
         }
 
-        public void Unsubscribe()
-        {
-            foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioModels.State.Channels)
-            {
-                channel.Value.UnsubscibeFromValue(_tryUpdateListenersCountView);
-            }
-            
-            _radioModels.State.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
-            _radioModels.State.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
-            _radioModels.State.CurrentChannelIndex.UnsubscibeFromValue(_updateChannelView);
-            _radioModels.State.RadioVolume.UnsubscibeFromValue(_updateVolume);
-
-            view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
-            view.UIButton_previousTracks.UnsubscribeFromClicked(_switchPreviousTracksView);
-            view.UISlider_volume.UnsubscribeFromElement(_radioModels.SetVolume);
-            view.UIDropDown_channels.UnsubscribeFromDropDown(_radioModels.SetChannel);
-        }
-
         public UniTask GameStart()
         {
             foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioModels.State.Channels)
@@ -103,6 +86,24 @@ namespace Code.UI.Windows.Radio
             _updateChannelView(_radioModels.State.CurrentChannelIndex.PropertyValue);
 
             return UniTask.CompletedTask;
+        }
+
+        public void Unsubscribe()
+        {
+            foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioModels.State.Channels)
+            {
+                channel.Value.UnsubscibeFromValue(_tryUpdateListenersCountView);
+            }
+            
+            _radioModels.State.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
+            _radioModels.State.PreviousSongs.UnsubscibeFromValue(_updatePreviousSongsView);
+            _radioModels.State.CurrentChannelIndex.UnsubscibeFromValue(_updateChannelView);
+            _radioModels.State.RadioVolume.UnsubscibeFromValue(_updateVolume);
+
+            view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
+            view.UIButton_previousTracks.UnsubscribeFromClicked(_switchPreviousTracksView);
+            view.UISlider_volume.UnsubscribeFromElement(_radioModels.SetVolume);
+            view.UIDropDown_channels.UnsubscribeFromDropDown(_radioModels.SetChannel);
         }
 
         #endregion
