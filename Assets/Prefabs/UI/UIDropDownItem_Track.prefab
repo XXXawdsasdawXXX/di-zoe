@@ -170,37 +170,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 2051206652544713893}
-  _buttonImpacts:
-  - rid: 5517237919904432131
+  buttonImpacts: []
   <IsChecked>k__BackingField:
     _propertyValue: 0
+  <Index>k__BackingField: 0
   _initializeOnStart: 0
   _isAutonomous: 0
-  _radioButtonImpacts:
-  - rid: 5517237919904432134
+  _radioButtonImpacts: []
   _uiText_Artist: {fileID: 3900705930935082633}
   _uiText_TrackName: {fileID: 8500993002497374118}
   references:
     version: 2
-    RefIds:
-    - rid: 5517237919904432131
-      type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
-      data:
-        _models:
-        - Render: {fileID: 3429797230593396681}
-          IsCustomColors: 0
-          PointerModel:
-            Default: {r: 1, g: 1, b: 1, a: 1}
-            Enter: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-            Up: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-            Down: {r: 0.6, g: 0.6, b: 0.6, a: 1}
-    - rid: 5517237919904432134
-      type: {class: UIRadioButtonImpact_ImagesColor, ns: Code.UI.RadioButtonImpact, asm: UI}
-      data:
-        _models:
-        - Render: {fileID: 3429797230593396681}
-          CheckedColor: {r: 0.811343, g: 0.9198113, b: 0.8349142, a: 0.6509804}
-          UncheckedColor: {r: 1, g: 1, b: 1, a: 0}
+    RefIds: []
 --- !u!1 &8688908880239459704
 GameObject:
   m_ObjectHideFlags: 0

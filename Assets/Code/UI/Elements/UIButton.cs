@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Code.Core.GameLoop;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
@@ -11,19 +10,21 @@ namespace Code.UI
     public class UIButton : UIComponent, IInitializeListener,
     IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        [SerializeReference] private List<UIButtonImpact> _buttonImpacts = new List<UIButtonImpact>()
-        {
-            new UIButtonImpact_ImagesColor(null)
-        };
+        [SerializeReference] protected UIButtonImpact[] buttonImpacts;
         
         private Action _clicked;
         private double _lastClickTime;
 
         public virtual UniTask GameInitialize()
         {
-            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            if (buttonImpacts == null || buttonImpacts.Length == 0)
             {
-                buttonImpact.Initialize();
+                return UniTask.CompletedTask;
+            }
+            
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            {
+                buttonImpact?.Initialize();
             }
 
             return UniTask.CompletedTask;
@@ -39,14 +40,14 @@ namespace Code.UI
             _clicked -= clicked;
         }
 
-        public void ClearSubscriptions()
+        public virtual void ClearSubscriptions()
         {
             _clicked = null;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
             {
                 buttonImpact.OnEnter();
             }
@@ -54,7 +55,7 @@ namespace Code.UI
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
             {
                 buttonImpact.OnExit();
             }
@@ -80,7 +81,7 @@ namespace Code.UI
             
             _lastClickTime = DateTime.UtcNow.TimeOfDay.TotalSeconds;
             
-            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
             {
                 buttonImpact.OnDown();
             }
@@ -90,7 +91,7 @@ namespace Code.UI
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in _buttonImpacts)
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
             {
                 buttonImpact.OnUp();
             }

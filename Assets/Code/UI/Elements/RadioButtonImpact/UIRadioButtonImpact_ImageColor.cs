@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace Code.UI.RadioButtonImpact
 {
     [Serializable]
-    public class UIRadioButtonImpact_ImagesColor: UIRadioButtonImpact
+    public class UIRadioButtonImpact_ImageColor: UIRadioButtonImpact
     {
         [Serializable]
         private struct ImpactModel

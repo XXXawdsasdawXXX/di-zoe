@@ -9,7 +9,7 @@ namespace Code.Tools
     {
         private event Action<T> Changed;
 
-       public T PropertyValue
+        public T PropertyValue
         {
             get => _propertyValue;
             set
@@ -29,9 +29,9 @@ namespace Code.Tools
             _propertyValue = propertyValue;
         }
 
-        public void SubscribeToValue(Action<T> action)
+        public void SetValueWithoutNotify(T value)
         {
-            Changed += action;
+            _propertyValue = value;
         }
 
         public void UnsubscibeFromValue(Action<T> action)
@@ -39,9 +39,14 @@ namespace Code.Tools
             Changed -= action;
         }
 
-        public void SetValueWithoutNotify(T value)
+        public void SubscribeToValue(Action<T> action)
         {
-            _propertyValue = value;
+            Changed += action;
+        }
+
+        public void ClearSubscription()
+        {
+            Changed = null;
         }
     }
 }

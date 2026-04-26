@@ -39,12 +39,10 @@ namespace Code.Core.GameLoop
 
         private void Awake()
         {
-            //_controller = Container.Instance.GetUniWindowController();
-
             _initializeListeners();
-
-               _bootGame(); // когда вернем кирубо - удаляем строку и возвращаем закомментированный код
-
+            
+            //_controller = Container.Instance.GetUniWindowController();
+            _bootGame(); // когда вернем кирубо - удаляем строку и возвращаем закомментированный код
             
             if (Application.isEditor)
             {
@@ -83,7 +81,6 @@ namespace Code.Core.GameLoop
             {
                 _notifyGameExit();
             }
-
         }
 
         public async void AddRuntimeListener(IGameListeners listener)

@@ -4,14 +4,16 @@ using DG.Tweening;
 using TriInspector;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 namespace Code.UI
 {
+    
     [Serializable]
-    public class UIButtonImpact_ImagesColor : UIButtonImpact
+    public class UIButtonImpact_ImageColor : UIButtonImpact
     {
         [Serializable]
-        private struct ImpactModel
+        public class ImpactModel
         {
             public Image Render;
             
@@ -24,18 +26,7 @@ namespace Code.UI
 
         private Sequence _sequence;
 
-        public UIButtonImpact_ImagesColor(Image mainRender)
-        {
-            _models = new ImpactModel[]
-            {
-                new ImpactModel
-                {
-                    Render = mainRender,
-                    IsCustomColors = false
-                }
-            };
-        }
-        
+
         public override void OnEnter()
         {
             if (_models == null)
