@@ -50,12 +50,12 @@ namespace Code.Core.ServiceLocator
                                       && !typeof(MonoBehaviour).IsAssignableFrom(t))
                 .ToHashSet();
             
-            _allObjects = FindObjectsOfType<MonoBehaviour>();
+            _allObjects = FindObjectsOfType<MonoBehaviour>(true);
 
             _createTypes(ref _services);
         }
 
-        public T GetConfig<T>() where T : ScriptableObject
+        public T GetConfiguration<T>() where T : ScriptableObject
         {
             foreach (ScriptableObject scriptableObject in _configs)
             {

@@ -1,11 +1,19 @@
 using Code.Core.Pools;
+using TriInspector;
 using UnityEngine;
 
 namespace Code.UI
 {
     public class UIComponent : MonoBehaviour, IPoolEntity
     {
+        [field: SerializeField, ReadOnly] public int Index { get; set; }
         [field: SerializeField] public RectTransform Rect { get; private set; }
+
+        
+        public virtual bool IsEnabled()
+        {
+            return Rect.gameObject.activeSelf;
+        }
 
         public virtual void Enable()
         {
@@ -26,6 +34,5 @@ namespace Code.UI
             }
         }
 #endif
-
     }
 }

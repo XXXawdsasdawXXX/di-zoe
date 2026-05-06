@@ -10,11 +10,15 @@ namespace Code.UI
     public class UIButton : UIComponent, IInitializeListener,
     IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
+        public bool IsEntered { get; private set; }
+        
         [SerializeReference] protected UIButtonImpact[] buttonImpacts;
         
         private Action _clicked;
+        private Action<bool> _entered;
         private double _lastClickTime;
 
+        
         public virtual UniTask GameInitialize()
         {
             if (buttonImpacts == null || buttonImpacts.Length == 0)
@@ -30,19 +34,19 @@ namespace Code.UI
             return UniTask.CompletedTask;
         }
         
-        public void SubscribeToClicked(Action clicked)
-        {
-            _clicked += clicked;
-        }
+        public void SubscribeToClicked(Action clicked) => _clicked += clicked;
 
-        public void UnsubscribeFromClicked(Action clicked)
-        {
-            _clicked -= clicked;
-        }
+        public void UnsubscribeFromClicked(Action clicked) => _clicked -= clicked;
+
+        public void SubscribeToEntered(Action<bool> entered) => _entered += entered;
+
+        public void UnsubscribeFromEntered(Action<bool> entered) => _entered -= entered;
+
 
         public virtual void ClearSubscriptions()
         {
             _clicked = null;
+            _entered = null;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
@@ -51,6 +55,10 @@ namespace Code.UI
             {
                 buttonImpact.OnEnter();
             }
+            
+            onEntered(true);
+            
+            _entered?.Invoke(true);
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -66,6 +74,10 @@ namespace Code.UI
             {
                 radioButton.UpdateImpactState();
             }
+            
+            onEntered(false);
+            
+            _entered?.Invoke(false);
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -100,6 +112,11 @@ namespace Code.UI
         protected virtual void onClick()
         {
             
+        }
+        
+        protected virtual void onEntered(bool entered)
+        {
+            IsEntered = entered;
         }
     }
 }

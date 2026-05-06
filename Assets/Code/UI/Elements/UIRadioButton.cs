@@ -8,7 +8,6 @@ namespace Code.UI
     public class UIRadioButton : UIButton
     {
         [field: SerializeField] public ReactiveProperty<bool> IsChecked { get; private set; }
-        [field: SerializeField] public int Index { get; private set; }
 
         [SerializeField] private bool _initializeOnStart;
         [SerializeField] private bool _isAutonomous;
@@ -94,14 +93,14 @@ namespace Code.UI
             {
                 foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
                 {
-                    buttonImpact.Check();
+                    buttonImpact?.Check();
                 }
             }
             else
             {
                 foreach (UIRadioButtonImpact buttonImpact in _radioButtonImpacts)
                 {
-                    buttonImpact.Uncheck();
+                    buttonImpact?.Uncheck();
                 }
             }
         }

@@ -1,31 +1,12 @@
 using System;
-using Code.Core.GameLoop;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.UI
 {
-    public class UISlider : UIComponent, ISubscriber
+    public abstract class UISlider : UIComponent
     {
         private event Action<float> _changed;
         
-        [SerializeField] private Slider _slider;
         
-        
-        #region Life
-        
-        public void Subscribe()
-        {
-            _slider.onValueChanged.AddListener(_invokeChanged);            
-        }
-
-        public void Unsubscribe()
-        {
-            _slider.onValueChanged.RemoveListener(_invokeChanged);
-        }
-        
-        #endregion
-
         public void SubscribeToElement(Action<float> action)
         {
             _changed += action;
@@ -36,31 +17,15 @@ namespace Code.UI
             _changed -= action;
         }
         
-        public void SetValueWithoutNotify(float value)
-        {
-            _slider.SetValueWithoutNotify(value);
-        }
+        public abstract float GetValue();
         
-        private void _invokeChanged(float value)
+        public abstract void SetValueWithoutNotify(float value);
+
+        public void SetValue(float value)
         {
+            SetValueWithoutNotify(value);
+            
             _changed?.Invoke(value);
         }
-
-        #region Editor
-
-#if UNITY_EDITOR
-
-        protected override void OnValidate()
-        {
-            base.OnValidate();
-            
-            if (_slider == null)
-            {
-                TryGetComponent(out _slider);
-            }
-        }
-
-#endif
-        #endregion
     }
 }

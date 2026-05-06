@@ -14,6 +14,7 @@ namespace Code.UI.Profiler
         [SerializeField] private Toggle _toggleShouldFitMonitor;
         [SerializeField] private Toggle _toggleAllowDropFiles;
 
+        
         private void Awake()
         {
             _toggleIsTransparent.SetIsOnWithoutNotify(_uniWindowController.isTransparent);
@@ -30,6 +31,5 @@ namespace Code.UI.Profiler
             _toggleShouldFitMonitor.onValueChanged.AddListener(value => _uniWindowController.shouldFitMonitor = value);
             _toggleAllowDropFiles.onValueChanged.AddListener(value => _uniWindowController.allowDropFiles = value);
         }
-        
     }
 }

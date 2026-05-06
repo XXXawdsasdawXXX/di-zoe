@@ -21,7 +21,7 @@ namespace Code.UI.Windows.Radio
         {
             Container.Instance.GetService<RadioPlayer>();
             _radioModels = Container.Instance.GetService<RadioService>();
-            _radioConfiguration = Container.Instance.GetConfig<RadioConfiguration>();
+            _radioConfiguration = Container.Instance.GetConfiguration<RadioConfiguration>();
 
             return UniTask.CompletedTask;
         }
@@ -124,7 +124,7 @@ namespace Code.UI.Windows.Radio
 
             view.UIDropDown_previousTracks.ClearElements();
             
-            for (int i = 0; i < count; i++)
+            for (int i = 1; i < count; i++)
             {
                 UIRadioTrackTab tab = view.UIDropDown_previousTracks.AddElement() as UIRadioTrackTab;
 
@@ -141,6 +141,17 @@ namespace Code.UI.Windows.Radio
                         Title = songs.Songs[i].title
                     });
                 }
+            }
+            
+            UIRadioTrackTab mainTab = view.UIDropDown_previousTracks.UIRadioButton_main as UIRadioTrackTab;
+           
+            if (mainTab != null)
+            {
+                mainTab.SetModel(new UIRadioTrackTab.Model
+                {
+                    Artist = songs.Songs[0].artist,
+                    Title = songs.Songs[0].title
+                });
             }
         }
 
@@ -159,9 +170,18 @@ namespace Code.UI.Windows.Radio
             view.UIText_channel_description.SetText(channelModel.description);
             view.UIText_channel_genre.SetText(channelModel.genre);
 
+            UIRadioChannelTab mainTab = view.UIDropDown_channels.UIRadioButton_main as UIRadioChannelTab;
+            if (mainTab != null)
+            {
+                mainTab.SetModel(new UIRadioChannelTab.Model
+                {
+                    Name = channelModel.title,
+                    Genre = channelModel.genre,
+                    IsFavorite = false
+                });
+            }
+            
             _updateCurrentSongView(_radioModels.State.CurrentSong.PropertyValue);
-
-            _updatePreviousSongsView(_radioModels.State.PreviousSongs.PropertyValue);
         }
     }
 }

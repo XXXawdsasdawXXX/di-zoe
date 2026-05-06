@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 7160350004084985769}
-  _buttonImpacts: []
+  buttonImpacts: []
   <IsChecked>k__BackingField:
     _propertyValue: 0
+  <Index>k__BackingField: 0
   _initializeOnStart: 0
   _isAutonomous: 0
   _radioButtonImpacts:
@@ -176,6 +177,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 5517237415181811736
       type: {class: UIRadioButtonImpact_ImagesColor, ns: Code.UI.RadioButtonImpact, asm: UI}
       data:
@@ -278,10 +281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Rect>k__BackingField: {fileID: 2051206652544713893}
-  _buttonImpacts:
-  - rid: 5517237458552487948
+  buttonImpacts: []
   <IsChecked>k__BackingField:
     _propertyValue: 0
+  <Index>k__BackingField: 0
   _initializeOnStart: 0
   _isAutonomous: 0
   _radioButtonImpacts:
@@ -292,17 +295,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5517237458552487948
-      type: {class: UIButtonImpact_ImagesColor, ns: Code.UI, asm: UI}
-      data:
-        _models:
-        - Render: {fileID: 966995379164662934}
-          IsCustomColors: 0
-          PointerModel:
-            Default: {r: 0, g: 0, b: 0, a: 0}
-            Enter: {r: 0, g: 0, b: 0, a: 0}
-            Up: {r: 0, g: 0, b: 0, a: 0}
-            Down: {r: 0, g: 0, b: 0, a: 0}
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 5517237458552487949
       type: {class: UIRadioButtonImpact_ImagesColor, ns: Code.UI.RadioButtonImpact, asm: UI}
       data:
@@ -668,15 +662,15 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 35b78b2792136a547856fd6ed6c5aa55, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontColor.b
-      value: 0.40000004
+      value: 0.61960787
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontColor.g
-      value: 0.36078432
+      value: 0.61960787
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontColor.r
-      value: 0.32941177
+      value: 0.6745098
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSizeMax
@@ -696,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4284898388
+      value: 4288585388
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_HorizontalAlignment

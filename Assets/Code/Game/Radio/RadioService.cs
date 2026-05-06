@@ -28,7 +28,7 @@ namespace Code.Game.Radio
  
         public async UniTask GameInitialize()
         {
-            _config     = Container.Instance.GetConfig<RadioConfiguration>();
+            _config     = Container.Instance.GetConfiguration<RadioConfiguration>();
             _repository = Container.Instance.GetService<RadioRepository>();
             _state      = Container.Instance.GetService<RadioState>();
  

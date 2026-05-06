@@ -17,7 +17,8 @@ namespace Code.UI
         
         private event Action<int> _changed;
 
-        [SerializeField] private UIRadioButton _uiRadioButton_main;
+        [field: SerializeField] public UIRadioButton UIRadioButton_main { get; private set; }
+        
         [SerializeField] private MonoPool<UIRadioButton> _pool;
         [SerializeField] private RectTransform _listView;
         [SerializeField] private bool _isInteractable = true;
@@ -44,13 +45,13 @@ namespace Code.UI
         
         public UniTask GameStart()
         {
-            _defaultSizeY = _uiRadioButton_main.Rect.sizeDelta.y;
+            _defaultSizeY = UIRadioButton_main.Rect.sizeDelta.y;
            return UniTask.CompletedTask;
         }
         
         public void Subscribe()
         {
-            _uiRadioButton_main.SubscribeToClicked(_setListViewState);
+            UIRadioButton_main.SubscribeToClicked(_setListViewState);
 
             if (!_isInteractable)
             {
@@ -69,7 +70,7 @@ namespace Code.UI
 
         public void Unsubscribe()
         {
-            _uiRadioButton_main.UnsubscribeFromClicked(_setListViewState);
+            UIRadioButton_main.UnsubscribeFromClicked(_setListViewState);
 
             if (!_isInteractable)
             {
@@ -100,7 +101,7 @@ namespace Code.UI
         {
             if (index == _current)
             {
-                return _uiRadioButton_main;
+                return UIRadioButton_main;
             }
             
             _pool.GetByIndex(_current).UnCheck();
@@ -109,7 +110,7 @@ namespace Code.UI
         
             _pool.GetByIndex(_current).Check();
             
-            return _uiRadioButton_main;
+            return UIRadioButton_main;
         }
 
         public UIRadioButton AddElement()

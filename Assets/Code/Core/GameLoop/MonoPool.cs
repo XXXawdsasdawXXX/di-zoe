@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Core.GameLoop;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Code.Core.Pools
 {
     public interface  IPoolEntity
     {
+        public bool IsEnabled();
         void Enable();
         void Disable();
     }
@@ -49,7 +49,7 @@ namespace Code.Core.Pools
 
         private T GetDisabledEntity()
         {
-            return _all.FirstOrDefault(entity => entity != null && !entity.gameObject.activeSelf);
+            return _all.FirstOrDefault(entity => entity != null && !entity.IsEnabled());
         }
 
         private T AddNewEntity()
@@ -89,6 +89,26 @@ namespace Code.Core.Pools
             }
 
             _enabled.Clear();
+        }
+
+        public void EnableCount(int count, bool fromEnd = false)
+        {
+            
+            Debug.Log($"mono pool set enabled count: {_enabled.Count} < {count} {_all.Count}");
+            while (_enabled.Count < count)
+            {
+                T entity = GetDisabledEntity() ?? AddNewEntity();
+                _enabled.Add(entity);
+                entity.Enable();
+            }
+
+            while (_enabled.Count > count)
+            {
+                int index = fromEnd ? _enabled.Count - 1 : 0;
+                T entity = _enabled[index];
+                entity.Disable();
+                _enabled.RemoveAt(index);
+            }
         }
 
         public T GetByIndex(int tabIndex)

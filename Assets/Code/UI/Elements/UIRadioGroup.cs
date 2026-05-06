@@ -154,7 +154,5 @@ namespace Code.UI
 
         #endregion
 
-
-  
     }
 }

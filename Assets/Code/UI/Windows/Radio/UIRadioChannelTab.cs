@@ -14,7 +14,8 @@ namespace Code.UI.Windows.Radio
         [field: SerializeField] public UIText UIText_Name { get; private set; }
         [field: SerializeField] public UIText UIText_Genre { get; private set; }
         [field: SerializeField] public UIRadioButton UIRadioButton_Favorite { get; private set; }
-
+        
+        
         public void SetModel(Model model)
         {
             UIText_Name.SetText(model.Name);

@@ -108,6 +108,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8475459527683639270, guid: e44dbf8dd8a068048aae34edc948bc7c, type: 2}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
+      propertyPath: m_characterSpacing
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
       objectReference: {fileID: 0}

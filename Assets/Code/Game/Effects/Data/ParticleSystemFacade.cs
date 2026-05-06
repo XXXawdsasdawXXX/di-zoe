@@ -46,7 +46,7 @@ namespace Code.Game.Effects
             _defaultSettings.TrailLiveTime = _trails.lifetimeMultiplier;
             _defaultSettings.LiveTime = _main.startLifetimeMultiplier;
 
-            _gradientsConfiguration = Container.Instance.GetConfig<GradientsConfiguration>();
+            _gradientsConfiguration = Container.Instance.GetConfiguration<GradientsConfiguration>();
             
             return UniTask.CompletedTask;
         }

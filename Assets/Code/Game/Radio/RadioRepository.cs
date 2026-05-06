@@ -22,7 +22,7 @@ namespace Code.Game.Radio
  
         public UniTask GameInitialize()
         {
-            _config = Container.Instance.GetConfig<RadioConfiguration>();
+            _config = Container.Instance.GetConfiguration<RadioConfiguration>();
             return UniTask.CompletedTask;
         }
  

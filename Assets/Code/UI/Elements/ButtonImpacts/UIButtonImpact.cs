@@ -11,7 +11,7 @@ namespace Code.UI
         
         public virtual void Initialize()
         {
-            uiConfiguration = Container.Instance.GetConfig<UIConfiguration>();
+            uiConfiguration = Container.Instance.GetConfiguration<UIConfiguration>();
         }
         
         public abstract void OnEnter();
