@@ -13,6 +13,7 @@ namespace Game
             typeof(Code.Game.Radio.RadioRepository),
             typeof(Code.Game.Radio.RadioService),
             typeof(Code.Game.Radio.RadioState),
+            typeof(Code.Game.Radio.RadioFavoriteStuff),
         };
     }
 }

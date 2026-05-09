@@ -13,6 +13,7 @@ namespace Code.Core.Save.SavedData
         public float RadioVolume;
 
         public List<int> FavoriteRadioChannels;
+        public List<string> FavoriteRadioTracks;
 
         
         public PlayerProgressData()
@@ -20,6 +21,8 @@ namespace Code.Core.Save.SavedData
             RadioChanel = 0;
             RadioVolume = 0.5f;
             FavoriteRadioChannels = new List<int>();
+            FavoriteRadioTracks = new List<string>();
         }
+
     }
 }

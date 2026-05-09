@@ -19,5 +19,10 @@ namespace Code.Game.Radio
         {
             return $"https://somafm.com/songs/{channel}.json";
         }
+        
+        public static string FormatTrack(string artist, string title)
+        {
+            return $"{artist} - {title}";
+        }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using Code.Core.GameLoop;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +14,8 @@ namespace Code.UI
         public bool IsEntered { get; private set; }
         
         [SerializeReference] protected UIButtonImpact[] buttonImpacts;
+
+        [SerializeField, CanBeNull] private UIButton _parentButton;
         
         private Action _clicked;
         private Action<bool> _entered;
@@ -51,37 +54,36 @@ namespace Code.UI
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            if (eventData.pointerCurrentRaycast.gameObject != gameObject)
             {
-                buttonImpact.OnEnter();
+                return;
+            }
+
+            if (_parentButton != null)
+            {
+                _parentButton._onPointerExit();
             }
             
-            onEntered(true);
-            
-            _entered?.Invoke(true);
+            _onPointerEnter();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            if (_parentButton != null)
             {
-                buttonImpact.OnExit();
+                _parentButton._onPointerEnter();
             }
-            
-            UIRadioButton radioButton = this as UIRadioButton;
-            
-            if (radioButton != null)
-            {
-                radioButton.UpdateImpactState();
-            }
-            
-            onEntered(false);
-            
-            _entered?.Invoke(false);
+      
+            _onPointerExit();
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (eventData.pointerCurrentRaycast.gameObject != gameObject)
+            {
+                return;
+            }
+            
             if (_lastClickTime + UIConfiguration.CLICK_COOLDOWN > DateTime.UtcNow.TimeOfDay.TotalSeconds)
             {
                 return;
@@ -89,8 +91,6 @@ namespace Code.UI
             
             _clicked?.Invoke();
 
-            Debug.Log("click");
-            
             _lastClickTime = DateTime.UtcNow.TimeOfDay.TotalSeconds;
             
             foreach (UIButtonImpact buttonImpact in buttonImpacts)
@@ -103,6 +103,11 @@ namespace Code.UI
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            if (eventData.pointerCurrentRaycast.gameObject != gameObject)
+            {
+                return;
+            }
+            
             foreach (UIButtonImpact buttonImpact in buttonImpacts)
             {
                 buttonImpact.OnUp();
@@ -117,6 +122,37 @@ namespace Code.UI
         protected virtual void onEntered(bool entered)
         {
             IsEntered = entered;
+        }
+        
+        private void _onPointerEnter()
+        {
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            {
+                buttonImpact.OnEnter();
+            }
+
+            onEntered(true);
+
+            _entered?.Invoke(true);
+        }
+
+        private void _onPointerExit()
+        {
+            foreach (UIButtonImpact buttonImpact in buttonImpacts)
+            {
+                buttonImpact.OnExit();
+            }
+
+            UIRadioButton radioButton = this as UIRadioButton;
+
+            if (radioButton != null)
+            {
+                radioButton.UpdateImpactState();
+            }
+
+            onEntered(false);
+
+            _entered?.Invoke(false);
         }
     }
 }

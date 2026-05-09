@@ -94,6 +94,7 @@ MonoBehaviour:
   <Rect>k__BackingField: {fileID: 7994696603627165095}
   buttonImpacts:
   - rid: 6746799396511547408
+  _parentButton: {fileID: 7994696605129912342}
   <IsChecked>k__BackingField:
     _propertyValue: 0
   _initializeOnStart: 0
@@ -319,11 +320,11 @@ RectTransform:
   m_Father: {fileID: 7994696605493025206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 35.55, y: -10}
-  m_SizeDelta: {x: 54.95, y: 22}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 1.7749939, y: 2.0800018}
+  m_SizeDelta: {x: 54.949997, y: 22}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &7994696605129912343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -376,7 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Index>k__BackingField: 1
   <Rect>k__BackingField: {fileID: 7994696605129912341}
-  buttonImpacts: []
+  buttonImpacts:
+  - rid: 4661533698240020482
+  _parentButton: {fileID: 0}
   <IsChecked>k__BackingField:
     _propertyValue: 0
   _initializeOnStart: 0
@@ -387,6 +390,17 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 4661533698240020482
+      type: {class: UIButtonImpact_ImageColor, ns: Code.UI, asm: UI}
+      data:
+        _models:
+        - Render: {fileID: 7994696605129912340}
+          IsCustomColors: 0
+          PointerModel:
+            Default: {r: 0.7971698, g: 0.11280703, b: 0.11280703, a: 0.8509804}
+            Enter: {r: 0.10315059, g: 0.5754717, b: 0.31379753, a: 1}
+            Up: {r: 0.19450872, g: 0.19923623, b: 0.6650944, a: 0.9843137}
+            Down: {r: 0.6981132, g: 0.08232466, b: 0.56935227, a: 1}
     - rid: 6746799396511547411
       type: {class: UIRadioButtonImpact_DeltaSize, ns: Code.UI.RadioButtonImpact, asm: UI}
       data:
@@ -499,7 +513,7 @@ MonoBehaviour:
   - {fileID: 7994696603627165083}
   - {fileID: 7994696605129912342}
   _maxSelectedCount: 1
-  _checkedOnAwake: 1
+  _checkedOnAwake: 0
   _defaultSelectedIndex: 1
 --- !u!1001 &7994696603865533648
 PrefabInstance:

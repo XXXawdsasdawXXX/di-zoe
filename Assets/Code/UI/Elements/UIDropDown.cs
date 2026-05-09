@@ -8,47 +8,41 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TriInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.UI
 {
-    public class UIDropDown : UIComponent, ISubscriber, IInitializeListener, IStartListener
+    public class UIDropDown : UIComponent, ISubscriber, IInitializeListener
     {
         private const float SHOWN_SIZE_SCALER = 5;
-        
         private event Action<int> _changed;
 
         [field: SerializeField] public UIRadioButton UIRadioButton_main { get; private set; }
-        
+
         [SerializeField] private MonoPool<UIRadioButton> _pool;
         [SerializeField] private RectTransform _listView;
         [SerializeField] private bool _isInteractable = true;
+        [SerializeField] private float _defaultSizeY;
 
         private int _current;
         private Camera _camera;
         private CancellationTokenSource _cts;
         private Tween _tween;
-        private float _defaultSizeY;
-
+        private bool _isShownList;
 
         #region Life
-        
+
         public UniTask GameInitialize()
         {
             _pool.DisableAll();
-            
+
             _listView.gameObject.SetActive(false);
-            
+
             _camera = Camera.main;
-            
+
             return UniTask.CompletedTask;
         }
-        
-        public UniTask GameStart()
-        {
-            _defaultSizeY = UIRadioButton_main.Rect.sizeDelta.y;
-           return UniTask.CompletedTask;
-        }
-        
+
         public void Subscribe()
         {
             UIRadioButton_main.SubscribeToClicked(_setListViewState);
@@ -57,13 +51,13 @@ namespace Code.UI
             {
                 return;
             }
-            
+
             IReadOnlyList<UIRadioButton> all = _pool.GetAll();
-           
+
             for (int i = 0; i < all.Count; i++)
             {
                 int index = i;
-          
+
                 all[i].SubscribeToClicked(() => _setSelected(index));
             }
         }
@@ -103,13 +97,13 @@ namespace Code.UI
             {
                 return UIRadioButton_main;
             }
-            
+
             _pool.GetByIndex(_current).UnCheck();
-      
+
             _current = index;
-        
+
             _pool.GetByIndex(_current).Check();
-            
+
             return UIRadioButton_main;
         }
 
@@ -123,9 +117,9 @@ namespace Code.UI
             {
                 return element;
             }
-            
+
             element.SubscribeToClicked(() => _setSelected(index));
-            
+
             return element;
         }
 
@@ -135,16 +129,41 @@ namespace Code.UI
             {
                 t.ClearSubscriptions();
             }
-            
+
             _pool.DisableAll();
         }
-        
+
+        [Button]
+        public async UniTask HideListView()
+        {
+            if (!_isShownList)
+            {
+                return;
+            }
+            
+            _tween?.Kill();
+
+            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY);
+            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
+                .SetEase(UIConfiguration.TWEEN_EASY)
+                .OnComplete(() => { _listView.gameObject.SetActive(false); })
+                .OnKill(() => { _listView.gameObject.SetActive(false); })
+                .OnUpdate(() =>
+                {
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(Rect.GetComponentInParent<RectTransform>());
+                });
+
+            await _tween.AsyncWaitForCompletion();
+
+            _isShownList = false;
+        }
+
         private void _setSelected(in int index)
         {
             SetCurrentValueWithoutNotify(index);
-            
+
             _invokeChanged(index);
-            
+
             _listView.gameObject.SetActive(false);
         }
 
@@ -157,9 +176,9 @@ namespace Code.UI
         {
             if (_cts != null && !_cts.IsCancellationRequested)
             {
-                _hideListView();
+                await HideListView();
                 _cts.Cancel();
-                return; // ← ключевой фикс
+                return;
             }
 
             _cts = new CancellationTokenSource();
@@ -172,15 +191,16 @@ namespace Code.UI
                 await UniTask.WaitUntil(
                     () => (Input.GetMouseButtonDown(0) && !_isPointerOverList())
                           || !_listView.gameObject.activeSelf,
-                    cancellationToken: token  // ← теперь WaitUntil реально отменяется
+                    cancellationToken: token
                 );
             }
             catch (OperationCanceledException)
             {
-                return; // отмена — выходим без лишних вызовов
+                return;
             }
 
-            _hideListView();
+            Debug.Log("Hide list view");
+            await HideListView();
             _cts?.Cancel();
         }
 
@@ -189,37 +209,29 @@ namespace Code.UI
             return RectTransformUtility.RectangleContainsScreenPoint(
                 Rect,
                 Input.mousePosition,
-               _camera
+                _camera
             );
         }
-        
+
         [Button]
         private void _showListView()
         {
+            if (_isShownList)
+            {
+                return;
+            }
+            
+            _isShownList = true;
             _tween?.Kill();
-            
+
             _listView.gameObject.SetActive(true);
-            
+
             Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY * SHOWN_SIZE_SCALER);
             _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
-                .SetEase(UIConfiguration.TWEEN_EASY);
-        }
-        
-        [Button]
-        private void _hideListView()
-        {
-            _tween?.Kill();
-            
-            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY);
-            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
                 .SetEase(UIConfiguration.TWEEN_EASY)
-                .OnComplete(() =>
+                .OnUpdate(() =>
                 {
-                    _listView.gameObject.SetActive(false);
-                })
-                .OnKill(() =>
-                {
-                    _listView.gameObject.SetActive(false);
+                    LayoutRebuilder.ForceRebuildLayoutImmediate(Rect.GetComponentInParent<RectTransform>());
                 });
         }
     }

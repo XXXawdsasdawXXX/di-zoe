@@ -1,6 +1,4 @@
-using System;
 using Code.Core.GameLoop;
-using Cysharp.Threading.Tasks;
 using TriInspector;
 using UnityEngine;
 
@@ -12,7 +10,8 @@ namespace Code.UI.Windows.Radio
         {
             Hidden,
             Channel,
-            Tracks
+            Tracks,
+            All
         }
 
         [SerializeField, ReadOnly] private EState _state;
@@ -20,86 +19,72 @@ namespace Code.UI.Windows.Radio
 
         public void Subscribe()
         {
-            view.ButtonAllChannels.SubscribeToEntered(_onChannelButtonChanged);
-            view.ButtonFavChannels.SubscribeToEntered(_onChannelButtonChanged);
+            view.ButtonAllChannels.SubscribeToClicked(_onChannelButtonChanged);
+            view.ButtonFavChannels.SubscribeToClicked(_onChannelButtonChanged);
             view.ImpactChannels.SubscribeToChanged(_onImpactChannelChanged);
-                
-            view.ButtonAllTracks.SubscribeToEntered(_onTracksButtonChanged);
-            view.ButtonFavTracks.SubscribeToEntered(_onTracksButtonChanged);
+
+            view.ButtonAllTracks.SubscribeToClicked(_onTracksButtonChanged);
+            view.ButtonFavTracks.SubscribeToClicked(_onTracksButtonChanged);
             view.ImpactTracks.SubscribeToChanged(_onImpactTracksChanged);
         }
 
-        
+
         public void Unsubscribe()
         {
-            view.ButtonAllChannels.UnsubscribeFromEntered(_onChannelButtonChanged);
-            view.ButtonFavChannels.UnsubscribeFromEntered(_onChannelButtonChanged);
+            view.ButtonAllChannels.UnsubscribeFromClicked(_onChannelButtonChanged);
+            view.ButtonFavChannels.UnsubscribeFromClicked(_onChannelButtonChanged);
             view.ImpactChannels.UnsubscribeFromChanged(_onImpactChannelChanged);
-            
-            view.ButtonAllTracks.UnsubscribeFromEntered(_onTracksButtonChanged);
-            view.ButtonFavTracks.UnsubscribeFromEntered(_onTracksButtonChanged);
+
+            view.ButtonAllTracks.UnsubscribeFromClicked(_onTracksButtonChanged);
+            view.ButtonFavTracks.UnsubscribeFromClicked(_onTracksButtonChanged);
             view.ImpactTracks.UnsubscribeFromChanged(_onImpactTracksChanged);
         }
 
-        private void _onChannelButtonChanged(bool entered)
+        private void _onChannelButtonChanged()
         {
             switch (_state)
             {
-                case EState.Hidden:
-                default:
-                    if (entered)
-                    {
-                        view.ImpactChannels.InvokeActiveImpact();
-                        _state = EState.Channel;
-                    }
-
+                case EState.Channel:
+                case EState.All:
                     break;
 
-                case EState.Channel:
+                case EState.Hidden:
+                default:
+                    view.ImpactChannels.InvokeActiveImpact();
+                    _state = EState.Channel;
                     break;
 
                 case EState.Tracks:
-                    if (entered)
-                    {
-                        view.ImpactTracks.InvokeDisableImpact();
-                        view.ImpactChannels.InvokeActiveImpact();
-                        _state = EState.Channel;
-                    }
+                    view.ImpactChannels.InvokeActiveImpact();
+                    _state = EState.All;
                     break;
             }
         }
 
-        private void _onTracksButtonChanged(bool entered)
+        private void _onTracksButtonChanged()
         {
             switch (_state)
             {
+                case EState.All:
+                case EState.Tracks:
+                    break;
+
                 case EState.Hidden:
                 default:
-                    if (entered)
-                    {
-                        view.ImpactTracks.InvokeActiveImpact();
-                        _state = EState.Tracks;
-                    }
-
+                    view.ImpactTracks.InvokeActiveImpact();
+                    _state = EState.Tracks;
                     break;
 
                 case EState.Channel:
-                    if (entered)
-                    {
-                        view.ImpactChannels.InvokeDisableImpact();
-                        view.ImpactTracks.InvokeActiveImpact();
-                        _state = EState.Tracks;
-                    }
-                    break;
-
-                case EState.Tracks:
+                    view.ImpactTracks.InvokeActiveImpact();
+                    _state = EState.All;
                     break;
             }
         }
-        
+
         private void _onImpactTracksChanged(bool state)
         {
-            if (_state is EState.Tracks)
+            if (_state is EState.All or EState.Tracks)
             {
                 _state = view.ImpactChannels.IsActivated ? EState.Channel : EState.Hidden;
             }
@@ -107,7 +92,7 @@ namespace Code.UI.Windows.Radio
 
         private void _onImpactChannelChanged(bool state)
         {
-            if (_state is EState.Channel)
+            if (_state is EState.All or EState.Channel)
             {
                 _state = view.ImpactTracks.IsActivated ? EState.Channel : EState.Hidden;
             }

@@ -83,6 +83,16 @@ namespace Code.UI
 
         public void SetChecked(int index)
         {
+            if (index < 0)
+            {
+                foreach (UIRadioButton uiRadioButton in _checked)
+                {
+                    uiRadioButton.SetValueWithoutNotify(false);
+                }
+
+                return;
+            }
+            
             if (SetCheckedWithoutNotify(index))
             {
                 Checked?.Invoke(index);
@@ -96,6 +106,16 @@ namespace Code.UI
                 return false;
             }
 
+            if (index < 0)
+            {
+                foreach (UIRadioButton uiRadioButton in _checked)
+                {
+                    uiRadioButton.SetValueWithoutNotify(false);
+                }
+
+                return false;
+            }
+            
             if (_checked.Count >= _maxSelectedCount && _checked.Count > 0)
             {
                 UIRadioButton button = _checked.Dequeue();
