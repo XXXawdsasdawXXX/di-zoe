@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Code.Core.GameLoop;
-using Code.Core.Pools;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -16,7 +15,7 @@ namespace Code.UI
     {
         private const float SHOWN_SIZE_SCALER = 5;
         private event Action<int> _changed;
-
+        public bool IsShownList { get; private set; }
         [field: SerializeField] public UIRadioButton UIRadioButton_main { get; private set; }
 
         [SerializeField] private MonoPool<UIRadioButton> _pool;
@@ -28,11 +27,10 @@ namespace Code.UI
         private Camera _camera;
         private CancellationTokenSource _cts;
         private Tween _tween;
-        private bool _isShownList;
 
         #region Life
 
-        public UniTask GameInitialize()
+        public virtual UniTask GameInitialize()
         {
             _pool.DisableAll();
 
@@ -91,20 +89,13 @@ namespace Code.UI
             _changed -= change;
         }
 
-        public UIRadioButton SetCurrentValueWithoutNotify(int index)
+        public void SetCurrentValueWithoutNotify(int index)
         {
-            if (index == _current)
-            {
-                return UIRadioButton_main;
-            }
-
-            _pool.GetByIndex(_current).UnCheck();
+            _pool.GetByIndex(_current)?.UnCheck();
 
             _current = index;
 
-            _pool.GetByIndex(_current).Check();
-
-            return UIRadioButton_main;
+            _pool.GetByIndex(_current)?.Check();
         }
 
         public UIRadioButton AddElement()
@@ -134,9 +125,28 @@ namespace Code.UI
         }
 
         [Button]
+        public void ShowListView()
+        {
+            if (IsShownList)
+            {
+                return;
+            }
+            
+            _tween?.Kill();
+            
+            IsShownList = true;
+
+            _listView.gameObject.SetActive(true);
+
+            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY * SHOWN_SIZE_SCALER);
+            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
+                .SetEase(UIConfiguration.TWEEN_EASY);
+        }
+
+        [Button]
         public async UniTask HideListView()
         {
-            if (!_isShownList)
+            if (!IsShownList)
             {
                 return;
             }
@@ -146,16 +156,13 @@ namespace Code.UI
             Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY);
             _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
                 .SetEase(UIConfiguration.TWEEN_EASY)
-                .OnComplete(() => { _listView.gameObject.SetActive(false); })
-                .OnKill(() => { _listView.gameObject.SetActive(false); })
-                .OnUpdate(() =>
+                .OnComplete(() =>
                 {
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(Rect.GetComponentInParent<RectTransform>());
+                    _listView.gameObject.SetActive(false);
+                    IsShownList = false;
                 });
-
+            
             await _tween.AsyncWaitForCompletion();
-
-            _isShownList = false;
         }
 
         private void _setSelected(in int index)
@@ -184,7 +191,7 @@ namespace Code.UI
             _cts = new CancellationTokenSource();
             CancellationToken token = _cts.Token;
 
-            _showListView();
+            ShowListView();
 
             try
             {
@@ -211,28 +218,6 @@ namespace Code.UI
                 Input.mousePosition,
                 _camera
             );
-        }
-
-        [Button]
-        private void _showListView()
-        {
-            if (_isShownList)
-            {
-                return;
-            }
-            
-            _isShownList = true;
-            _tween?.Kill();
-
-            _listView.gameObject.SetActive(true);
-
-            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY * SHOWN_SIZE_SCALER);
-            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
-                .SetEase(UIConfiguration.TWEEN_EASY)
-                .OnUpdate(() =>
-                {
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(Rect.GetComponentInParent<RectTransform>());
-                });
         }
     }
 }

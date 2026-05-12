@@ -11,28 +11,28 @@ namespace Code.Game.Radio
     {
         private MediaFoundationReader mediaFoundationReader;
         private WaveOutEvent waveOut;
-        private RadioService _radioModels;
+        private RadioTranslation _radioModels;
 
         private Coroutine _coroutine;
 
 
         public UniTask GameInitialize()
         {
-            _radioModels = Container.Instance.GetService<RadioService>();
+            _radioModels = Container.Instance.GetService<RadioTranslation>();
 
             return UniTask.CompletedTask;
         }
 
         public void Subscribe()
         {
-            _radioModels.State.CurrentChannelIndex.SubscribeToValue(_onChangeRadioStation);
-            _radioModels.State.RadioVolume.SubscribeToValue(_setVolume);
+            _radioModels.Model.CurrentChannelIndex.SubscribeToValue(_onChangeRadioStation);
+            _radioModels.Model.RadioVolume.SubscribeToValue(_setVolume);
         }
         
         public void Unsubscribe()
         {
-            _radioModels.State.CurrentChannelIndex.UnsubscibeFromValue(_onChangeRadioStation);
-            _radioModels.State.RadioVolume.UnsubscibeFromValue(_setVolume);
+            _radioModels.Model.CurrentChannelIndex.UnsubscibeFromValue(_onChangeRadioStation);
+            _radioModels.Model.RadioVolume.UnsubscibeFromValue(_setVolume);
         }
         
         public void GameExit()
@@ -89,7 +89,7 @@ namespace Code.Game.Radio
 
         private void _onChangeRadioStation(int index)
         {
-            if (index < 0 || index >= _radioModels.State.Channels.Count)
+            if (index < 0 || index >= _radioModels.Model.Channels.Count)
             {
                 Debug.LogError("Invalid chanel index");
                 return;

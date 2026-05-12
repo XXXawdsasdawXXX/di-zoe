@@ -11,9 +11,9 @@ namespace Game
         public Type[] GetServiceOrder() => new[]
         {
             typeof(Code.Game.Radio.RadioRepository),
-            typeof(Code.Game.Radio.RadioService),
-            typeof(Code.Game.Radio.RadioState),
-            typeof(Code.Game.Radio.RadioFavoriteStuff),
+            typeof(Code.Game.Radio.RadioTranslation),
+            typeof(Code.Game.Radio.RadioModel),
+            typeof(Code.Game.Radio.RadioFavoriteContent),
         };
     }
 }

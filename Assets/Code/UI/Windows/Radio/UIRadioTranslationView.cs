@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.UI.Windows.Radio
 {
-    public class UIRadioView : UIView
+    public class UIRadioTranslationView : UIView
     {
         [field: SerializeField, Group("Chanel")] public UIText UIText_channel_name { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIText UIText_channel_description { get; private set; }
@@ -11,7 +11,7 @@ namespace Code.UI.Windows.Radio
         [field: SerializeField, Group("Chanel")] public UISlider UISlider_volume { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIRawImage UIRawImage_channelLogo { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIText UIText_listenerCount { get; private set; }
-        [field: SerializeField, Group("Chanel")] public UIDropDown UIDropDown_channels { get; private set; }
+        [field: SerializeField, Group("Chanel")] public UIRadioChannelDropDown UIDropDown_channels { get; private set; }
         [field: SerializeField, Group("Optional")] public UIButton UIButton_randomChannel { get; private set; }
         
         [field: Space]

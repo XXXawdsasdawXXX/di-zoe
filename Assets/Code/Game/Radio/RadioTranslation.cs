@@ -10,11 +10,11 @@ using UnityEngine.Scripting;
 namespace Code.Game.Radio
 {
     [Preserve]
-    public class RadioService : IService, IInitializeListener, IUpdateListener, IProgressWriter
+    public class RadioTranslation : IService, IInitializeListener, IUpdateListener, IProgressWriter
     {
         private RadioConfiguration _config;
         private RadioRepository    _repository;
-        private RadioState         _state;
+        private RadioModel         _radioModel;
  
         private Timer _channelsTimer;
         private Timer _tracksTimer;
@@ -24,13 +24,13 @@ namespace Code.Game.Radio
         private bool _isFetchingSongs;
  
         // Удобный публичный доступ к состоянию (фасад для UI)
-        public RadioState State => _state;
+        public RadioModel Model => _radioModel;
  
         public async UniTask GameInitialize()
         {
             _config     = Container.Instance.GetConfiguration<RadioConfiguration>();
             _repository = Container.Instance.GetService<RadioRepository>();
-            _state      = Container.Instance.GetService<RadioState>();
+            _radioModel      = Container.Instance.GetService<RadioModel>();
  
             _channelsTimer = new Timer(_config.ChannelsUpdateInterval);
             _tracksTimer   = new Timer(_config.TrackUpdateInterval);
@@ -40,16 +40,16 @@ namespace Code.Game.Radio
  
         public async UniTask LoadProgress(PlayerProgressData playerProgress)
         {
-            _state.CurrentChannelIndex.PropertyValue = playerProgress.RadioChanel;
-            _state.RadioVolume.PropertyValue         = playerProgress.RadioVolume;
+            _radioModel.CurrentChannelIndex.PropertyValue = playerProgress.RadioChanel;
+            _radioModel.RadioVolume.PropertyValue         = playerProgress.RadioVolume;
  
             await RefreshSongsAsync();
         }
  
         public void SaveProgress(PlayerProgressData playerProgress)
         {
-            playerProgress.RadioChanel  = _state.CurrentChannelIndex.PropertyValue;
-            playerProgress.RadioVolume  = _state.RadioVolume.PropertyValue;
+            playerProgress.RadioChanel  = _radioModel.CurrentChannelIndex.PropertyValue;
+            playerProgress.RadioVolume  = _radioModel.RadioVolume.PropertyValue;
         }
  
         public void GameUpdate()
@@ -67,7 +67,7 @@ namespace Code.Game.Radio
  
         public void SetChannel(int channelIndex)
         {
-            _state.CurrentChannelIndex.PropertyValue = channelIndex;
+            _radioModel.CurrentChannelIndex.PropertyValue = channelIndex;
  
             // Форсируем немедленное обновление треков при смене канала
             _tracksTimer.Finish();
@@ -75,12 +75,12 @@ namespace Code.Game.Radio
  
         public void SetVolume(float volume)
         {
-            _state.RadioVolume.PropertyValue = volume;
+            _radioModel.RadioVolume.PropertyValue = volume;
         }
  
         public string GetCurrentStreamUrl()
         {
-            RadioChannelModel channel = _state.GetCurrentChannel();
+            RadioChannelModel channel = _radioModel.GetCurrentChannel();
             return string.Format(_config.StreamUrlTemplate, channel.id);
         }
  
@@ -100,7 +100,7 @@ namespace Code.Game.Radio
             try
             {
                 RadioChannelModel[] channels = await _repository.FetchChannelsAsync();
-                _state.ApplyChannels(channels);
+                _radioModel.ApplyChannels(channels);
             }
             finally
             {
@@ -112,14 +112,14 @@ namespace Code.Game.Radio
         {
             if (_isFetchingSongs) return;
  
-            RadioChannelModel current = _state.GetCurrentChannel();
+            RadioChannelModel current = _radioModel.GetCurrentChannel();
             if (string.IsNullOrEmpty(current.id)) return;
  
             _isFetchingSongs = true;
             try
             {
                 RadioSongListModel songs = await _repository.FetchSongsAsync(current.id);
-                _state.ApplySongs(songs);
+                _radioModel.ApplySongs(songs);
             }
             finally
             {

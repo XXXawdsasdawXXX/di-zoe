@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.UI.Windows.Radio
@@ -15,7 +16,7 @@ namespace Code.UI.Windows.Radio
         [field: SerializeField] public UIText UIText_Genre { get; private set; }
         [field: SerializeField] public UIRadioButton UIRadioButton_Favorite { get; private set; }
         
-        
+
         public void SetModel(Model model)
         {
             UIText_Name.SetText(model.Name);

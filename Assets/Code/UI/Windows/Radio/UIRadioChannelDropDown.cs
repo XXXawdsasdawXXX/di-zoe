@@ -1,0 +1,288 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using Code.Core.GameLoop;
+using Code.Core.ServiceLocator;
+using Code.Game.Radio;
+using Code.Tools;
+using Cysharp.Threading.Tasks;
+using TriInspector;
+using UnityEngine;
+
+namespace Code.UI.Windows.Radio
+{
+    public class UIRadioChannelDropDown : UIComponent, IInitializeListener, ISubscriber
+    {
+        public enum EState
+        {
+            None,
+            All,
+            Fav
+        }
+
+        private const double AUTO_HIDE_DELAY = 120;
+        [ShowInInspector] public ReactiveProperty<EState> State { get; } = new(EState.None);
+
+        private Action<int> _channelChanged;
+
+        [SerializeField] private UIRadioGroup _buttonGroup;
+
+        [SerializeField] private UIImpactComponent _impactAll;
+        [SerializeField] private UIImpactComponent _impactFav;
+
+        [SerializeField] private UIDropDown _all;
+        [SerializeField] private UIDropDown _fav;
+
+        private RadioTranslation _radioTranslation;
+        private RadioFavoriteContent _radioFavoriteContent;
+
+        private CancellationTokenSource _hideDelayCts;
+
+
+        public UniTask GameInitialize()
+        {
+            _radioTranslation = Container.Instance.GetService<RadioTranslation>();
+            _radioFavoriteContent = Container.Instance.GetService<RadioFavoriteContent>();
+
+            return UniTask.CompletedTask;
+        }
+
+        public void Subscribe()
+        {
+            _all.SubscribeToDropDown(_invokeChanged);
+            _fav.SubscribeToDropDown(_invokeChanged);
+            _buttonGroup.Checked += _onPressButtonGroup;
+        }
+
+        public void Unsubscribe()
+        {
+            _all.UnsubscribeFromDropDown(_invokeChanged);
+            _fav.UnsubscribeFromDropDown(_invokeChanged);
+            _buttonGroup.Checked -= _onPressButtonGroup;
+        }
+
+        public void SubscribeToChangeChannel(Action<int> change)
+        {
+            _channelChanged += change;
+        }
+
+        public void UnsubscribeFromChangeChannel(Action<int> change)
+        {
+            _channelChanged -= change;
+        }
+
+        public void InitializeAllChannels()
+        {
+            int index = 0;
+            foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioTranslation.Model
+                         .Channels)
+            {
+                UIRadioChannelTab tab = _all.AddElement() as UIRadioChannelTab;
+
+                if (tab != null)
+                {
+                    tab.SetIndex(index);
+
+                    tab.SetModel(new UIRadioChannelTab.Model
+                    {
+                        Name = channel.Key,
+                        Genre = channel.Value.PropertyValue.genre,
+                        IsFavorite = false
+                    });
+
+                    int channelIndex = index;
+                    tab.UIRadioButton_Favorite.IsChecked.SubscribeToValue(value =>
+                    {
+                        if (value) _radioFavoriteContent.AddChannel(channelIndex);
+                        else _radioFavoriteContent.RemoveChannel(channelIndex);
+                    });
+
+                    index++;
+                }
+                else
+                {
+                    throw new Exception("UIRadioChannelTab is null during all channels initialization.");
+                }
+            }
+        }
+
+        public void InitializeFavoriteChannels()
+        {
+            _fav.ClearElements();
+
+            int index = 0;
+            foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioTranslation.Model
+                         .Channels)
+            {
+                if (_radioFavoriteContent.IsFavoriteChannel(index))
+                {
+                    UIRadioChannelTab tab = _fav.AddElement() as UIRadioChannelTab;
+
+                    if (tab != null)
+                    {
+                        tab.SetIndex(index);
+
+                        tab.SetModel(new UIRadioChannelTab.Model
+                        {
+                            Name = channel.Key,
+                            Genre = channel.Value.PropertyValue.genre,
+                            IsFavorite = _radioFavoriteContent.IsFavoriteChannel(index)
+                        });
+
+                        int channelIndex = index;
+
+                        tab.UIRadioButton_Favorite.IsChecked.SubscribeToValue(value =>
+                        {
+                            if (value) _radioFavoriteContent.AddChannel(channelIndex);
+                            else _radioFavoriteContent.RemoveChannel(channelIndex);
+                        });
+                    }
+                    else
+                    {
+                        throw new Exception("UIRadioChannelTab is null during favorite channels initialization.");
+                    }
+                }
+
+                index++;
+            }
+        }
+
+        public void UpdateCurrentChannel()
+        {
+            RadioChannelModel channelModel = _radioTranslation.Model.GetCurrentChannel();
+            int channelIndex = _radioTranslation.Model.CurrentChannelIndex.PropertyValue;
+
+            //all
+            UIRadioChannelTab mainTab = _all.UIRadioButton_main as UIRadioChannelTab;
+            if (mainTab != null)
+            {
+                mainTab.SetModel(new UIRadioChannelTab.Model
+                {
+                    Name = channelModel.title,
+                    Genre = channelModel.genre,
+                    IsFavorite = _radioFavoriteContent
+                        .IsFavoriteChannel(channelIndex)
+                });
+            }
+
+            _all.SetCurrentValueWithoutNotify(channelIndex);
+
+            //fav
+            UIRadioChannelTab mainFavTab = _fav.UIRadioButton_main as UIRadioChannelTab;
+            if (mainFavTab != null)
+            {
+                mainFavTab.SetModel(new UIRadioChannelTab.Model
+                {
+                    Name = channelModel.title,
+                    Genre = channelModel.genre,
+                    IsFavorite = false
+                });
+            }
+
+            _fav.SetCurrentValueWithoutNotify(channelIndex);
+        }
+        
+        public async UniTask HideChannelView()
+        {
+            if (State.PropertyValue is EState.None)
+            {
+                return;
+            }
+            
+            UIImpactComponent activeImpact = State.PropertyValue == EState.All ? _impactAll : _impactFav;
+            await activeImpact.InvokeDisableImpact();
+
+            _buttonGroup.SetCheckedWithoutNotify(-1);
+
+            State.PropertyValue = EState.None;
+        }
+
+        private void _onPressButtonGroup(int buttonIndex)
+        {
+            _hideDelayCts?.Cancel();
+            _hideDelayCts = new CancellationTokenSource();
+
+            if (buttonIndex == 0)
+            {
+                _shownAllChannel(_hideDelayCts.Token);
+            }
+            else
+            {
+                _shownFavChannel(_hideDelayCts.Token);
+            }
+        }
+
+        private async void _shownAllChannel(CancellationToken ct)
+        {
+            if (State.PropertyValue is EState.Fav)
+            {
+                bool isShownList = _fav.IsShownList;
+           
+                await _fav.HideListView();
+                _fav.gameObject.SetActive(false);
+                _all.gameObject.SetActive(true);
+                
+                if (isShownList)
+                {
+                    _all.ShowListView();
+                }
+            }
+            else
+            {
+                _all.gameObject.SetActive(true);
+                await _impactAll.InvokeActiveImpact();
+            }
+            
+            State.PropertyValue = EState.All;
+
+            bool cancelled = await UniTask
+                .Delay(TimeSpan.FromSeconds(AUTO_HIDE_DELAY), cancellationToken: ct)
+                .SuppressCancellationThrow();
+
+            if (!cancelled)
+            {
+                await HideChannelView();
+            }
+        }
+
+        private async void _shownFavChannel(CancellationToken ct)
+        {
+            InitializeFavoriteChannels();
+
+            if (State.PropertyValue is EState.All)
+            {
+                bool isShownList = _all.IsShownList;
+           
+                await _all.HideListView();
+                _all.gameObject.SetActive(false);
+                _fav.gameObject.SetActive(true);
+                
+                if (isShownList)
+                {
+                    _fav.ShowListView();
+                }
+            }
+            else
+            {
+                _fav.gameObject.SetActive(true);
+                await _impactFav.InvokeActiveImpact();
+            }
+            
+            State.PropertyValue = EState.Fav;
+
+            bool cancelled = await UniTask
+                .Delay(TimeSpan.FromSeconds(AUTO_HIDE_DELAY), cancellationToken: ct)
+                .SuppressCancellationThrow();
+
+            if (!cancelled)
+            {
+                await HideChannelView();
+            }
+        }
+
+        private void _invokeChanged(int channelIndex)
+        {
+            _channelChanged?.Invoke(channelIndex);
+        }
+    }
+}

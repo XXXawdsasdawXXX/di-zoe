@@ -23,11 +23,11 @@ namespace Code.UI
             {
                 if (IsChecked.PropertyValue)
                 {
-                    UnCheck();
+                    Check();
                 }
                 else
                 {
-                    Check();
+                    UnCheck();
                 }
             }
         }

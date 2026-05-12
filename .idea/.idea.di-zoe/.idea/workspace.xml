@@ -2,29 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteStuff.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteStuff.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/UIExtension.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/UIExtension.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelDropDown.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelDropDown.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/PlayerProgressData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/PlayerProgressData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/GameLoop/MonoPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/GameLoop/MonoPool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Installer.Generated.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Installer.Generated.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_DeltaSize.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_RadioDropDown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_DeltaSize.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_RadioDropDown.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteStuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteContent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteStuff.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteContent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioTranslation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioService.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioTranslation.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioModel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact_ImageColor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ButtonImpacts/UIButtonImpact_ImageColor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_RadioDropDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_RadioDropDown.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIDropDown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRadioGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRadioGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioDropdownPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioDropdownPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTrackTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTrackTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRadioButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/UIRadioButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioDropDownView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioListView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioDropDownView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioListView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioDropdownPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioListPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioDropdownPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioListPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTranslationPresenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTranslationPresenter.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTranslationView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTranslationView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIVolumeSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIVolumeSlider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Channel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Channel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Track.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Track.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UISlider_.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UISlider_.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/dropdown - header - channel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/dropdown - header - channel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Configuration/UIConfiguration.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Configuration/UIConfiguration.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIRadioButton - fav.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/UIRadioButton - fav.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +62,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ae618ea15ea4f2ebfe58b132c1de82d2b600/5f/82f9a161/Sequence.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5ae618ea15ea4f2ebfe58b132c1de82d2b600/b3/adf0d9ea/Tween.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76d9c196441843e7b9caeb4dd0bb8c957c200/ae/9026cc72/BASSConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84fcf9255ea045aab003a751cdb5a2f6573620/9b/f2a6bf7b/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4b0cc57ec424a5a9b1c3b56141bb74a95de00/74/9da77386/PropertyDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1f221b82b9e4418b178aefc928c49d574000/20/82cf0dd8/WaveOutEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1f221b82b9e4418b178aefc928c49d574000/28/0d128c61/WaveOut.cs" root0="SKIP_HIGHLIGHTING" />
@@ -63,7 +74,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIPresenter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Base/UIView.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTranslationView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.codewriter.triinspector@b231c1eb15/Editor/Editors/TriScriptedImporterEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kirurobo.uniwinc@304f9ba2aa/Runtime/Scripts/UniWindowController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/ContentSizeFitter.cs" root0="SKIP_HIGHLIGHTING" />
@@ -218,7 +229,11 @@
       <workItem from="1778069203274" duration="1375000" />
       <workItem from="1778072288110" duration="2381000" />
       <workItem from="1778084440217" duration="3569000" />
-      <workItem from="1778348858339" duration="3410000" />
+      <workItem from="1778348858339" duration="13775000" />
+      <workItem from="1778433468644" duration="2701000" />
+      <workItem from="1778516912218" duration="778000" />
+      <workItem from="1778530493802" duration="347000" />
+      <workItem from="1778599743554" duration="4487000" />
     </task>
     <servers />
   </component>

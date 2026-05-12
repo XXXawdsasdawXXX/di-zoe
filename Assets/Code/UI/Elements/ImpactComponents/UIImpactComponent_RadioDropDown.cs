@@ -5,7 +5,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Kirurobo;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.UI
 {
@@ -23,29 +22,44 @@ namespace Code.UI
         [SerializeField] private float _offCooldown = 1;
         [SerializeField] private bool _disableOnStart;
         
-        [SerializeField, ReadOnly] private bool _isShowing;
         private Tween _tween;
         
         
         public UniTask GameStart()
         {
+        
             if (_disableOnStart)
             {
                 Rect.sizeDelta = _hiddenDeltaSize;
+                _disableObject.SetActive(false);
             }
             
             return UniTask.CompletedTask;
         }
 
+        public void ActivateWithoutImpact()
+        {
+            Rect.sizeDelta = _shownDeltaSize;
+            
+            if (_disableObject != null)
+            {
+                _disableObject.SetActive(true);
+            }
+        }
+        
+        public void DisableWithoutImpact()
+        {
+            Rect.sizeDelta = _hiddenDeltaSize;
+            
+            if (_disableObject != null)
+            {
+                _disableObject.SetActive(false);
+            }
+        }
+
+        
         public override async UniTask InvokeActiveImpact()
         {
-            if (_isShowing)
-            {
-                return;
-            }
-            
-            _isShowing = true;
-
             _tween?.Kill();
 
             Rect.sizeDelta = _hiddenDeltaSize;
@@ -69,7 +83,7 @@ namespace Code.UI
                     _child.anchorMin = new Vector2(0.5f, 1f);
                     _child.anchorMax = new Vector2(0.5f, 1f);
                     _child.sizeDelta = size;
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(_root.GetComponent<RectTransform>());
+                    UIExtension.RebuildChildren(_root).Forget();
                 });
 
             await _tween.AsyncWaitForCompletion();
@@ -87,16 +101,11 @@ namespace Code.UI
 
         public override async UniTask InvokeDisableImpact()
         {
-            if (!_isShowing)
-            {
-                return;
-            }
-
-            await _tween.AsyncWaitForCompletion();
-            await UniTask.Delay(TimeSpan.FromSeconds(_offCooldown));
+            if (_tween != null && _tween.IsActive())
+                await _tween.AsyncWaitForCompletion();
+      
             await _dropDown.HideListView();
             
-            _isShowing = false;
             _tween?.Kill();
             
             Vector2 size = _child.sizeDelta;
@@ -114,15 +123,15 @@ namespace Code.UI
                     _child.anchorMin = new Vector2(0.5f, 1f);
                     _child.anchorMax = new Vector2(0.5f, 1f);
                     _child.sizeDelta = size;
-                    _isShowing = false;
                     _disableObject.SetActive(false);
-                    LayoutRebuilder.ForceRebuildLayoutImmediate(_root.GetComponent<RectTransform>());
+                    UIExtension.RebuildChildren(_root).Forget();
                 });
 
             _radioGroupButtons.SetCheckedWithoutNotify(-1);
             
-            await _tween.AsyncWaitForCompletion();
-            
+            if (_tween != null && _tween.IsActive())
+                await _tween.AsyncWaitForCompletion();
+
             _tween?.Kill();
             
             await base.InvokeDisableImpact();

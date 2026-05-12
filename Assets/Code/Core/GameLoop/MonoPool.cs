@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Core.GameLoop;
 using UnityEngine;
 
-namespace Code.Core.Pools
+namespace Code.Core.GameLoop
 {
     public interface  IPoolEntity
     {
+        public int Index { get; }
         public bool IsEnabled();
         void Enable();
         void Disable();
@@ -41,21 +41,9 @@ namespace Code.Core.Pools
 
         public T GetNext()
         {
-            T entity = GetDisabledEntity() ?? AddNewEntity();
+            T entity = _getDisabledEntity() ?? _addNewEntity();
             _enabled.Add(entity);
             entity.Enable();
-            return entity;
-        }
-
-        private T GetDisabledEntity()
-        {
-            return _all.FirstOrDefault(entity => entity != null && !entity.IsEnabled());
-        }
-
-        private T AddNewEntity()
-        {
-            T entity = Spawner.Instantiate(_prefab, _root);
-            _all.Add(entity);
             return entity;
         }
 
@@ -93,11 +81,10 @@ namespace Code.Core.Pools
 
         public void EnableCount(int count, bool fromEnd = false)
         {
-            
             Debug.Log($"mono pool set enabled count: {_enabled.Count} < {count} {_all.Count}");
             while (_enabled.Count < count)
             {
-                T entity = GetDisabledEntity() ?? AddNewEntity();
+                T entity = _getDisabledEntity() ?? _addNewEntity();
                 _enabled.Add(entity);
                 entity.Enable();
             }
@@ -111,9 +98,9 @@ namespace Code.Core.Pools
             }
         }
 
-        public T GetByIndex(int tabIndex)
+        public T GetByIndex(int index)
         {
-            return _all[tabIndex];
+            return _all.FirstOrDefault(a => a.Index == index);
         }
 
         public int Count()
@@ -129,6 +116,23 @@ namespace Code.Core.Pools
         public int GetIndex(T element)
         {
             return _enabled.IndexOf(element);
+        }
+
+        public void SetRoot(Transform root)
+        {
+            _root = root;
+        }
+        
+        private T _getDisabledEntity()
+        {
+            return _all.FirstOrDefault(entity => entity != null && !entity.IsEnabled());
+        }
+
+        private T _addNewEntity()
+        {
+            T entity = Spawner.Instantiate(_prefab, _root);
+            _all.Add(entity);
+            return entity;
         }
     }
 }

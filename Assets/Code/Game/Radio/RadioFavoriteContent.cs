@@ -9,7 +9,7 @@ using UnityEngine.Scripting;
 namespace Code.Game.Radio
 {
     [Preserve]
-    public class RadioFavoriteStuff : IService, IProgressWriter
+    public class RadioFavoriteContent : IService, IProgressWriter
     {
         private List<string> _trackList = new();
         private List<int> _channelList = new();
@@ -31,6 +31,7 @@ namespace Code.Game.Radio
 
         public void AddChannel(int index)
         {
+            Debug.Log($"add channel {index} {_channelList.Contains(index)}");
             if (_channelList.Contains(index))
             {
                 return;
@@ -78,6 +79,16 @@ namespace Code.Game.Radio
                 _trackList.Remove(track);
                 
                 Debug.Log($"Fav stuff: remove track {track}");
+            }
+        }
+
+        public void RemoveChannel(int index)
+        {
+            Debug.Log($"RemoveChannel {index} {_channelList.Contains(index)}");
+
+            if (_channelList.Contains(index))
+            {
+                _channelList.Remove(index);
             }
         }
     }

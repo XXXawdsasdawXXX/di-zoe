@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.UI.Windows.Radio
 {
-    public class UIRadioDropdownPresenter : UIPresenter<UIRadioDropDownView>, ISubscriber
+    public class UIRadioListPresenter : UIPresenter<UIRadioListView>, ISubscriber
     {
         private enum EState
         {
@@ -15,25 +15,28 @@ namespace Code.UI.Windows.Radio
         }
 
         [SerializeField, ReadOnly] private EState _state;
-
-
+        
         public void Subscribe()
         {
             view.ButtonAllChannels.SubscribeToClicked(_onChannelButtonChanged);
+
             view.ButtonFavChannels.SubscribeToClicked(_onChannelButtonChanged);
-            view.ImpactChannels.SubscribeToChanged(_onImpactChannelChanged);
+
+          //  view.ImpactChannels.SubscribeToChanged(_onImpactChannelChanged);
 
             view.ButtonAllTracks.SubscribeToClicked(_onTracksButtonChanged);
+           // view.ButtonAllTracks.SubscribeToClicked(_showAllTrack);
             view.ButtonFavTracks.SubscribeToClicked(_onTracksButtonChanged);
             view.ImpactTracks.SubscribeToChanged(_onImpactTracksChanged);
         }
 
-
         public void Unsubscribe()
         {
             view.ButtonAllChannels.UnsubscribeFromClicked(_onChannelButtonChanged);
+
             view.ButtonFavChannels.UnsubscribeFromClicked(_onChannelButtonChanged);
-            view.ImpactChannels.UnsubscribeFromChanged(_onImpactChannelChanged);
+
+            //view.ImpactChannels.UnsubscribeFromChanged(_onImpactChannelChanged);
 
             view.ButtonAllTracks.UnsubscribeFromClicked(_onTracksButtonChanged);
             view.ButtonFavTracks.UnsubscribeFromClicked(_onTracksButtonChanged);
@@ -50,12 +53,12 @@ namespace Code.UI.Windows.Radio
 
                 case EState.Hidden:
                 default:
-                    view.ImpactChannels.InvokeActiveImpact();
+                   // view.ImpactChannels.InvokeActiveImpact();
                     _state = EState.Channel;
                     break;
 
                 case EState.Tracks:
-                    view.ImpactChannels.InvokeActiveImpact();
+                    //view.ImpactChannels.InvokeActiveImpact();
                     _state = EState.All;
                     break;
             }
@@ -86,7 +89,9 @@ namespace Code.UI.Windows.Radio
         {
             if (_state is EState.All or EState.Tracks)
             {
-                _state = view.ImpactChannels.IsActivated ? EState.Channel : EState.Hidden;
+                _state = view.DropDownChannels.State.PropertyValue is UIRadioChannelDropDown.EState.None 
+                    ? EState.Channel 
+                    : EState.Hidden;
             }
         }
 
@@ -97,5 +102,6 @@ namespace Code.UI.Windows.Radio
                 _state = view.ImpactTracks.IsActivated ? EState.Channel : EState.Hidden;
             }
         }
+
     }
 }

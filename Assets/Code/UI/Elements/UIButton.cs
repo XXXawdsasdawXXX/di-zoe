@@ -24,11 +24,6 @@ namespace Code.UI
         
         public virtual UniTask GameInitialize()
         {
-            if (buttonImpacts == null || buttonImpacts.Length == 0)
-            {
-                return UniTask.CompletedTask;
-            }
-            
             foreach (UIButtonImpact buttonImpact in buttonImpacts)
             {
                 buttonImpact?.Initialize();
@@ -118,8 +113,8 @@ namespace Code.UI
         {
             
         }
-        
-        protected virtual void onEntered(bool entered)
+
+        private void _onEntered(bool entered)
         {
             IsEntered = entered;
         }
@@ -131,7 +126,7 @@ namespace Code.UI
                 buttonImpact.OnEnter();
             }
 
-            onEntered(true);
+            _onEntered(true);
 
             _entered?.Invoke(true);
         }
@@ -150,7 +145,7 @@ namespace Code.UI
                 radioButton.UpdateImpactState();
             }
 
-            onEntered(false);
+            _onEntered(false);
 
             _entered?.Invoke(false);
         }

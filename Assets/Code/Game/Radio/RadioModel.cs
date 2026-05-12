@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 
 namespace Code.Game.Radio
 {
-    public class RadioState : IService
+    public class RadioModel : IService
     {
         // Словарь каналов: ключ — channel.id, значение — реактивная модель
         public Dictionary<string, ReactiveProperty<RadioChannelModel>> Channels { get; } = new();

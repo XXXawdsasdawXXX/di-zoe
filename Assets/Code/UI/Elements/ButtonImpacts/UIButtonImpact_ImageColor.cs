@@ -73,6 +73,11 @@ namespace Code.UI
 
             foreach (ImpactModel model in _models)
             {
+                if (model == null)
+                {
+                    continue;
+                }
+                
                 Color color = model.IsCustomColors
                     ? model.PointerModel.Default
                     : uiConfiguration.DefaultButtonsImpactColor.Default; 
