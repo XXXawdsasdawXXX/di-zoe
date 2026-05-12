@@ -6,10 +6,11 @@ namespace Code.Game.Radio
     public class RadioConfiguration : ScriptableObject
     {
         public const string CHANNEL_MODELS_URL = "https://somafm.com/channels.json";
+        
+        public const string STREAM_URL_TEMPLATE = "https://ice1.somafm.com/{0}-128-mp3";
 
-        public string StreamUrlTemplate => "https://ice1.somafm.com/{0}-128-mp3";
+        public const int PREVIOUS_TRACKS_COUNT  = 5;
 
-        [field: SerializeField] public int PreviousTracksCount { get; private set; }  = 5; //max 10
         [field: SerializeField] public float ChannelsUpdateInterval  { get; private set;  }  = 60f;
         [field: SerializeField] public float TrackUpdateInterval { get; private set; } = 30f;
         [field: SerializeField] public Texture2D DefaultChannelLogo { get; private set; }

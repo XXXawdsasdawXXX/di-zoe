@@ -89,7 +89,7 @@ namespace Code.UI.Windows.Radio
         {
             if (_state is EState.All or EState.Tracks)
             {
-                _state = view.DropDownChannels.State.PropertyValue is UIRadioChannelDropDown.EState.None 
+                _state = view.DropdownChannels.State.PropertyValue is UIRadioChannelDropdown.EState.None 
                     ? EState.Channel 
                     : EState.Hidden;
             }

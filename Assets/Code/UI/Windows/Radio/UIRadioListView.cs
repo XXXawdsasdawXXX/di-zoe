@@ -5,7 +5,7 @@ namespace Code.UI.Windows.Radio
     public class UIRadioListView : UIView
     {
         [field: Space, Header("Channels")]
-        [field: SerializeField] public UIRadioChannelDropDown DropDownChannels { get; private set; }
+        [field: SerializeField] public UIRadioChannelDropdown DropdownChannels { get; private set; }
         [field: SerializeField] public UIImpactComponent ImpactAllChannels { get; private set; }
         [field: SerializeField] public UIImpactComponent ImpactFavChannels { get; private set; }
         [field: SerializeField] public UIRadioButton ButtonAllChannels { get; private set; }

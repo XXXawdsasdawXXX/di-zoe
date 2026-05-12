@@ -6,12 +6,11 @@ using Code.Core.ServiceLocator;
 using Code.Game.Radio;
 using Code.Tools;
 using Cysharp.Threading.Tasks;
-using TriInspector;
 using UnityEngine;
 
 namespace Code.UI.Windows.Radio
 {
-    public class UIRadioChannelDropDown : UIComponent, IInitializeListener, ISubscriber
+    public class UIRadioChannelDropdown : UIComponent, IInitializeListener, ISubscriber
     {
         public enum EState
         {
@@ -21,7 +20,7 @@ namespace Code.UI.Windows.Radio
         }
 
         private const double AUTO_HIDE_DELAY = 120;
-        [ShowInInspector] public ReactiveProperty<EState> State { get; } = new(EState.None);
+        public ReactiveProperty<EState> State { get; } = new(EState.None);
 
         private Action<int> _channelChanged;
 

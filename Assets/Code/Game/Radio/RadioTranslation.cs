@@ -81,7 +81,7 @@ namespace Code.Game.Radio
         public string GetCurrentStreamUrl()
         {
             RadioChannelModel channel = _radioModel.GetCurrentChannel();
-            return string.Format(_config.StreamUrlTemplate, channel.id);
+            return string.Format(RadioConfiguration.STREAM_URL_TEMPLATE, channel.id);
         }
  
         public UniTask<Texture2D> GetChannelLogoAsync(string logoUrl)

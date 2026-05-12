@@ -11,7 +11,6 @@ namespace Code.UI.Windows.Radio
         [field: SerializeField, Group("Chanel")] public UISlider UISlider_volume { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIRawImage UIRawImage_channelLogo { get; private set; }
         [field: SerializeField, Group("Chanel")] public UIText UIText_listenerCount { get; private set; }
-        [field: SerializeField, Group("Chanel")] public UIRadioChannelDropDown UIDropDown_channels { get; private set; }
         [field: SerializeField, Group("Optional")] public UIButton UIButton_randomChannel { get; private set; }
         
         [field: Space]
@@ -20,6 +19,5 @@ namespace Code.UI.Windows.Radio
         [field: Space]
         [field: SerializeField, Group("Optional")] public UIButton UIButton_previousTracks { get; private set; }
         [field: SerializeField, Group("Optional")] public RectTransform Rect_Background { get; private set; }
-        [field: SerializeField, Group("Optional")] public UIDropDown UIDropDown_previousTracks { get; private set; }
     }
 }

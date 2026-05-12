@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Core.Save;
 using Code.Core.Save.SavedData;
 using Code.Core.ServiceLocator;
+using Code.Tools;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
@@ -11,14 +12,16 @@ namespace Code.Game.Radio
     [Preserve]
     public class RadioFavoriteContent : IService, IProgressWriter
     {
-        private List<string> _trackList = new();
+        public List<RadioSongModel> Songs { get; private set; } = new();
+
         private List<int> _channelList = new();
 
 
         public UniTask LoadProgress(PlayerProgressData playerProgress)
         {
             _channelList = playerProgress.FavoriteRadioChannels ?? new List<int>();
-            _trackList = playerProgress.FavoriteRadioTracks ?? new List<string>();
+            Songs = playerProgress.FavoriteRadioTracks
+                             .ToDeserialized<List<RadioSongModel>>() ?? new List<RadioSongModel>();
 
             return UniTask.CompletedTask;
         }
@@ -26,7 +29,7 @@ namespace Code.Game.Radio
         public void SaveProgress(PlayerProgressData playerProgress)
         {
             playerProgress.FavoriteRadioChannels = _channelList;
-            playerProgress.FavoriteRadioTracks = _trackList;
+            playerProgress.FavoriteRadioTracks = Songs.ToJson();
         }
 
         public void AddChannel(int index)
@@ -40,20 +43,15 @@ namespace Code.Game.Radio
             _channelList.Add(index);
         }
 
-        public void AddTrack(string track)
+        public void AddSong(RadioSongModel song)
         {
-            if (_trackList.Contains(track))
+            if (Songs.Contains(song))
             {
                 return;
             }
 
-            _trackList.Add(track);
-            Debug.Log($"Fav stuff: add track {track}");
-        }
-        
-        public void AddTrack(string artist, string title)
-        {
-            AddTrack(RadioConfiguration.FormatTrack(artist, title));
+            Songs.Add(song);
+            Debug.Log($"Fav stuff: add track {song}");
         }
 
         public bool IsFavoriteChannel(int index)
@@ -61,31 +59,23 @@ namespace Code.Game.Radio
             return _channelList.Contains(index);
         }
 
-        public bool IsFavoriteTrack(string track)
+        public bool IsFavoriteSong(RadioSongModel song)
         {
-            return _trackList.Contains(track);
+            return Songs.Contains(song);
         }
         
-        public bool IsFavoriteTrack(string artist, string title)
+        public void RemoveSong(RadioSongModel song)
         {
-            return _trackList.Contains(RadioConfiguration.FormatTrack(artist, title));
-        }
-
-
-        public void RemoveTrack(string track)
-        {
-            if (_trackList.Contains(track))
+            if (Songs.Contains(song))
             {
-                _trackList.Remove(track);
-                
-                Debug.Log($"Fav stuff: remove track {track}");
+                Songs.Remove(song);
+
+                Debug.Log($"Fav stuff: remove song {song}");
             }
         }
 
         public void RemoveChannel(int index)
         {
-            Debug.Log($"RemoveChannel {index} {_channelList.Contains(index)}");
-
             if (_channelList.Contains(index))
             {
                 _channelList.Remove(index);
