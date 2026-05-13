@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using Code.Core.GameLoop;
 using Code.Core.ServiceLocator;
 using Code.Tools;
 using Cysharp.Threading.Tasks;
@@ -10,7 +11,7 @@ using UnityEngine.Scripting;
 namespace Code.Game.Radio
 {
     [Preserve]
-    public class RadioRepository : IService
+    public class RadioRepository : IService, IInitializeListener
     {
         [Serializable]
         private class ChannelListResponse

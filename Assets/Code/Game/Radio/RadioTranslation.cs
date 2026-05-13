@@ -12,6 +12,8 @@ namespace Code.Game.Radio
     [Preserve]
     public class RadioTranslation : IService, IInitializeListener, IUpdateListener, IProgressWriter
     {
+        public RadioModel Model => _radioModel;
+        
         private RadioConfiguration _config;
         private RadioRepository    _repository;
         private RadioModel         _radioModel;
@@ -19,13 +21,10 @@ namespace Code.Game.Radio
         private Timer _channelsTimer;
         private Timer _tracksTimer;
  
-        // Флаг защиты от параллельных запросов
         private bool _isFetchingChannels;
         private bool _isFetchingSongs;
- 
-        // Удобный публичный доступ к состоянию (фасад для UI)
-        public RadioModel Model => _radioModel;
- 
+        
+        
         public async UniTask GameInitialize()
         {
             _config     = Container.Instance.GetConfiguration<RadioConfiguration>();
@@ -35,15 +34,17 @@ namespace Code.Game.Radio
             _channelsTimer = new Timer(_config.ChannelsUpdateInterval);
             _tracksTimer   = new Timer(_config.TrackUpdateInterval);
  
-            await RefreshChannelsAsync();
+            await _refreshChannelsAsync();
         }
  
         public async UniTask LoadProgress(PlayerProgressData playerProgress)
         {
+            Debug.Log("translation load progress");
+            
             _radioModel.CurrentChannelIndex.PropertyValue = playerProgress.RadioChanel;
             _radioModel.RadioVolume.PropertyValue         = playerProgress.RadioVolume;
  
-            await RefreshSongsAsync();
+            await _refreshSongsAsync();
         }
  
         public void SaveProgress(PlayerProgressData playerProgress)
@@ -57,10 +58,10 @@ namespace Code.Game.Radio
             float dt = Time.deltaTime;
  
             if (_channelsTimer.Update(dt))
-                RefreshChannelsAsync().Forget(Debug.LogException);
+                _refreshChannelsAsync().Forget(Debug.LogException);
  
             if (_tracksTimer.Update(dt))
-                RefreshSongsAsync().Forget(Debug.LogException);
+                _refreshSongsAsync().Forget(Debug.LogException);
         }
  
         // ── Публичное API для UI ──────────────────────────────────────────────
@@ -88,10 +89,8 @@ namespace Code.Game.Radio
         {
             return _repository.FetchLogoAsync(logoUrl);
         }
- 
-        // ── Внутренние методы обновления ─────────────────────────────────────
- 
-        private async UniTask RefreshChannelsAsync()
+        
+        private async UniTask _refreshChannelsAsync()
         {
             // Не запускаем параллельный запрос если предыдущий ещё идёт
             if (_isFetchingChannels) return;
@@ -108,7 +107,7 @@ namespace Code.Game.Radio
             }
         }
  
-        private async UniTask RefreshSongsAsync()
+        private async UniTask _refreshSongsAsync()
         {
             if (_isFetchingSongs) return;
  

@@ -13,17 +13,15 @@ namespace Code.UI.Windows.Radio
     {
         private RadioTranslation _radioTranslation;
         private RadioConfiguration _radioConfiguration;
-        private RadioFavoriteContent radioFavoriteContent;
+        private RadioFavoriteContent _radioFavoriteContent;
         
-
-        #region Life
-
+        
         public UniTask GameInitialize()
         {
             Container.Instance.GetService<RadioPlayer>();
             _radioTranslation = Container.Instance.GetService<RadioTranslation>();
             _radioConfiguration = Container.Instance.GetConfiguration<RadioConfiguration>();
-            radioFavoriteContent = Container.Instance.GetService<RadioFavoriteContent>();
+            _radioFavoriteContent = Container.Instance.GetService<RadioFavoriteContent>();
 
             return UniTask.CompletedTask;
         }
@@ -41,11 +39,11 @@ namespace Code.UI.Windows.Radio
 
             view.UIButton_randomChannel.SubscribeToClicked(_setRandomChannel);
             view.UISlider_volume.SubscribeToElement(_radioTranslation.SetVolume);
+            view.UIRadioChannelDropdown.SubscribeToChangeChannel(_radioTranslation.SetChannel);
         }
 
         public UniTask GameStart()
         {
-
             _updateCurrentChannelView(_radioTranslation.Model.CurrentChannelIndex.PropertyValue);
             
             return UniTask.CompletedTask;
@@ -61,20 +59,16 @@ namespace Code.UI.Windows.Radio
             _radioTranslation.Model.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
             _radioTranslation.Model.CurrentChannelIndex.UnsubscibeFromValue(_updateCurrentChannelView);
             _radioTranslation.Model.RadioVolume.UnsubscibeFromValue(_updateVolume);
-
+            
             view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
             view.UISlider_volume.UnsubscribeFromElement(_radioTranslation.SetVolume);
+            view.UIRadioChannelDropdown.UnsubscribeFromChangeChannel(_radioTranslation.SetChannel);
         }
 
-        #endregion
-
-        #region Channel
-        
         private void _setRandomChannel()
         {
             int index = UnityEngine.Random.Range(0, _radioTranslation.Model.Channels.Count);
             _radioTranslation.SetChannel(index);
-            //view.UIDropdownChannels.UpdateCurrentChannel();
         }
         
         private void _updateListenersCountView(RadioChannelModel model)
@@ -97,15 +91,9 @@ namespace Code.UI.Windows.Radio
             view.UIText_channel_description.SetText(channelModel.description);
             view.UIText_channel_genre.SetText(channelModel.genre);
 
-
-      
             _updateCurrentSongView(_radioTranslation.Model.CurrentSong.PropertyValue);
         }
-
-        #endregion
-
-
-
+        
         private void _updateCurrentSongView(RadioSongModel model)
         {
             if (model == null)
@@ -115,7 +103,6 @@ namespace Code.UI.Windows.Radio
             }
             view.UIText_currentTrack.SetText($"{model.artist} - {model.title}");
         }
-
         
         private void _updateVolume(float volume)
         {

@@ -19,6 +19,7 @@ namespace Code.Game.Radio
 
         public UniTask LoadProgress(PlayerProgressData playerProgress)
         {
+            Debug.Log("favorite content LoadProgress");
             _channelList = playerProgress.FavoriteRadioChannels ?? new List<int>();
             Songs = playerProgress.FavoriteRadioTracks
                              .ToDeserialized<List<RadioSongModel>>() ?? new List<RadioSongModel>();
@@ -34,7 +35,8 @@ namespace Code.Game.Radio
 
         public void AddChannel(int index)
         {
-            Debug.Log($"add channel {index} {_channelList.Contains(index)}");
+            Debug.Log($"add channel {index} {!_channelList.Contains(index)}");
+       
             if (_channelList.Contains(index))
             {
                 return;
@@ -76,6 +78,8 @@ namespace Code.Game.Radio
 
         public void RemoveChannel(int index)
         {
+            Debug.Log($"remove channel {index} {_channelList.Contains(index)}");
+
             if (_channelList.Contains(index))
             {
                 _channelList.Remove(index);

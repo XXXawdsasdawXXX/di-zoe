@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Code.UI.Windows.Radio
 {
-    public class UIRadioChannelDropdown : UIComponent, IInitializeListener, ISubscriber
+    public class UIRadioChannelDropdown : UIComponent, IInitializeListener, IStartListener ,ISubscriber
     {
         public enum EState
         {
@@ -50,7 +50,15 @@ namespace Code.UI.Windows.Radio
         {
             _all.SubscribeToDropDown(_invokeChanged);
             _fav.SubscribeToDropDown(_invokeChanged);
+            _radioTranslation.Model.CurrentChannelIndex.SubscribeToValue(_updateCurrentChannel);
             _buttonGroup.Checked += _onPressButtonGroup;
+        }
+
+        public UniTask GameStart()
+        {
+            _initializeAllChannels();
+            
+            return UniTask.CompletedTask;
         }
 
         public void Unsubscribe()
@@ -70,7 +78,7 @@ namespace Code.UI.Windows.Radio
             _channelChanged -= change;
         }
 
-        public void InitializeAllChannels()
+        private void _initializeAllChannels()
         {
             int index = 0;
             foreach (KeyValuePair<string, ReactiveProperty<RadioChannelModel>> channel in _radioTranslation.Model
@@ -86,7 +94,7 @@ namespace Code.UI.Windows.Radio
                     {
                         Name = channel.Key,
                         Genre = channel.Value.PropertyValue.genre,
-                        IsFavorite = false
+                        IsFavorite = _radioFavoriteContent.IsFavoriteChannel(index)
                     });
 
                     int channelIndex = index;
@@ -105,7 +113,7 @@ namespace Code.UI.Windows.Radio
             }
         }
 
-        public void InitializeFavoriteChannels()
+        private void _initializeFavoriteChannels()
         {
             _fav.ClearElements();
 
@@ -146,10 +154,11 @@ namespace Code.UI.Windows.Radio
             }
         }
 
-        public void UpdateCurrentChannel()
+        private void _updateCurrentChannel(int channelIndex)
         {
+            Debug.Log("_updateCurrentChannel");
+            
             RadioChannelModel channelModel = _radioTranslation.Model.GetCurrentChannel();
-            int channelIndex = _radioTranslation.Model.CurrentChannelIndex.PropertyValue;
 
             //all
             UIRadioChannelTab mainTab = _all.UIRadioButton_main as UIRadioChannelTab;
@@ -159,8 +168,7 @@ namespace Code.UI.Windows.Radio
                 {
                     Name = channelModel.title,
                     Genre = channelModel.genre,
-                    IsFavorite = _radioFavoriteContent
-                        .IsFavoriteChannel(channelIndex)
+                    IsFavorite = _radioFavoriteContent.IsFavoriteChannel(channelIndex)
                 });
             }
 
@@ -174,14 +182,14 @@ namespace Code.UI.Windows.Radio
                 {
                     Name = channelModel.title,
                     Genre = channelModel.genre,
-                    IsFavorite = false
+                    IsFavorite = _radioFavoriteContent.IsFavoriteChannel(channelIndex)
                 });
             }
 
             _fav.SetCurrentValueWithoutNotify(channelIndex);
         }
-        
-        public async UniTask HideChannelView()
+
+        private async UniTask _hideChannelView()
         {
             if (State.PropertyValue is EState.None)
             {
@@ -240,13 +248,13 @@ namespace Code.UI.Windows.Radio
 
             if (!cancelled)
             {
-                await HideChannelView();
+                await _hideChannelView();
             }
         }
 
         private async void _shownFavChannel(CancellationToken ct)
         {
-            InitializeFavoriteChannels();
+            _initializeFavoriteChannels();
 
             if (State.PropertyValue is EState.All)
             {
@@ -275,7 +283,7 @@ namespace Code.UI.Windows.Radio
 
             if (!cancelled)
             {
-                await HideChannelView();
+                await _hideChannelView();
             }
         }
 

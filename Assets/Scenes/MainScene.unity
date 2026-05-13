@@ -5466,7 +5466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.000022888184
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13557,6 +13557,7 @@ MonoBehaviour:
   <UISlider_volume>k__BackingField: {fileID: 1485926344}
   <UIRawImage_channelLogo>k__BackingField: {fileID: 1791236882}
   <UIText_listenerCount>k__BackingField: {fileID: 1640886057}
+  <UIRadioChannelDropdown>k__BackingField: {fileID: 1861418548}
   <UIButton_randomChannel>k__BackingField: {fileID: 2027381187}
   <UIText_currentTrack>k__BackingField: {fileID: 2140625011}
   <UIButton_previousTracks>k__BackingField: {fileID: 0}

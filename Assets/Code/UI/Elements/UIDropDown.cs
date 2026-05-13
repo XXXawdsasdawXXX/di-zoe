@@ -21,6 +21,7 @@ namespace Code.UI
         [SerializeField] private MonoPool<UIRadioButton> _pool;
         [SerializeField] private RectTransform _listView;
         [SerializeField] private bool _isInteractable = true;
+        [SerializeField] private bool _hideListWhenChanged;
         [SerializeField] private float _defaultSizeY;
 
         private int _current;
@@ -169,7 +170,7 @@ namespace Code.UI
         {
             SetCurrentValueWithoutNotify(index);
 
-            _invokeChanged(index);
+            _invokeChanged(_pool.GetAllEnabled()[index].Index);
 
             _listView.gameObject.SetActive(false);
         }

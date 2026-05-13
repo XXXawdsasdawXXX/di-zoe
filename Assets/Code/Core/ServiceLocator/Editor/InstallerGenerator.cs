@@ -11,6 +11,8 @@ namespace Code.Core.ServiceLocator.Editor
 {
     public static class InstallerGenerator
     {
+#if UNITY_EDITOR
+        
         [MenuItem("Tools/Sync All Installers")]
         public static void SyncAll()
         {
@@ -81,9 +83,11 @@ namespace Code.Core.ServiceLocator.Editor
             Debug.Log($"Sync complete. Total added: {totalAdded}");
         }
 
+#endif
+
         private static List<string> ParseExistingTypes(string path)
         {
-            List<string> result = new List<string>();
+            List<string> result = new();
 
             foreach (string line in File.ReadAllLines(path))
             {

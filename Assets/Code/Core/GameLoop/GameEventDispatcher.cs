@@ -22,39 +22,48 @@ namespace Code.Core.GameLoop
             Exit
         }
 
-       // private UniWindowController _controller;
+        // private UniWindowController _controller;
 
-        private readonly List<IInitializeListener> _initListeners = new List<IInitializeListener>();
-        private readonly List<ILoadListener> _loadListeners = new List<ILoadListener>();
-        private readonly List<IStartListener> _startListeners = new List<IStartListener>();
-        private readonly List<IUpdateListener> _updateListeners = new List<IUpdateListener>();
-        private readonly List<IExitListener> _exitListeners = new List<IExitListener>();
-        private readonly List<ISubscriber> _subscribers = new  List<ISubscriber>();
+        private readonly List<IInitializeListener> _initListeners = new();
+        private readonly List<ILoadListener> _loadListeners = new();
+        private readonly List<IStartListener> _startListeners = new();
+        private readonly List<IUpdateListener> _updateListeners = new();
+        private readonly List<IExitListener> _exitListeners = new();
+        private readonly List<ISubscriber> _subscribers = new();
 
-        private readonly Dictionary<IUpdateListener, string> _updateListenerName = new Dictionary<IUpdateListener, string>();
+        private readonly Dictionary<IUpdateListener, string> _updateListenerName = new();
 
-        private ProfilerMarker _updateMarker = new ProfilerMarker("update");
+        private ProfilerMarker _updateMarker = new("update");
 
         private State _currentState;
 
-        private void Awake()
+        private async void Awake()
         {
             _initializeListeners();
             
-            //_controller = Container.Instance.GetUniWindowController();
-            _bootGame(); // когда вернем кирубо - удаляем строку и возвращаем закомментированный код
+            _currentState = State.Initialize;
+            await _notifyGameInitialize();
+
+            _currentState = State.Subscribe;
+            await _notifySubscribe();
+
+            _currentState = State.Load;
+            await _notifyGameLoad();
             
+            _currentState = State.Start;
+
+
+            //_controller = Container.Instance.GetUniWindowController();
+
             if (Application.isEditor)
             {
-            //    _controller.gameObject.SetActive(false);
-              
-             //   _bootGame();
-                
+                //    _controller.gameObject.SetActive(false);
+
+                //   _bootGame();
             }
             else
             {
                 //_controller.OnStateChanged += _onWindowInitialized;
-                
             }
         }
 
@@ -118,41 +127,6 @@ namespace Code.Core.GameLoop
             _bootGame();
         }*/
 
-        private async void _bootGame()
-        {
-#if UNITY_EDITOR
-            using (new ProfilerMarker("_bootGame").Auto())
-            {
-                _currentState = State.Initialize;
-            }
-            await _notifyGameInitialize();
-
-            using (new ProfilerMarker("Subscribe").Auto())
-            {
-                _currentState = State.Subscribe;
-            }
-            await _notifySubscribe();
-
-            using (new ProfilerMarker("Load").Auto())
-            {
-                _currentState = State.Load;
-            }
-            await _notifyGameLoad();
-
-            _currentState = State.Start;
-#else
-    _currentState = State.Initialize;
-    await _notifyGameInitialize();
-
-    _currentState = State.Subscribe;
-    await _notifySubscribe();
-
-    _currentState = State.Load;
-    await _notifyGameLoad();
-
-    _currentState = State.Start;
-#endif
-        }
 
         private void _initializeListeners()
         {
@@ -196,7 +170,7 @@ namespace Code.Core.GameLoop
             {
                 subscriber.Subscribe();
             }
-            
+
             return UniTask.CompletedTask;
         }
 
@@ -236,7 +210,7 @@ namespace Code.Core.GameLoop
         private void _notifyGameExit()
         {
 #if UNITY_EDITOR
-            ProfilerMarker marker = new ProfilerMarker("_notifyGameExit");
+            ProfilerMarker marker = new("_notifyGameExit");
             marker.Begin();
             foreach (ISubscriber subscriber in _subscribers)
             {
@@ -247,6 +221,7 @@ namespace Code.Core.GameLoop
             {
                 listener.GameExit();
             }
+
             marker.End();
 #else
             foreach (ISubscriber subscriber in _subscribers)
