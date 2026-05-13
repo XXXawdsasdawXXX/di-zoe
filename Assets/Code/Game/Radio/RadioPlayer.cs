@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Code.Core.GameLoop;
 using Code.Core.ServiceLocator;
 using Cysharp.Threading.Tasks;
@@ -97,14 +98,62 @@ namespace Code.Game.Radio
 
             _changeRadioStation().Forget();
         }
+        
+
+        private CancellationTokenSource _streamCts;
 
         private async UniTask _changeRadioStation()
         {
-            StopRadio();
-            
-            await UniTask.Delay(TimeSpan.FromMilliseconds(100));
-            
-            _playCurrentStream();
+            // Отменяем предыдущее подключение
+            _streamCts?.Cancel();
+            _streamCts?.Dispose();
+            _streamCts = new CancellationTokenSource();
+            var ct = _streamCts.Token;
+
+            if (waveOut != null) { waveOut.Stop(); waveOut.Dispose(); waveOut = null; }
+            if (mediaFoundationReader != null) { mediaFoundationReader.Dispose(); mediaFoundationReader = null; }
+
+            await UniTask.Delay(TimeSpan.FromMilliseconds(300), cancellationToken: ct); // debounce
+
+            if (ct.IsCancellationRequested) return;
+
+            string url = _radioModels.GetCurrentStreamUrl();
+
+            await UniTask.RunOnThreadPool(() =>
+            {
+                if (ct.IsCancellationRequested) return;
+        
+                try
+                {
+                    var reader = new MediaFoundationReader(url);
+                    var output = new WaveOutEvent();
+                    output.Init(reader);
+
+                    if (ct.IsCancellationRequested)
+                    {
+                        output.Dispose();
+                        reader.Dispose();
+                        return;
+                    }
+
+                    UniTask.Post(() =>
+                    {
+                        if (ct.IsCancellationRequested)
+                        {
+                            output.Dispose();
+                            reader.Dispose();
+                            return;
+                        }
+                        mediaFoundationReader = reader;
+                        waveOut = output;
+                        waveOut.Volume = Mathf.Clamp01(_radioModels.Model.RadioVolume.PropertyValue);
+                        waveOut.Play();
+                    });
+                }
+                catch (OperationCanceledException) { }
+                catch (Exception ex) { Debug.LogError($"Error playing radio: {ex.Message}"); }
+            });
         }
+        
     }
 }

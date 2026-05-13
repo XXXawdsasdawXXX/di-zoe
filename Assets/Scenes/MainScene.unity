@@ -4984,6 +4984,7 @@ MonoBehaviour:
     _enabled: []
   _listView: {fileID: 1462306976}
   _isInteractable: 1
+  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &895998294
 MonoBehaviour:
@@ -5466,7 +5467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000022888184
+      value: 0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10939,6 +10940,7 @@ MonoBehaviour:
     _enabled: []
   _listView: {fileID: 1848842929}
   _isInteractable: 1
+  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &1686221604
 MonoBehaviour:
@@ -12976,6 +12978,7 @@ MonoBehaviour:
     _enabled: []
   _listView: {fileID: 1958493931}
   _isInteractable: 1
+  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &1983563292
 MonoBehaviour:
@@ -14494,6 +14497,7 @@ MonoBehaviour:
     _enabled: []
   _listView: {fileID: 7255966030453073814}
   _isInteractable: 1
+  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &6012623010783866481
 MonoBehaviour:

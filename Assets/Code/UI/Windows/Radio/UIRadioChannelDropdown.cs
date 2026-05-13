@@ -22,8 +22,6 @@ namespace Code.UI.Windows.Radio
         private const double AUTO_HIDE_DELAY = 120;
         public ReactiveProperty<EState> State { get; } = new(EState.None);
 
-        private Action<int> _channelChanged;
-
         [SerializeField] private UIRadioGroup _buttonGroup;
 
         [SerializeField] private UIImpactComponent _impactAll;
@@ -48,9 +46,9 @@ namespace Code.UI.Windows.Radio
 
         public void Subscribe()
         {
+            _radioTranslation.Model.CurrentChannelIndex.SubscribeToValue(_updateCurrentChannel);
             _all.SubscribeToDropDown(_invokeChanged);
             _fav.SubscribeToDropDown(_invokeChanged);
-            _radioTranslation.Model.CurrentChannelIndex.SubscribeToValue(_updateCurrentChannel);
             _buttonGroup.Checked += _onPressButtonGroup;
         }
 
@@ -63,21 +61,12 @@ namespace Code.UI.Windows.Radio
 
         public void Unsubscribe()
         {
+            _radioTranslation.Model.CurrentChannelIndex.UnsubscibeFromValue(_updateCurrentChannel);
             _all.UnsubscribeFromDropDown(_invokeChanged);
             _fav.UnsubscribeFromDropDown(_invokeChanged);
             _buttonGroup.Checked -= _onPressButtonGroup;
         }
-
-        public void SubscribeToChangeChannel(Action<int> change)
-        {
-            _channelChanged += change;
-        }
-
-        public void UnsubscribeFromChangeChannel(Action<int> change)
-        {
-            _channelChanged -= change;
-        }
-
+        
         private void _initializeAllChannels()
         {
             int index = 0;
@@ -289,7 +278,10 @@ namespace Code.UI.Windows.Radio
 
         private void _invokeChanged(int channelIndex)
         {
-            _channelChanged?.Invoke(channelIndex);
+            if (_radioTranslation.Model.CurrentChannelIndex.PropertyValue != channelIndex)
+            {
+                _radioTranslation.SetChannel(channelIndex);
+            }
         }
     }
 }

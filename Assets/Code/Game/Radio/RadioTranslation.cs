@@ -1,124 +1,135 @@
+using System.Threading;
 using Code.Core.GameLoop;
 using Code.Core.Save;
 using Code.Core.Save.SavedData;
 using Code.Core.ServiceLocator;
-using Code.Tools;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
+using Timer = Code.Tools.Timer;
 
 namespace Code.Game.Radio
 {
     [Preserve]
     public class RadioTranslation : IService, IInitializeListener, IUpdateListener, IProgressWriter
     {
-        public RadioModel Model => _radioModel;
-        
+        public RadioModel Model { get; private set; }
+
         private RadioConfiguration _config;
-        private RadioRepository    _repository;
-        private RadioModel         _radioModel;
- 
+        private RadioRepository _repository;
+
         private Timer _channelsTimer;
-        private Timer _tracksTimer;
- 
+        private Timer _songsTimer;
+
         private bool _isFetchingChannels;
         private bool _isFetchingSongs;
-        
-        
+
+
         public async UniTask GameInitialize()
         {
-            _config     = Container.Instance.GetConfiguration<RadioConfiguration>();
+            Model = Container.Instance.GetService<RadioModel>();
+
             _repository = Container.Instance.GetService<RadioRepository>();
-            _radioModel      = Container.Instance.GetService<RadioModel>();
- 
+            _config = Container.Instance.GetConfiguration<RadioConfiguration>();
+
             _channelsTimer = new Timer(_config.ChannelsUpdateInterval);
-            _tracksTimer   = new Timer(_config.TrackUpdateInterval);
- 
+            _songsTimer = new Timer(_config.TrackUpdateInterval);
+            
             await _refreshChannelsAsync();
         }
- 
+
         public async UniTask LoadProgress(PlayerProgressData playerProgress)
         {
-            Debug.Log("translation load progress");
-            
-            _radioModel.CurrentChannelIndex.PropertyValue = playerProgress.RadioChanel;
-            _radioModel.RadioVolume.PropertyValue         = playerProgress.RadioVolume;
- 
+            Model.CurrentChannelIndex.PropertyValue = playerProgress.RadioChanel;
+            Model.RadioVolume.PropertyValue = playerProgress.RadioVolume;
+
             await _refreshSongsAsync();
         }
- 
+
         public void SaveProgress(PlayerProgressData playerProgress)
         {
-            playerProgress.RadioChanel  = _radioModel.CurrentChannelIndex.PropertyValue;
-            playerProgress.RadioVolume  = _radioModel.RadioVolume.PropertyValue;
+            playerProgress.RadioChanel = Model.CurrentChannelIndex.PropertyValue;
+            playerProgress.RadioVolume = Model.RadioVolume.PropertyValue;
         }
- 
+
         public void GameUpdate()
         {
             float dt = Time.deltaTime;
- 
+
             if (_channelsTimer.Update(dt))
+            {
                 _refreshChannelsAsync().Forget(Debug.LogException);
- 
-            if (_tracksTimer.Update(dt))
+            }
+
+            if (_songsTimer.Update(dt))
+            {
                 _refreshSongsAsync().Forget(Debug.LogException);
+            }
         }
- 
-        // ── Публичное API для UI ──────────────────────────────────────────────
- 
+
         public void SetChannel(int channelIndex)
         {
-            _radioModel.CurrentChannelIndex.PropertyValue = channelIndex;
- 
-            // Форсируем немедленное обновление треков при смене канала
-            _tracksTimer.Finish();
+            Model.CurrentChannelIndex.PropertyValue = channelIndex;
+
+            _songsTimer.Finish();
         }
- 
+
         public void SetVolume(float volume)
         {
-            _radioModel.RadioVolume.PropertyValue = volume;
+            Model.RadioVolume.PropertyValue = volume;
         }
- 
+
         public string GetCurrentStreamUrl()
         {
-            RadioChannelModel channel = _radioModel.GetCurrentChannel();
+            RadioChannelModel channel = Model.GetCurrentChannel();
             return string.Format(RadioConfiguration.STREAM_URL_TEMPLATE, channel.id);
         }
- 
-        public UniTask<Texture2D> GetChannelLogoAsync(string logoUrl)
+
+        public UniTask<Texture2D> GetChannelLogoAsync(string logoUrl, CancellationToken ct)
         {
-            return _repository.FetchLogoAsync(logoUrl);
+            return _repository.FetchLogoAsync(logoUrl, ct);
         }
-        
+
         private async UniTask _refreshChannelsAsync()
         {
-            // Не запускаем параллельный запрос если предыдущий ещё идёт
-            if (_isFetchingChannels) return;
- 
+            if (_isFetchingChannels)
+            {
+                return;
+            }
+
             _isFetchingChannels = true;
+
             try
             {
                 RadioChannelModel[] channels = await _repository.FetchChannelsAsync();
-                _radioModel.ApplyChannels(channels);
+                Model.ApplyChannels(channels);
             }
             finally
             {
                 _isFetchingChannels = false;
             }
         }
- 
+
         private async UniTask _refreshSongsAsync()
         {
-            if (_isFetchingSongs) return;
- 
-            RadioChannelModel current = _radioModel.GetCurrentChannel();
-            if (string.IsNullOrEmpty(current.id)) return;
- 
+            if (_isFetchingSongs)
+            {
+                return;
+            }
+
+            RadioChannelModel current = Model.GetCurrentChannel();
+
+            if (string.IsNullOrEmpty(current.id))
+            {
+                return;
+            }
+
             _isFetchingSongs = true;
+
             try
             {
                 RadioSongListModel songs = await _repository.FetchSongsAsync(current.id);
-                _radioModel.ApplySongs(songs);
+                Model.ApplySongs(songs);
             }
             finally
             {
