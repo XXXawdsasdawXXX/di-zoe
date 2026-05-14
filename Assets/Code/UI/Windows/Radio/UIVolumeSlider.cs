@@ -27,7 +27,6 @@ namespace Code.UI.Windows.Radio
         public UniTask GameStart()
         {
             IReadOnlyList<UIButton> all = _volumePool.GetAll();
-
             
             for (int i = 0; i < all.Count; i++)
             {
@@ -39,8 +38,7 @@ namespace Code.UI.Windows.Radio
                     _updateVolume(_volumePool.PoolCount() - index);
                 });
             }
-
-
+            
             int sliderVolume =
                 Mathf.RoundToInt(_radioTranslation.Model.RadioVolume.PropertyValue * _volumePool.GetAll().Count);
 
