@@ -81,20 +81,24 @@ namespace Code.Core.GameLoop
 
         public void EnableCount(int count, bool fromEnd = false)
         {
-            Debug.Log($"mono pool set enabled count: {_enabled.Count} < {count} {_all.Count}");
-            while (_enabled.Count < count)
-            {
-                T entity = _getDisabledEntity() ?? _addNewEntity();
-                _enabled.Add(entity);
-                entity.Enable();
-            }
+            List<T> ordered = fromEnd 
+                ? _all.OrderByDescending(e => e.Index).ToList()
+                : _all.OrderBy(e => e.Index).ToList();
 
-            while (_enabled.Count > count)
+            _enabled.Clear();
+            
+            for (int i = 0; i < ordered.Count; i++)
             {
-                int index = fromEnd ? _enabled.Count - 1 : 0;
-                T entity = _enabled[index];
-                entity.Disable();
-                _enabled.RemoveAt(index);
+                T entity = ordered[i];
+                if (i < count)
+                {
+                    entity.Enable();
+                    _enabled.Add(entity);
+                }
+                else
+                {
+                    entity.Disable();
+                }
             }
         }
 
@@ -103,7 +107,7 @@ namespace Code.Core.GameLoop
             return _all.FirstOrDefault(a => a.Index == index);
         }
 
-        public int Count()
+        public int PoolCount()
         {
             return _all.Count;
         }

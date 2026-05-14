@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -944,6 +944,18 @@ PrefabInstance:
     - target: {fileID: 763796613805653549, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.78823537
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8000001
       objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
       propertyPath: m_Pivot.x
@@ -1484,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -1695,6 +1707,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.000017166138
       objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.78823537
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8000001
+      objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1765,7 +1789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1980,7 +2004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -2285,7 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -10, w: 0}
   m_Maskable: 1
@@ -2543,7 +2567,7 @@ GameObject:
   - component: {fileID: 417623010}
   - component: {fileID: 417623012}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3113,7 +3137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -3774,7 +3798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -4064,7 +4088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -4404,7 +4428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 757944395}
   m_Layer: 5
-  m_Name: Box_Track
+  m_Name: box - current song
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4633,7 +4657,7 @@ GameObject:
   - component: {fileID: 852507641}
   - component: {fileID: 852507642}
   m_Layer: 5
-  m_Name: ContentBox-track
+  m_Name: contentBox - params
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4654,9 +4678,9 @@ RectTransform:
   - {fileID: 757944395}
   - {fileID: 1264357071}
   - {fileID: 1861418547}
-  - {fileID: 1148697972}
   - {fileID: 1686221601}
   - {fileID: 6012623010783866479}
+  - {fileID: 1148697972}
   - {fileID: 895998292}
   - {fileID: 1983563289}
   m_Father: {fileID: 1102021729}
@@ -4979,12 +5003,11 @@ MonoBehaviour:
   <UIRadioButton_main>k__BackingField: {fileID: 1588196974}
   _pool:
     _root: {fileID: 2037033516}
-    _prefab: {fileID: 1588196974}
+    _prefab: {fileID: 8317636130084600099, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
     _all: []
     _enabled: []
   _listView: {fileID: 1462306976}
   _isInteractable: 1
-  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &895998294
 MonoBehaviour:
@@ -5138,7 +5161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906080412}
   m_Layer: 5
-  m_Name: Content
+  m_Name: content - translation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5467,7 +5490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000076293945
+      value: -0.000011444092
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6003,7 +6026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -6547,7 +6570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -6604,7 +6627,7 @@ GameObject:
   - component: {fileID: 1102021731}
   - component: {fileID: 1102021730}
   m_Layer: 5
-  m_Name: ContentBox-channel
+  m_Name: contentBox - channel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7083,7 +7106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7994696605273016394, guid: 6ae89350e8a3f8749af1393a0896050e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7994696605273016394, guid: 6ae89350e8a3f8749af1393a0896050e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7917,7 +7940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -7971,8 +7994,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1264357071}
+  - component: {fileID: 1264357072}
   m_Layer: 5
-  m_Name: Box_Slider
+  m_Name: slider - volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7997,8 +8021,22 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 395, y: 25.22}
+  m_SizeDelta: {x: 412.18, y: 25.22}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1264357072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264357070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1306967650
 GameObject:
   m_ObjectHideFlags: 0
@@ -8405,7 +8443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -8565,7 +8603,7 @@ GameObject:
   - component: {fileID: 1379659537}
   - component: {fileID: 1379659536}
   m_Layer: 5
-  m_Name: UICanvas_Radio
+  m_Name: uiCanvas - radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8978,6 +9016,18 @@ PrefabInstance:
     - target: {fileID: 763796613805653549, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.78823537
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8000001
       objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: ec33b958b2f6cab41a0505a5a6957ba2, type: 3}
       propertyPath: m_Pivot.x
@@ -9417,10 +9467,10 @@ RectTransform:
   m_Father: {fileID: 895998292}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -47}
+  m_SizeDelta: {x: 400, y: -48}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1462306977
 MonoBehaviour:
@@ -9446,7 +9496,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1913784288}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
@@ -9593,25 +9643,6 @@ MonoBehaviour:
     - {fileID: 1974582985}
     - {fileID: 444151001}
     - {fileID: 2119984375}
-    - {fileID: 701387455}
-    - {fileID: 1846552309}
-    - {fileID: 1886557799}
-    - {fileID: 2100645387}
-    - {fileID: 312123500}
-    - {fileID: 1877881442}
-    - {fileID: 241198435}
-    - {fileID: 1252310148}
-    - {fileID: 41942753}
-    - {fileID: 1092884856}
-    - {fileID: 1354930255}
-    - {fileID: 39405895}
-    - {fileID: 1512253310}
-    - {fileID: 483505359}
-    - {fileID: 676282591}
-    - {fileID: 77305662}
-    - {fileID: 1683250195}
-    - {fileID: 385113046}
-    - {fileID: 1044535121}
 --- !u!1 &1486598947
 GameObject:
   m_ObjectHideFlags: 0
@@ -10041,7 +10072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -10227,6 +10258,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.000017166138
       objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.78823537
+      objectReference: {fileID: 0}
+    - target: {fileID: 966995379164662934, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8000001
+      objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10297,7 +10340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2051206652544713893, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10644,7 +10687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672497427}
   m_Layer: 5
-  m_Name: view-channelInformation
+  m_Name: view - channel information
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10807,7 +10850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -10887,7 +10930,7 @@ RectTransform:
   - {fileID: 1848842929}
   - {fileID: 168960417}
   m_Father: {fileID: 852507640}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -10940,7 +10983,6 @@ MonoBehaviour:
     _enabled: []
   _listView: {fileID: 1848842929}
   _isInteractable: 1
-  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &1686221604
 MonoBehaviour:
@@ -11481,7 +11523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -11562,11 +11604,11 @@ RectTransform:
   m_Father: {fileID: 1686221601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -34.666668}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -48}
+  m_SizeDelta: {x: 400, y: -48}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1848842930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11591,7 +11633,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1490701388}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
@@ -11711,7 +11753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -11808,7 +11850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -11994,7 +12036,7 @@ GameObject:
   - component: {fileID: 1913851940}
   - component: {fileID: 1913851939}
   m_Layer: 5
-  m_Name: Buttons-group
+  m_Name: buttonsGroup - menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12633,10 +12675,10 @@ RectTransform:
   m_Father: {fileID: 1983563289}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -47}
+  m_SizeDelta: {x: 400, y: -48}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1958493932
 MonoBehaviour:
@@ -12662,7 +12704,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 80796297}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
@@ -12973,12 +13015,11 @@ MonoBehaviour:
   <UIRadioButton_main>k__BackingField: {fileID: 301655025}
   _pool:
     _root: {fileID: 1114877025}
-    _prefab: {fileID: 301655025}
+    _prefab: {fileID: 8317636130084600099, guid: f73b672d0dbfdc842bcafd5bec36621c, type: 3}
     _all: []
     _enabled: []
   _listView: {fileID: 1958493931}
   _isInteractable: 1
-  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &1983563292
 MonoBehaviour:
@@ -13511,7 +13552,7 @@ GameObject:
   - component: {fileID: 2079186937}
   - component: {fileID: 2079186936}
   m_Layer: 5
-  m_Name: Window_radio
+  m_Name: window - radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13710,7 +13751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: -2, y: 0, z: -2, w: 0}
   m_Maskable: 1
@@ -13897,7 +13938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -10
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5829439345949837954, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_SizeDelta.y
@@ -13953,7 +13994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSize
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontStyle
@@ -13977,7 +14018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSizeMax
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_fontSizeMin
@@ -13993,7 +14034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8999839299980147621, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d8b00cb0623f3f47946cea7c2ed6eac, type: 3}
@@ -14203,7 +14244,7 @@ GameObject:
   - component: {fileID: 8047000691827599082}
   - component: {fileID: 1485926344}
   m_Layer: 5
-  m_Name: UISlider_volume
+  m_Name: uiSlider - volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14220,7 +14261,6 @@ GameObject:
   - component: {fileID: 6274954588505078409}
   - component: {fileID: 598792942783868613}
   - component: {fileID: 3537037185507209836}
-  - component: {fileID: 8738937417189502663}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -14282,7 +14322,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 328816109745260960}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
@@ -14468,11 +14508,11 @@ RectTransform:
   - {fileID: 7255966030453073814}
   - {fileID: 1414554000}
   m_Father: {fileID: 852507640}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 208.555, y: -154.23001}
+  m_AnchoredPosition: {x: 208.555, y: -168.24}
   m_SizeDelta: {x: 400, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6012623010783866480
@@ -14497,7 +14537,6 @@ MonoBehaviour:
     _enabled: []
   _listView: {fileID: 7255966030453073814}
   _isInteractable: 1
-  _hideListWhenChanged: 0
   _defaultSizeY: 48
 --- !u!114 &6012623010783866481
 MonoBehaviour:
@@ -14862,11 +14901,11 @@ RectTransform:
   m_Father: {fileID: 6012623010783866479}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -34.666668}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -48}
+  m_SizeDelta: {x: 400, y: -48}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &7637887421848564373
 GameObject:
   m_ObjectHideFlags: 0
@@ -15063,20 +15102,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 12}
   m_SizeDelta: {x: 396, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8738937417189502663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2919309721713580239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
 --- !u!1 &8876765689914671310
 GameObject:
   m_ObjectHideFlags: 0

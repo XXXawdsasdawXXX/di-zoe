@@ -76,6 +76,7 @@ namespace Code.Game.Radio
 
         public void SetVolume(float volume)
         {
+            Debug.Log($"translation set volume -> {volume}");
             Model.RadioVolume.PropertyValue = volume;
         }
 

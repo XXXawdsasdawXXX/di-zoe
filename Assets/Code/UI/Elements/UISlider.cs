@@ -6,7 +6,6 @@ namespace Code.UI
     {
         private event Action<float> _changed;
         
-        
         public void SubscribeToElement(Action<float> action)
         {
             _changed += action;
@@ -20,11 +19,9 @@ namespace Code.UI
         public abstract float GetValue();
         
         public abstract void SetValueWithoutNotify(float value);
-
-        public void SetValue(float value)
+        
+        protected void invokeChanges(float value)
         {
-            SetValueWithoutNotify(value);
-            
             _changed?.Invoke(value);
         }
     }

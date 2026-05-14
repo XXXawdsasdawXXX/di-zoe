@@ -7,11 +7,10 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TriInspector;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.UI
 {
-    public class UIDropDown : UIComponent, ISubscriber, IInitializeListener
+    public sealed class UIDropDown : UIComponent, ISubscriber, IInitializeListener
     {
         private const float SHOWN_SIZE_SCALER = 5;
         private event Action<int> _changed;
@@ -21,7 +20,6 @@ namespace Code.UI
         [SerializeField] private MonoPool<UIRadioButton> _pool;
         [SerializeField] private RectTransform _listView;
         [SerializeField] private bool _isInteractable = true;
-        [SerializeField] private bool _hideListWhenChanged;
         [SerializeField] private float _defaultSizeY;
 
         private int _current;
@@ -31,7 +29,7 @@ namespace Code.UI
 
         #region Life
 
-        public virtual UniTask GameInitialize()
+        public UniTask GameInitialize()
         {
             _pool.DisableAll();
 
@@ -139,8 +137,9 @@ namespace Code.UI
 
             _listView.gameObject.SetActive(true);
 
-            Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY * SHOWN_SIZE_SCALER);
-            _tween = Rect.DOSizeDelta(size, UIConfiguration.ANIMATION_DURATION_SHORT)
+            float sizeY = Mathf.Min(_defaultSizeY * SHOWN_SIZE_SCALER, (_pool.PoolCount() + 1) * _defaultSizeY);
+            _tween = Rect
+                .DOSizeDelta(new Vector2(Rect.sizeDelta.x, sizeY), UIConfiguration.ANIMATION_DURATION_SHORT)
                 .SetEase(UIConfiguration.TWEEN_EASY);
         }
 

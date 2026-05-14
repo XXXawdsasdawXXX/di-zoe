@@ -32,7 +32,7 @@ namespace Code.UI.Windows.Radio
 
             _radioTranslation.Model.CurrentSong.SubscribeToValue(_updateCurrentSongView);
             _radioTranslation.Model.CurrentChannelIndex.SubscribeToValue(_updateCurrentChannelView);
-            _radioTranslation.Model.RadioVolume.SubscribeToValue(_updateVolume);
+
 
             view.UIButton_randomChannel.SubscribeToClicked(_setRandomChannel);
             view.UISlider_volume.SubscribeToElement(_radioTranslation.SetVolume);
@@ -54,7 +54,7 @@ namespace Code.UI.Windows.Radio
             
             _radioTranslation.Model.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
             _radioTranslation.Model.CurrentChannelIndex.UnsubscibeFromValue(_updateCurrentChannelView);
-            _radioTranslation.Model.RadioVolume.UnsubscibeFromValue(_updateVolume);
+
             
             view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
             view.UISlider_volume.UnsubscribeFromElement(_radioTranslation.SetVolume);
@@ -117,9 +117,5 @@ namespace Code.UI.Windows.Radio
             view.UIText_currentTrack.SetText($"{model.artist} - {model.title}");
         }
         
-        private void _updateVolume(float volume)
-        {
-            view.UISlider_volume.SetValueWithoutNotify(volume);
-        }
     }
 }

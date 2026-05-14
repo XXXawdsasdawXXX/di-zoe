@@ -67,6 +67,7 @@ namespace Code.Game.Radio
         {
             if (waveOut != null)
             {
+                Debug.Log($"set volume {volume} -> {Mathf.Clamp01(volume)}");
                 waveOut.Volume = Mathf.Clamp01(volume);
             }
         }

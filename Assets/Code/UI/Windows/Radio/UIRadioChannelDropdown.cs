@@ -212,22 +212,17 @@ namespace Code.UI.Windows.Radio
         {
             if (State.PropertyValue is EState.Fav)
             {
-                bool isShownList = _fav.IsShownList;
-           
                 await _fav.HideListView();
                 _fav.gameObject.SetActive(false);
                 _all.gameObject.SetActive(true);
-                
-                if (isShownList)
-                {
-                    _all.ShowListView();
-                }
             }
             else
             {
                 _all.gameObject.SetActive(true);
                 await _impactAll.InvokeActiveImpact();
             }
+            
+            _all.ShowListView();
             
             State.PropertyValue = EState.All;
 
@@ -247,22 +242,17 @@ namespace Code.UI.Windows.Radio
 
             if (State.PropertyValue is EState.All)
             {
-                bool isShownList = _all.IsShownList;
-           
                 await _all.HideListView();
                 _all.gameObject.SetActive(false);
                 _fav.gameObject.SetActive(true);
-                
-                if (isShownList)
-                {
-                    _fav.ShowListView();
-                }
             }
             else
             {
                 _fav.gameObject.SetActive(true);
                 await _impactFav.InvokeActiveImpact();
             }
+            
+            _fav.ShowListView();
             
             State.PropertyValue = EState.Fav;
 

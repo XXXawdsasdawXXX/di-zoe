@@ -5,22 +5,25 @@ namespace Code.UI.Windows.Radio
 {
     public class UIVolumeElement : UIButton
     {
+        private static readonly Color ENABLED_COLOR = Color.white; 
+        private static readonly Color DISABLED_COLOR = Color.clear;
+        
         [SerializeField] private Image _image;
 
-
+        
         public override bool IsEnabled()
         {
-            return _image.color == Color.white;
+            return _image.color == ENABLED_COLOR;
         }
 
         public override void Enable()
         {
-            _image.color = Color.white;    
+            _image.color = ENABLED_COLOR;    
         }
 
         public override void Disable()
         {
-            _image.color = Color.clear;    
+            _image.color = DISABLED_COLOR;    
         }
 
 #if UNITY_EDITOR
