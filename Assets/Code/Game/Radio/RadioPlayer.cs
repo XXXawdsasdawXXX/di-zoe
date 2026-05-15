@@ -25,8 +25,6 @@ namespace Code.Game.Radio
         {
             _radioModels = Container.Instance.GetService<RadioTranslation>();
             
-            
-
             return UniTask.CompletedTask;
         }
 
@@ -67,43 +65,12 @@ namespace Code.Game.Radio
             _watchdogCts?.Dispose();
             _watchdogCts = null;
         }
-
-        public float GetVolume()
-        {
-            return waveOut?.Volume ?? 0;
-        }
-
+        
         public void StopRadio()
         {
             if (waveOut != null)
             {
                 waveOut.Stop();
-            }
-        }
-
-        private void _setVolume(float volume)
-        {
-            if (waveOut != null)
-            {
-                Debug.Log($"set volume {volume} -> {Mathf.Clamp01(volume)}");
-                waveOut.Volume = Mathf.Clamp01(volume);
-            }
-        }
-
-        private void _playCurrentStream()
-        {
-            string url = _radioModels.GetCurrentStreamUrl();
-            
-            try
-            {
-                mediaFoundationReader = new MediaFoundationReader(url);
-                waveOut = new WaveOutEvent();
-                waveOut.Init(mediaFoundationReader);
-                waveOut.Play();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Error playing radio: {ex.Message}. url = {url}");
             }
         }
 
@@ -118,6 +85,14 @@ namespace Code.Game.Radio
             _changeRadioStation().Forget();
         }
 
+        private void _setVolume(float volume)
+        {
+            if (waveOut != null)
+            {
+                Debug.Log($"set volume {volume} -> {Mathf.Clamp01(volume)}");
+                waveOut.Volume = Mathf.Clamp01(volume);
+            }
+        }
 
         private async UniTask _changeRadioStation()
         {

@@ -3,10 +3,9 @@ using Code.Core.GameLoop;
 using Code.UI.Models;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using Kirurobo;
 using UnityEngine;
 
-namespace Code.UI
+namespace Code.UI.ImpactComponents
 {
     public class UIImpactComponent_RadioDropDown : UIImpactComponent, IStartListener
     {

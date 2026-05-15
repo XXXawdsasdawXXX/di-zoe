@@ -1,10 +1,9 @@
 using Code.Core.GameLoop;
-using Code.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AppTracker.UI
+namespace Code.UI.Windows.AppTime
 {
     public class AppTimeListView : UIView
     {

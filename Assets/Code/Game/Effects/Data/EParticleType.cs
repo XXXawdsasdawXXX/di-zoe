@@ -1,4 +1,4 @@
-﻿namespace Code.Game.Effects
+﻿namespace Code.Game.Effects.Data
 {
     public enum EParticleType
     {

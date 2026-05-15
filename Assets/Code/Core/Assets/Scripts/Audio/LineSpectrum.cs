@@ -1,8 +1,8 @@
-﻿using CSCore.DSP;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using CSCore.DSP;
 
-namespace Assets.Scripts.Audio
+namespace Code.Core.Assets.Scripts.Audio
 {
     internal class LineSpectrum : SpectrumBase
     {

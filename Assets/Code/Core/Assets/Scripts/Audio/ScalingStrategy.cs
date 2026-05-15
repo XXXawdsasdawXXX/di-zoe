@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Audio
+﻿namespace Code.Core.Assets.Scripts.Audio
 {
     public enum ScalingStrategy
     {

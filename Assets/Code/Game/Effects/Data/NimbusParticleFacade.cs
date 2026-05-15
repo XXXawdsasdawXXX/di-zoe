@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Code.Game.Effects
+namespace Code.Game.Effects.Data
 {
     public class NimbusParticleFacade : ParticleSystemFacade
     {

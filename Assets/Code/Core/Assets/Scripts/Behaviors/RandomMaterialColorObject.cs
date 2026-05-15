@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Behaviors
+namespace Code.Core.Assets.Scripts.Behaviors
 {
     public class RandomMaterialColorObject : MonoBehaviour
     {

@@ -2,11 +2,11 @@
 using Code.Core.Assets.Scripts.Audio;
 using Code.Core.GameLoop;
 using Code.Core.ServiceLocator;
-using Code.Data;
+using Code.Tools.RangeFloat;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Game.Effects
+namespace Code.Game.Effects.Data
 {
     public sealed class AudioParticleModule : MonoBehaviour, 
         IInitializeListener, 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace AppTracker
+namespace Code.Game.AppTracker
 {
     [Serializable]
     public class AppTimeData

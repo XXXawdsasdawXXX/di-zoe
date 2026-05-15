@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Game.AppTracker;
-using Code.UI;
 using UnityEngine;
 
-namespace AppTracker.UI
+namespace Code.UI.Windows.AppTime
 {
     public class AppTimeController : UIPresenter<AppTimeListView>
     {
@@ -54,13 +53,13 @@ namespace AppTracker.UI
             string today = DateTime.Now.ToString("yyyy-MM-dd");
 
             // Все приложения за период (включая сегодня)
-            var periodEntries = _savedData.Entries
+            List<AppEntry> periodEntries = _savedData.Entries
                 .Where(e => IsWithinDays(e.Date, days))
                 .ToList();
 
             // Группируем по приложению — суммируем время за каждый день отдельно
             // чтобы считать среднее как среднее по дням, а не сумму
-            var appDays = periodEntries
+            Dictionary<string, Dictionary<string, float>> appDays = periodEntries
                 .GroupBy(e => e.AppName)
                 .ToDictionary(
                     g => g.Key,
@@ -68,7 +67,7 @@ namespace AppTracker.UI
                           .ToDictionary(d => d.Key, d => d.Sum(e => e.TotalSeconds) / 60f));
 
             // Добавляем текущую сессию к сегодняшним данным
-            foreach (var (app, seconds) in _tracker.AppTime)
+            foreach ((string app, float seconds) in _tracker.AppTime)
             {
                 if (!appDays.ContainsKey(app))
                     appDays[app] = new Dictionary<string, float>();
@@ -81,12 +80,12 @@ namespace AppTracker.UI
 
             // Строим UI entries
             // today = сегодняшнее время, avg = среднее по остальным дням периода
-            var uiEntries = appDays
+            AppTimeEntryUI[] uiEntries = appDays
                 .Select(kv =>
                 {
                     float todayMins = kv.Value.TryGetValue(today, out float t) ? t : 0f;
 
-                    var otherDays = kv.Value
+                    List<float> otherDays = kv.Value
                         .Where(d => d.Key != today)
                         .Select(d => d.Value)
                         .ToList();

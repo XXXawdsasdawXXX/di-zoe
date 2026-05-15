@@ -1,7 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 
-namespace Code.UI
+namespace Code.UI.ImpactComponents
 {
     public abstract class UIImpactComponent : UIComponent
     {

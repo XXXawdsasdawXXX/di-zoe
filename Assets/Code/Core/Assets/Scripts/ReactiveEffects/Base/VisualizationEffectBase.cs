@@ -1,8 +1,7 @@
-﻿using Assets.Scripts.Audio;
-using Code.Core.Assets.Scripts.Audio;
+﻿using Code.Core.Assets.Scripts.Audio;
 using UnityEngine;
 
-namespace Assets.Scripts.ReactiveEffects.Base
+namespace Code.Core.Assets.Scripts.ReactiveEffects.Base
 {
     public abstract class VisualizationEffectBase : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Code.Utils
+namespace Code.Tools
 {
     public static class ColorExtensions
     {

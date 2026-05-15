@@ -1,7 +1,6 @@
 using System.Threading;
 using Code.Core.GameLoop;
 using Code.Core.Save;
-using Code.Core.Save.SavedData;
 using Code.Core.ServiceLocator;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

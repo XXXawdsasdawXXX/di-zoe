@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.ReactiveEffects.Base;
+﻿using Code.Core.Assets.Scripts.ReactiveEffects.Base;
 using UnityEngine;
 
-namespace Assets.Scripts.ReactiveEffects
+namespace Code.Core.Assets.Scripts.ReactiveEffects
 {
     public class MaterialColorIntensityReactiveEffect : VisualizationEffectBase
     {

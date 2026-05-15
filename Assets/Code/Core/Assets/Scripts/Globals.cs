@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Code.Core.Assets.Scripts
 {
     public static class Globals
     {

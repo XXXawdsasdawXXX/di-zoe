@@ -1,5 +1,4 @@
-﻿using Code.Data;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Code.Tools.RangeFloat.Editor

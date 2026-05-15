@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Code.Core.Save.SavedData
+namespace Code.Core.Save
 {
     [Serializable]
     public class PlayerProgressData

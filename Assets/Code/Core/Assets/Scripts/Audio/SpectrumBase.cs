@@ -5,7 +5,7 @@ using System.Diagnostics;
 using CSCore;
 using CSCore.DSP;
 
-namespace Assets.Scripts.Audio
+namespace Code.Core.Assets.Scripts.Audio
 {
     internal class SpectrumBase : INotifyPropertyChanged
     {
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        [BrowsableAttribute(false)]
+        [Browsable(false)]
         public ISpectrumProvider SpectrumProvider
         {
             get { return _spectrumProvider; }
@@ -106,7 +106,7 @@ namespace Assets.Scripts.Audio
             }
         }
 
-        [BrowsableAttribute(false)]
+        [Browsable(false)]
         public FftSize FftSize
         {
             get { return (FftSize) _fftSize; }

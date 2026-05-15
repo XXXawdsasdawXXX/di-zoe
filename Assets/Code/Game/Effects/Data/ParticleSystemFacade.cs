@@ -4,7 +4,7 @@ using Code.Core.ServiceLocator;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Game.Effects
+namespace Code.Game.Effects.Data
 {
     public class ParticleSystemFacade : MonoBehaviour, IInitializeListener
     {

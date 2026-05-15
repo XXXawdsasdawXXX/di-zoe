@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Code.Game.Effects.Data;
 using UnityEngine;
 
 namespace Code.Game.Effects

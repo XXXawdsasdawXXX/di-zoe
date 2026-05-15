@@ -1,10 +1,10 @@
 ﻿using System;
 using CSCore;
-using CSCore.SoundIn;
 using CSCore.DSP;
+using CSCore.SoundIn;
 using CSCore.Streams;
 
-namespace Assets.Scripts.Audio
+namespace Code.Core.Assets.Scripts.Audio
 {
     public class RealtimeAudio
     {

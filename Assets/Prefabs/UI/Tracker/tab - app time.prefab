@@ -503,7 +503,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 209.03, y: 367.85}
-  m_SizeDelta: {x: 400, y: 59.01}
+  m_SizeDelta: {x: 360, y: 59.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6130521932504777167
 MonoBehaviour:
@@ -1009,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4868334006837421624, guid: 2d8d91d5e751c6245bde59b2dc455f93, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.9999695
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4868334006837421624, guid: 2d8d91d5e751c6245bde59b2dc455f93, type: 3}
       propertyPath: m_AnchoredPosition.y
