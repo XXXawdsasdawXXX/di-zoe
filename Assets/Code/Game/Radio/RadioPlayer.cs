@@ -8,18 +8,24 @@ using UnityEngine;
 
 namespace Code.Game.Radio
 {
-    public class RadioPlayer : MonoBehaviour, IService, IInitializeListener, ISubscriber, IExitListener
+    public class RadioPlayer : MonoBehaviour, IService, IInitializeListener,IStartListener ,ISubscriber, IExitListener
     {
         private MediaFoundationReader mediaFoundationReader;
         private WaveOutEvent waveOut;
         private RadioTranslation _radioModels;
 
-        private Coroutine _coroutine;
-
-
+        private CancellationTokenSource _streamCts;
+       
+        private CancellationTokenSource _watchdogCts;
+        private const float WATCHDOG_INTERVAL = 5f;
+        private const int MAX_RETRY_ATTEMPTS = 3;
+        
+        
         public UniTask GameInitialize()
         {
             _radioModels = Container.Instance.GetService<RadioTranslation>();
+            
+            
 
             return UniTask.CompletedTask;
         }
@@ -29,13 +35,21 @@ namespace Code.Game.Radio
             _radioModels.Model.CurrentChannelIndex.SubscribeToValue(_onChangeRadioStation);
             _radioModels.Model.RadioVolume.SubscribeToValue(_setVolume);
         }
-        
+
+        public UniTask GameStart()
+        {
+            _watchdogCts = new CancellationTokenSource();
+            _watchdogLoop(_watchdogCts.Token).Forget();
+            
+            return UniTask.CompletedTask;
+        }
+
         public void Unsubscribe()
         {
             _radioModels.Model.CurrentChannelIndex.UnsubscibeFromValue(_onChangeRadioStation);
             _radioModels.Model.RadioVolume.UnsubscibeFromValue(_setVolume);
         }
-        
+
         public void GameExit()
         {
             if (waveOut != null)
@@ -48,6 +62,10 @@ namespace Code.Game.Radio
             {
                 mediaFoundationReader.Dispose();
             }
+            
+            _watchdogCts?.Cancel();
+            _watchdogCts?.Dispose();
+            _watchdogCts = null;
         }
 
         public float GetVolume()
@@ -99,9 +117,7 @@ namespace Code.Game.Radio
 
             _changeRadioStation().Forget();
         }
-        
 
-        private CancellationTokenSource _streamCts;
 
         private async UniTask _changeRadioStation()
         {
@@ -156,5 +172,65 @@ namespace Code.Game.Radio
             });
         }
         
+        private async UniTaskVoid _watchdogLoop(CancellationToken ct)
+        {
+            while (!ct.IsCancellationRequested)
+            {
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(WATCHDOG_INTERVAL),
+                    cancellationToken: ct);
+
+                if (ct.IsCancellationRequested)
+                {
+                    return;
+                }
+
+                // Если стрим активен но waveOut остановился — перезапускаем
+                bool shouldBePlaying = _radioModels.Model.CurrentChannelIndex.PropertyValue >= 0;
+                bool isPlaying = waveOut?.PlaybackState == PlaybackState.Playing;
+
+                if (shouldBePlaying && !isPlaying)
+                {
+                    Debug.LogWarning("[RadioPlayer] Watchdog: playback stopped unexpectedly, retrying...");
+                    await _retryWithBackoff(ct);
+                }
+            }
+        }
+
+        private async UniTask _retryWithBackoff(CancellationToken ct)
+        {
+            for (int attempt = 1; attempt <= MAX_RETRY_ATTEMPTS; attempt++)
+            {
+                if (ct.IsCancellationRequested)
+                {
+                    return;
+                }
+
+                Debug.Log($"[RadioPlayer] Retry attempt {attempt}/{MAX_RETRY_ATTEMPTS}");
+
+                await _changeRadioStation();
+
+                // Ждём немного и проверяем успех
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(2),
+                    cancellationToken: ct);
+
+                if (waveOut?.PlaybackState == PlaybackState.Playing)
+                {
+                    Debug.Log("[RadioPlayer] Playback restored successfully");
+                    return;
+                }
+
+                // Экспоненциальная задержка между попытками: 2s, 4s, 8s
+                float backoff = Mathf.Pow(2, attempt);
+                Debug.LogWarning($"[RadioPlayer] Attempt {attempt} failed, waiting {backoff}s...");
+
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(backoff),
+                    cancellationToken: ct);
+            }
+
+            Debug.LogError("[RadioPlayer] All retry attempts failed");
+        }
     }
 }
