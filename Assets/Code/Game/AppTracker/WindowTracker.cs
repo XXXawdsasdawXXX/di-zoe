@@ -60,13 +60,22 @@ namespace Code.Game.AppTracker
 
                 UnityEngine.Debug.Log($"[WindowTracker] active='{active}' current='{_currentApp}' appTime count={AppTime.Count}");
 
-                if (!string.IsNullOrEmpty(active) && active != _currentApp)
+            
+                if (!string.IsNullOrEmpty(active))
                 {
-                    FlushCurrentApp();
-                    _currentApp   = active;
-                    _sessionStart = Time.realtimeSinceStartup;
-                    UnityEngine.Debug.Log($"[WindowTracker] switched to '{active}'");
+                    if (active != _currentApp)
+                    {
+                        _currentApp = active;
+                        UnityEngine.Debug.Log($"[WindowTracker] switched to '{active}'");
+                    }
+
+                    // Накапливаем каждый тик — не ждём смены приложения
+                    if (!AppTime.ContainsKey(_currentApp))
+                        AppTime[_currentApp] = 0f;
+
+                    AppTime[_currentApp] += _pollInterval;
                 }
+
 
                 await UniTask.Delay(
                     TimeSpan.FromSeconds(_pollInterval),

@@ -1,11 +1,12 @@
 using Code.Core.GameLoop;
+using Code.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace AppTracker.UI
 {
-    public class AppTimeListView : MonoBehaviour
+    public class AppTimeListView : UIView
     {
         [Header("Summary")]
         [SerializeField] private TMP_Text _totalTodayText;

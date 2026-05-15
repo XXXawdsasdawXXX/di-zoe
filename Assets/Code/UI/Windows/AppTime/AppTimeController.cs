@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Code.Game.AppTracker;
+using Code.UI;
 using UnityEngine;
 
 namespace AppTracker.UI
 {
-    public class AppTimeController : MonoBehaviour
+    public class AppTimeController : UIPresenter<AppTimeListView>
     {
-        [SerializeField] private AppTimeListView _view;
         [SerializeField] private WindowTracker   _tracker;
 
         private AppTimeData _savedData;
@@ -17,13 +17,13 @@ namespace AppTracker.UI
         private void Start()
         {
             _savedData = AppTimeStorage.Load();
-            _view.OnPeriodChanged += OnPeriodChanged;
+            view.OnPeriodChanged += OnPeriodChanged;
             Refresh(_currentDays);
         }
 
         private void OnDestroy()
         {
-            _view.OnPeriodChanged -= OnPeriodChanged;
+            view.OnPeriodChanged -= OnPeriodChanged;
         }
 
         private void OnApplicationPause(bool paused)
@@ -114,8 +114,8 @@ namespace AppTracker.UI
             int decreased = uiEntries.Count(e => e.TodayMinutes < e.AvgMinutes);
             float total   = uiEntries.Sum(e => e.TodayMinutes);
 
-            _view.SetSummary(total, increased, decreased, days);
-            _view.SetRows(uiEntries, maxMinutes);
+            view.SetSummary(total, increased, decreased, days);
+            view.SetRows(uiEntries, maxMinutes);
         }
 
         private static bool IsWithinDays(string dateStr, int days)

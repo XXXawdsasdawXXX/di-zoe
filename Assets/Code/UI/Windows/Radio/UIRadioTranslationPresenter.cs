@@ -34,7 +34,7 @@ namespace Code.UI.Windows.Radio
             _radioTranslation.Model.CurrentChannelIndex.SubscribeToValue(_updateCurrentChannelView);
 
 
-            view.UIButton_randomChannel.SubscribeToClicked(_setRandomChannel);
+        //    view.UIButton_randomChannel.SubscribeToClicked(_setRandomChannel);
             view.UISlider_volume.SubscribeToElement(_radioTranslation.SetVolume);
         }
 
@@ -56,7 +56,7 @@ namespace Code.UI.Windows.Radio
             _radioTranslation.Model.CurrentChannelIndex.UnsubscibeFromValue(_updateCurrentChannelView);
 
             
-            view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
+           // view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
             view.UISlider_volume.UnsubscribeFromElement(_radioTranslation.SetVolume);
             
             _logoCts?.Cancel();
