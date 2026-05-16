@@ -182,10 +182,10 @@ namespace Code.UI
 
         private async void _setListViewState()
         {
-            if (_cts != null && !_cts.IsCancellationRequested)
+            if (IsShownList || (_cts != null && !_cts.IsCancellationRequested))
             {
                 await HideListView();
-                _cts.Cancel();
+                _cts?.Cancel();
                 return;
             }
 

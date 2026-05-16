@@ -59,12 +59,12 @@ namespace Code.UI.Windows.Radio
 
         private void _initializeAllTracks(RadioSongListModel songs)
         {
-            int count = Math.Min(RadioConfiguration.PREVIOUS_TRACKS_COUNT, songs.Songs.Count);
-            
-            if (songs.Songs == null || count == 0)
+            if (songs?.Songs == null)
             {
                 return;
             }
+            
+            int count = Math.Min(RadioConfiguration.PREVIOUS_TRACKS_COUNT, songs.Songs.Count);
 
             _all.ClearElements();
             
@@ -213,6 +213,7 @@ namespace Code.UI.Windows.Radio
 
         private async void _shownFav(CancellationToken ct)
         {
+            _channelDropdown.HideView().Forget();
             _initializeFavoriteTracks();
 
             if (State.PropertyValue is EState.All)

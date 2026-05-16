@@ -46,7 +46,7 @@ namespace Code.UI.Windows
             if (_views.Length > index)
             {
                 _currentView = _views[index];
-                _currentView.Open();
+                _currentView.Open().Forget();
             }
         }
     }

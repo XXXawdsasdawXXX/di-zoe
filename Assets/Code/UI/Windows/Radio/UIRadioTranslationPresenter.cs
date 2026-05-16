@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Code.UI.Windows.Radio
 {
-    public class UIRadioTranslationPresenter : UIPresenter<UIRadioTranslationView>, IInitializeListener, ISubscriber, IStartListener
+    public class UIRadioTranslationPresenter : UIPresenter<UIRadioTranslationView>, IInitializeListener, ISubscriber
     {
         private CancellationTokenSource _logoCts;
         private RadioTranslation _radioTranslation;
@@ -32,17 +32,7 @@ namespace Code.UI.Windows.Radio
 
             _radioTranslation.Model.CurrentSong.SubscribeToValue(_updateCurrentSongView);
             _radioTranslation.Model.CurrentChannelIndex.SubscribeToValue(_updateCurrentChannelView);
-
-
-        //    view.UIButton_randomChannel.SubscribeToClicked(_setRandomChannel);
             view.UISlider_volume.SubscribeToElement(_radioTranslation.SetVolume);
-        }
-
-        public UniTask GameStart()
-        {
-            _updateCurrentChannelView(_radioTranslation.Model.CurrentChannelIndex.PropertyValue);
-            
-            return UniTask.CompletedTask;
         }
 
         public void Unsubscribe()
@@ -54,9 +44,6 @@ namespace Code.UI.Windows.Radio
             
             _radioTranslation.Model.CurrentSong.UnsubscibeFromValue(_updateCurrentSongView);
             _radioTranslation.Model.CurrentChannelIndex.UnsubscibeFromValue(_updateCurrentChannelView);
-
-            
-           // view.UIButton_randomChannel.UnsubscribeFromClicked(_setRandomChannel);
             view.UISlider_volume.UnsubscribeFromElement(_radioTranslation.SetVolume);
             
             _logoCts?.Cancel();
@@ -116,6 +103,5 @@ namespace Code.UI.Windows.Radio
             }
             view.UIText_currentTrack.SetText($"{model.artist} - {model.title}");
         }
-        
     }
 }
