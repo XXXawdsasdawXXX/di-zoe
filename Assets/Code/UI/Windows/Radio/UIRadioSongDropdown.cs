@@ -23,14 +23,14 @@ namespace Code.UI.Windows.Radio
         private const double AUTO_HIDE_DELAY = 120;
         public ReactiveProperty<EState> State { get; } = new(EState.None);
 
-
+        [SerializeField] private UIRadioChannelDropdown _channelDropdown;
         [SerializeField] private UIRadioGroup _buttonGroup;
 
         [SerializeField] private UIImpactComponent _impactAll;
         [SerializeField] private UIImpactComponent _impactFav;
 
-        [SerializeField] private UIDropDown _all;
-        [SerializeField] private UIDropDown _fav;
+        [SerializeField] private UIDropdown _all;
+        [SerializeField] private UIDropdown _fav;
 
         private RadioTranslation _radioTranslation;
         private RadioFavoriteContent _radioFavoriteContent;
@@ -83,11 +83,18 @@ namespace Code.UI.Windows.Radio
                 }
             }
             
-            UIRadioSongTab mainTab = _all.UIRadioButton_main as UIRadioSongTab;
+            UIRadioSongTab allMainTab = _all.UIRadioButton_main as UIRadioSongTab;
            
-            if (mainTab != null)
+            if (allMainTab != null)
             {
-                _initializeTrackTab(mainTab, songs.Songs[0]);
+                _initializeTrackTab(allMainTab, songs.Songs[0]);
+            }
+            
+            UIRadioSongTab favMainTab = _fav.UIRadioButton_main as UIRadioSongTab;
+           
+            if (favMainTab != null)
+            {
+                _initializeTrackTab(favMainTab, songs.Songs[0]);
             }
         }
         
@@ -154,9 +161,7 @@ namespace Code.UI.Windows.Radio
             
             UIImpactComponent activeImpact = State.PropertyValue == EState.All ? _impactAll : _impactFav;
             await activeImpact.InvokeDisableImpact();
-
             _buttonGroup.SetCheckedWithoutNotify(-1);
-
             State.PropertyValue = EState.None;
         }
 
@@ -177,6 +182,7 @@ namespace Code.UI.Windows.Radio
 
         private async void _shownAll(CancellationToken ct)
         {
+            _channelDropdown.HideView().Forget();
             _initializeAllTracks(_radioTranslation.Model.PreviousSongs.PropertyValue);
 
             if (State.PropertyValue is EState.Fav)
@@ -220,6 +226,7 @@ namespace Code.UI.Windows.Radio
                 _fav.gameObject.SetActive(true);
                 await _impactFav.InvokeActiveImpact();
             }
+            
             _fav.ShowListView();
             
             State.PropertyValue = EState.Fav;

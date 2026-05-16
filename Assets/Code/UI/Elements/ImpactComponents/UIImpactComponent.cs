@@ -27,6 +27,16 @@ namespace Code.UI.ImpactComponents
             return UniTask.CompletedTask;
         }
 
+        public virtual void DisableWithoutImpact()
+        {
+            IsActivated = false;
+        }  
+        
+        public virtual void ActivateWithoutImpact()
+        {
+            IsActivated = true;
+        }
+        
         public void SubscribeToChanged(Action<bool> changed)
         {
             if (changed != null)

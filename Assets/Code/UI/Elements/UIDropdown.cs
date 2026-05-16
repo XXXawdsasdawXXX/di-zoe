@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Code.UI
 {
-    public sealed class UIDropDown : UIComponent, ISubscriber, IInitializeListener
+    public sealed class UIDropdown : UIComponent, ISubscriber, IInitializeListener
     {
         private const float SHOWN_SIZE_SCALER = 5;
         private event Action<int> _changed;
@@ -151,6 +151,7 @@ namespace Code.UI
                 return;
             }
             
+            Debug.Log("hide list view");
             _tween?.Kill();
 
             Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY);
@@ -171,7 +172,7 @@ namespace Code.UI
 
             _invokeChanged(_pool.GetAllEnabled()[index].Index);
 
-            _listView.gameObject.SetActive(false);
+            HideListView().Forget();
         }
 
         private void _invokeChanged(in int index)
@@ -205,9 +206,9 @@ namespace Code.UI
             {
                 return;
             }
-
-            Debug.Log("Hide list view");
+            
             await HideListView();
+            
             _cts?.Cancel();
         }
 

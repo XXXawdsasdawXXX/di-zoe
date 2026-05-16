@@ -14,7 +14,7 @@ namespace Code.UI.Windows.Radio
         
         
         [field: Space, Header("Tracks")]
-        [field: SerializeField] public UIDropDown DropDownTracks { get; private set; }
+        [field: SerializeField] public UIDropdown DropDownTracks { get; private set; }
         [field: SerializeField] public UIImpactComponent ImpactTracks { get; private set; }
         [field: SerializeField] public UIRadioButton ButtonAllTracks { get; private set; }
         [field: SerializeField] public UIRadioButton ButtonFavTracks { get; private set; }

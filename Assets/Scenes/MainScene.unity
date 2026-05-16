@@ -5924,7 +5924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000034332275
+      value: -0.00004196167
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7567,6 +7567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Index>k__BackingField: 0
   <Rect>k__BackingField: {fileID: 1148697972}
+  _channelDropdown: {fileID: 1861418548}
   _buttonGroup: {fileID: 1246551179}
   _impactAll: {fileID: 1983563290}
   _impactFav: {fileID: 895998296}
@@ -12792,6 +12793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Index>k__BackingField: 0
   <Rect>k__BackingField: {fileID: 1102021729}
+  _songDropdown: {fileID: 1148697973}
   _buttonGroup: {fileID: 158914354}
   _impactAll: {fileID: 6012623010783866481}
   _impactFav: {fileID: 1686221602}
@@ -13692,7 +13694,7 @@ MonoBehaviour:
   _increasedCountText: {fileID: 2000023515}
   _decreasedCountText: {fileID: 1045068808}
   _periodText: {fileID: 1870723603}
-  _daysInput: {fileID: 0}
+  _daysInput: {fileID: 903291126}
   _showButton: {fileID: 2090216214}
   _rowPool:
     _root: {fileID: 646521177}

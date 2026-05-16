@@ -10,7 +10,7 @@ namespace Code.UI.ImpactComponents
     public class UIImpactComponent_RadioDropDown : UIImpactComponent, IStartListener
     {
         [SerializeField] private RectTransform _child;
-        [SerializeField] private UIDropDown _dropDown;
+        [SerializeField] private UIDropdown _dropDown;
         [SerializeField] private RectTransform _root;
         [SerializeField] private GameObject _disableObject;
         [SerializeField] private UIRadioGroup _radioGroupButtons;
@@ -36,7 +36,7 @@ namespace Code.UI.ImpactComponents
             return UniTask.CompletedTask;
         }
 
-        public void ActivateWithoutImpact()
+        public override void ActivateWithoutImpact()
         {
             Rect.sizeDelta = _shownDeltaSize;
             
@@ -44,9 +44,11 @@ namespace Code.UI.ImpactComponents
             {
                 _disableObject.SetActive(true);
             }
+            
+            base.ActivateWithoutImpact();
         }
         
-        public void DisableWithoutImpact()
+        public override void DisableWithoutImpact()
         {
             Rect.sizeDelta = _hiddenDeltaSize;
             
@@ -54,6 +56,8 @@ namespace Code.UI.ImpactComponents
             {
                 _disableObject.SetActive(false);
             }
+            
+            base.DisableWithoutImpact();
         }
 
         

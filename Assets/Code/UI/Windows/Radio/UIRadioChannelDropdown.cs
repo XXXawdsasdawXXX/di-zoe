@@ -23,13 +23,14 @@ namespace Code.UI.Windows.Radio
         private const double AUTO_HIDE_DELAY = 120;
         public ReactiveProperty<EState> State { get; } = new(EState.None);
 
+        [SerializeField] private UIRadioSongDropdown _songDropdown;
         [SerializeField] private UIRadioGroup _buttonGroup;
 
         [SerializeField] private UIImpactComponent _impactAll;
         [SerializeField] private UIImpactComponent _impactFav;
 
-        [SerializeField] private UIDropDown _all;
-        [SerializeField] private UIDropDown _fav;
+        [SerializeField] private UIDropdown _all;
+        [SerializeField] private UIDropdown _fav;
 
         private RadioTranslation _radioTranslation;
         private RadioFavoriteContent _radioFavoriteContent;
@@ -179,7 +180,7 @@ namespace Code.UI.Windows.Radio
             _fav.SetCurrentValueWithoutNotify(channelIndex);
         }
 
-        private async UniTask _hideChannelView()
+        public async UniTask HideView()
         {
             if (State.PropertyValue is EState.None)
             {
@@ -211,11 +212,14 @@ namespace Code.UI.Windows.Radio
 
         private async void _shownAllChannel(CancellationToken ct)
         {
+            _songDropdown.HideView().Forget();
+            
             if (State.PropertyValue is EState.Fav)
             {
                 await _fav.HideListView();
                 _fav.gameObject.SetActive(false);
                 _all.gameObject.SetActive(true);
+                _impactAll.ActivateWithoutImpact();
             }
             else
             {
@@ -233,12 +237,14 @@ namespace Code.UI.Windows.Radio
 
             if (!cancelled)
             {
-                await _hideChannelView();
+                await HideView();
             }
         }
 
         private async void _shownFavChannel(CancellationToken ct)
         {
+            _songDropdown.HideView().Forget();
+
             _initializeFavoriteChannels();
 
             if (State.PropertyValue is EState.All)
@@ -246,6 +252,7 @@ namespace Code.UI.Windows.Radio
                 await _all.HideListView();
                 _all.gameObject.SetActive(false);
                 _fav.gameObject.SetActive(true);
+                _impactFav.ActivateWithoutImpact();
             }
             else
             {
@@ -263,7 +270,7 @@ namespace Code.UI.Windows.Radio
 
             if (!cancelled)
             {
-                await _hideChannelView();
+                await HideView();
             }
         }
 
