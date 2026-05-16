@@ -23,6 +23,7 @@ namespace Code.UI.Windows.AppTime
 
         public event System.Action<int> OnPeriodChanged;
 
+        
         private void Awake()
         {
             _showButton.onClick.AddListener(() =>

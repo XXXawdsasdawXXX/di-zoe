@@ -2,56 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54a3b00b-7b1b-4858-86d0-12b70f5c6965" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimerEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimerEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimerEntryData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimerEntryData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimersSaveData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimersSaveData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimersService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/Game/Timers/TimersService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Timers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Timers/TimerEntryView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Timers/TimerEntryView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Timers/TimerWindowView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Timers/TimerWindowView.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.di-zoe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/AudioVisualizationStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/AudioVisualizationStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/BasicSpectrumProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/BasicSpectrumProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/ISpectrumProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/ISpectrumProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/LineSpectrum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/LineSpectrum.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/LoopbackAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/LoopbackAudio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/RealtimeAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/RealtimeAudio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/ScalingStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/ScalingStrategy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/SpectrumBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Audio/SpectrumBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Behaviors/RandomMaterialColorObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Behaviors/RandomMaterialColorObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Extensions/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Extensions/ListExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/Globals.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/Base/VisualizationEffectBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/Base/VisualizationEffectBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/MaterialColorIntensityReactiveEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/MaterialColorIntensityReactiveEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/ObjectScaleReactiveEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/ObjectScaleReactiveEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/PrefabLayoutAudioObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/PrefabLayoutAudioObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIMaterialColorIntensityReactiveEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIMaterialColorIntensityReactiveEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIPrefabLayoutAudioObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Assets/Scripts/ReactiveEffects/UIPrefabLayoutAudioObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/IProgressReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/IProgressReader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/IProgressWriter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/IProgressWriter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/PlayerProgressData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/PlayerProgressData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Core/Save/SaveLoadService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Core/Save/SaveLoadService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/AppTracker/AppTimeStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/AppTracker/AppTimeStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/AppTracker/WindowTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/AppTracker/WindowTracker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/AudioParticleModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/AudioParticleModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/EParticleParamType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/EParticleParamType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/EParticleType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/EParticleType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/NimbusParticleFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/NimbusParticleFacade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/Data/ParticleSystemFacade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Effects/VFXConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Effects/VFXConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioFavoriteContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioTranslation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Radio/RadioTranslation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/ColorExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/ColorExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/Editor/RangedFloatDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/Editor/RangedFloatDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/MinMaxRangeFloatAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/MinMaxRangeFloatAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/RangedFloat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeFloat/RangedFloat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/Editor/RangedIntDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/Editor/RangedIntDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/MinMaxRangeIntAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/MinMaxRangeIntAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/RangedInt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Tools/RangeInt/RangedInt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_RadioDropDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Elements/ImpactComponents/UIImpactComponent_RadioDropDown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/AppTime/AppTimeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/AppTime/AppTimeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Code/Game/Installer.Generated.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/Game/Installer.Generated.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/AppTime/AppTimeListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/AppTime/AppTimeListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/AppTime/AppTimeRowView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/AppTime/AppTimeRowView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelDropdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioChannelDropdown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioSongDropdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioSongDropdown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Channel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Channel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Song.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIDropDownItem_Song.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIRadioButton - fav.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/UIRadioButton - fav.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/dropdown - header - channel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/dropdown - header - channel.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_dot_digital-7 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/000webfont SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/000webfont SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/square_pixel-7 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/link.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/link.xml.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +76,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/UI/Windows/Radio/UIRadioTranslationView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.codewriter.triinspector@b231c1eb15/Editor/Editors/TriScriptedImporterEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.kirurobo.uniwinc@304f9ba2aa/Runtime/Scripts/UniWindowController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.9/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/ContentSizeFitter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/LayoutElement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -259,6 +242,9 @@
       <workItem from="1778796401116" duration="604000" />
       <workItem from="1778798022086" duration="5774000" />
       <workItem from="1778854303660" duration="200000" />
+      <workItem from="1778858989554" duration="2421000" />
+      <workItem from="1778932624080" duration="866000" />
+      <workItem from="1778934056794" duration="1291000" />
     </task>
     <servers />
   </component>

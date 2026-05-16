@@ -14,6 +14,7 @@ namespace Game
             typeof(Code.Game.Radio.RadioFavoriteContent),
             typeof(Code.Game.Radio.RadioTranslation),
             typeof(Code.Game.Radio.RadioModel),
+            typeof(Code.Game.Timers.TimersService),
         };
     }
 }

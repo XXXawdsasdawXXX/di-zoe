@@ -15,6 +15,7 @@ namespace Code.Core.Save
         public List<int> FavoriteRadioChannels;
         public string FavoriteRadioTracks;
 
+        public string Timers;
         
         public PlayerProgressData()
         {
