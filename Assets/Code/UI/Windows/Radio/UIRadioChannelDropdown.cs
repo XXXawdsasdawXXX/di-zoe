@@ -147,8 +147,6 @@ namespace Code.UI.Windows.Radio
 
         private void _updateCurrentChannel(int channelIndex)
         {
-            Debug.Log("_updateCurrentChannel");
-            
             RadioChannelModel channelModel = _radioTranslation.Model.GetCurrentChannel();
 
             //all

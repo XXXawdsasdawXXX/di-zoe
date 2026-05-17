@@ -12,7 +12,6 @@ namespace Code.UI
     public class UIRadioGroup : UIComponent, IStartListener, ISubscriber
     {
         public event Action<int> Checked;
-        public event Action<int> Unchecked;
 
         [SerializeField] private List<UIRadioButton> _buttons;
         [SerializeField, Min(0)] private int _maxSelectedCount = 1;
@@ -20,13 +19,12 @@ namespace Code.UI
 
         [SerializeField, Min(0), ShowIf(nameof(_checkedOnAwake))]
         private int _defaultSelectedIndex;
-
+       
         private readonly Queue<UIRadioButton> _checked = new();
-        
+
 
         public UniTask GameStart()
         {
-            Debug.Log("start");
             if (_checkedOnAwake)
             {
                 SetCheckedWithoutNotify(_defaultSelectedIndex);
@@ -37,7 +35,6 @@ namespace Code.UI
         
         public void Subscribe()
         {
-            Debug.Log($"{name} Subscribe");
             for (int i = 0; i < _buttons.Count; i++)
             {
                 UIRadioButton button = _buttons[i];
@@ -47,10 +44,9 @@ namespace Code.UI
               
                 button.SubscribeToClicked(() =>
                 {
-                    Debug.Log($"click {button.IsChecked.PropertyValue}");
                     if (!button.IsChecked.PropertyValue)
                     {
-                        SetChecked(index);
+                        _setChecked(index);
                     }
                 });
             }
@@ -58,9 +54,8 @@ namespace Code.UI
 
         public void Unsubscribe()
         {
-            for (int i = 0; i < _buttons.Count; i++)
+            foreach (UIRadioButton button in _buttons)
             {
-                UIRadioButton button = _buttons[i];
                 button.ClearSubscriptions();
             }
         }
@@ -77,26 +72,8 @@ namespace Code.UI
             int index = _buttons.Count - 1;
             button.SubscribeToClicked(() =>
             {
-                SetChecked(index);
+                _setChecked(index);
             });
-        }
-
-        public void SetChecked(int index)
-        {
-            if (index < 0)
-            {
-                foreach (UIRadioButton uiRadioButton in _checked)
-                {
-                    uiRadioButton.SetValueWithoutNotify(false);
-                }
-
-                return;
-            }
-            
-            if (SetCheckedWithoutNotify(index))
-            {
-                Checked?.Invoke(index);
-            }
         }
 
         public bool SetCheckedWithoutNotify(int index)
@@ -120,7 +97,6 @@ namespace Code.UI
             {
                 UIRadioButton button = _checked.Dequeue();
                 button.UnCheck();
-                Unchecked?.Invoke(button.Index);
             }
 
             _buttons[index].Check();
@@ -129,20 +105,38 @@ namespace Code.UI
             return true;
         }
 
+        private void _setChecked(int index)
+        {
+            if (index < 0)
+            {
+                foreach (UIRadioButton uiRadioButton in _checked)
+                {
+                    uiRadioButton.SetValueWithoutNotify(false);
+                }
+
+                return;
+            }
+            
+            if (SetCheckedWithoutNotify(index))
+            {
+                Checked?.Invoke(index);
+            }
+        }
+
         #region Editor
 
 #if UNITY_EDITOR
 
         [Button]
-        private void FindButtonsInChildren()
+        private void _findButtonsInChildren()
         {
             _buttons = GetComponentsInChildren<UIRadioButton>().ToList();
 
-            UpdateIndex();
+            _updateIndex();
         }
 
         [Button]
-        private void UpdateIndex()
+        private void _updateIndex()
         {
             if (_buttons == null || _buttons.Count == 0)
             {
@@ -165,13 +159,12 @@ namespace Code.UI
 
         protected override void OnValidate()
         {
-            UpdateIndex();
+            _updateIndex();
             
             base.OnValidate();
         }
 
 #endif
-
         #endregion
 
     }

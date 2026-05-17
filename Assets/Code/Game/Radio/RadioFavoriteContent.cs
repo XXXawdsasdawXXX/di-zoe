@@ -3,7 +3,6 @@ using Code.Core.Save;
 using Code.Core.ServiceLocator;
 using Code.Tools;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.Scripting;
 
 namespace Code.Game.Radio
@@ -18,7 +17,6 @@ namespace Code.Game.Radio
 
         public UniTask LoadProgress(PlayerProgressData playerProgress)
         {
-            Debug.Log("favorite content LoadProgress");
             _channelList = playerProgress.FavoriteRadioChannels ?? new List<int>();
             Songs = playerProgress.FavoriteRadioTracks
                              .ToDeserialized<List<RadioSongModel>>() ?? new List<RadioSongModel>();
@@ -34,8 +32,6 @@ namespace Code.Game.Radio
 
         public void AddChannel(int index)
         {
-            Debug.Log($"add channel {index} {!_channelList.Contains(index)}");
-       
             if (_channelList.Contains(index))
             {
                 return;
@@ -52,7 +48,6 @@ namespace Code.Game.Radio
             }
 
             Songs.Add(song);
-            Debug.Log($"Fav stuff: add track {song}");
         }
 
         public bool IsFavoriteChannel(int index)
@@ -70,15 +65,11 @@ namespace Code.Game.Radio
             if (Songs.Contains(song))
             {
                 Songs.Remove(song);
-
-                Debug.Log($"Fav stuff: remove song {song}");
             }
         }
 
         public void RemoveChannel(int index)
         {
-            Debug.Log($"remove channel {index} {_channelList.Contains(index)}");
-
             if (_channelList.Contains(index))
             {
                 _channelList.Remove(index);

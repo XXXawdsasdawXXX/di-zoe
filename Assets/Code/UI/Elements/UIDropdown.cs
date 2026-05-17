@@ -151,7 +151,6 @@ namespace Code.UI
                 return;
             }
             
-            Debug.Log("hide list view");
             _tween?.Kill();
 
             Vector2 size = new(Rect.sizeDelta.x, _defaultSizeY);

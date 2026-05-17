@@ -11,8 +11,6 @@ namespace Code.UI
     public class UIButton : UIComponent, IInitializeListener,
     IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
-        public bool IsEntered { get; private set; }
-        
         [SerializeReference] protected UIButtonImpact[] buttonImpacts;
 
         [SerializeField, CanBeNull] private UIButton _parentButton;
@@ -35,11 +33,7 @@ namespace Code.UI
         public void SubscribeToClicked(Action clicked) => _clicked += clicked;
 
         public void UnsubscribeFromClicked(Action clicked) => _clicked -= clicked;
-
-        public void SubscribeToEntered(Action<bool> entered) => _entered += entered;
-
-        public void UnsubscribeFromEntered(Action<bool> entered) => _entered -= entered;
-
+        
 
         public virtual void ClearSubscriptions()
         {
@@ -113,11 +107,6 @@ namespace Code.UI
         {
             
         }
-
-        private void _onEntered(bool entered)
-        {
-            IsEntered = entered;
-        }
         
         private void _onPointerEnter()
         {
@@ -125,9 +114,7 @@ namespace Code.UI
             {
                 buttonImpact.OnEnter();
             }
-
-            _onEntered(true);
-
+            
             _entered?.Invoke(true);
         }
 
@@ -144,9 +131,7 @@ namespace Code.UI
             {
                 radioButton.UpdateImpactState();
             }
-
-            _onEntered(false);
-
+            
             _entered?.Invoke(false);
         }
     }
