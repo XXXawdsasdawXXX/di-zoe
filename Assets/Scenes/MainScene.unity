@@ -5924,7 +5924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400762, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000045776367
+      value: -0.00002670288
       objectReference: {fileID: 0}
     - target: {fileID: 22426080, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6248,6 +6248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b9e1bd125a4ce28237fa631a7d1408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _focusedFPS: 30
+  _unfocusedFPS: 10
+  _appWindowController: {fileID: 885027737}
 --- !u!1 &973735134
 GameObject:
   m_ObjectHideFlags: 0

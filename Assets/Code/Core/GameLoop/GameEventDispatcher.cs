@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Code.Core.ServiceLocator;
 using Cysharp.Threading.Tasks;
-//using Kirurobo;
+using Kirurobo;
 using Unity.Profiling;
 using UnityEngine;
-using UnityEngine.Profiling;
+
 
 namespace Code.Core.GameLoop
 {
@@ -22,7 +22,10 @@ namespace Code.Core.GameLoop
             Exit
         }
 
-        // private UniWindowController _controller;
+        [SerializeField] private int _focusedFPS   = 30;
+        [SerializeField] private int _unfocusedFPS = 10;
+        
+       [SerializeField] private UniWindowController _appWindowController;
 
         private readonly List<IInitializeListener> _initListeners = new();
         private readonly List<ILoadListener> _loadListeners = new();
@@ -31,40 +34,33 @@ namespace Code.Core.GameLoop
         private readonly List<IExitListener> _exitListeners = new();
         private readonly List<ISubscriber> _subscribers = new();
 
-        private readonly Dictionary<IUpdateListener, string> _updateListenerName = new();
-
-        private ProfilerMarker _updateMarker = new("update");
-
         private State _currentState;
 
-        private async void Awake()
+        
+        private void Awake()
         {
+            Application.targetFrameRate = _focusedFPS;
+            QualitySettings.vSyncCount  = 0; 
+            
             _initializeListeners();
-            
-            _currentState = State.Initialize;
-            await _notifyGameInitialize();
-
-            _currentState = State.Subscribe;
-            await _notifySubscribe();
-
-            _currentState = State.Load;
-            await _notifyGameLoad();
-            
-            _currentState = State.Start;
-
-
-            //_controller = Container.Instance.GetUniWindowController();
 
             if (Application.isEditor)
             {
-                //    _controller.gameObject.SetActive(false);
+                _appWindowController.gameObject.SetActive(false);
 
-                //   _bootGame();
+                _bootGame();
             }
             else
             {
-                //_controller.OnStateChanged += _onWindowInitialized;
+                _appWindowController.OnStateChanged += _onAppWindowInitialized;
             }
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            Application.targetFrameRate = hasFocus || _appWindowController.isTopmost
+                ? _focusedFPS 
+                : _unfocusedFPS;
         }
 
         private async void Start()
@@ -120,13 +116,26 @@ namespace Code.Core.GameLoop
             if (listener is ISubscriber subscriber) subscriber.Unsubscribe();
         }
 
-        /*private void _onWindowInitialized(UniWindowController.WindowStateEventType type)
+        private void _onAppWindowInitialized(UniWindowController.WindowStateEventType type)
         {
-            _controller.OnStateChanged -= _onWindowInitialized;
+            _appWindowController.OnStateChanged -= _onAppWindowInitialized;
 
             _bootGame();
-        }*/
+        }
 
+        private async void _bootGame()
+        {
+            _currentState = State.Initialize;
+            await _notifyGameInitialize();
+
+            _currentState = State.Subscribe;
+            await _notifySubscribe();
+
+            _currentState = State.Load;
+            await _notifyGameLoad();
+            
+            _currentState = State.Start;
+        }
 
         private void _initializeListeners()
         {
@@ -184,34 +193,14 @@ namespace Code.Core.GameLoop
 
         private void _notifyGameUpdate()
         {
-#if UNITY_EDITOR
-            using (_updateMarker.Auto())
-            {
-                foreach (IUpdateListener listener in _updateListeners)
-                {
-                    if (!_updateListenerName.ContainsKey(listener))
-                    {
-                        _updateListenerName.Add(listener, listener.GetType().Name);
-                    }
-
-                    Profiler.BeginSample(_updateListenerName[listener]);
-                    listener.GameUpdate();
-                    Profiler.EndSample();
-                }
-            }
-#else
             foreach (IUpdateListener listener in _updateListeners)
             {
                 listener.GameUpdate();
             }
-#endif
         }
 
         private void _notifyGameExit()
         {
-#if UNITY_EDITOR
-            ProfilerMarker marker = new("_notifyGameExit");
-            marker.Begin();
             foreach (ISubscriber subscriber in _subscribers)
             {
                 subscriber.Unsubscribe();
@@ -221,19 +210,6 @@ namespace Code.Core.GameLoop
             {
                 listener.GameExit();
             }
-
-            marker.End();
-#else
-            foreach (ISubscriber subscriber in _subscribers)
-            {
-                subscriber.Unsubscribe();
-            }
-
-            foreach (IExitListener listener in _exitListeners)
-            {
-                listener.GameExit();
-            }
-#endif
         }
     }
 }
